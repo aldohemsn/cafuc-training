@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>术语挖掘与搜商构建 - 翻译技术实战课</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .cmd-box {
+            font-family: 'Inter', monospace;
+            background-color: #1e293b;
+            /* slate-800 */
+            color: #a5f3fc;
+            /* cyan-200 */
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            border-left: 4px solid #06b6d4;
+            /* cyan-500 */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+                        <a href="course.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex items-center mb-8">
+                <div class="bg-cyan-100 text-cyan-700 font-bold px-3 py-1 rounded text-sm mr-4">模块 #1</div>
+                <h1 class="text-3xl font-extrabold text-gray-900">术语黑洞：遇到陌生概念怎么办？</h1>
+            </div>
+
+            <!-- Context -->
+            <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6 mb-12">
+                <h3 class="font-bold text-gray-900 mb-2">🚨 场景模拟</h3>
+                <p class="text-gray-600">
+                    你在翻译一份民航安全文档，遇到了一个词：<strong>"Flight Level 350"</strong>。
+                    <br>你知道 "Flight Level" 是飞行高度层，但 350 是怎么换算的？和"海拔高度"有什么区别？百度上查到的解释都不太权威。
+                </p>
+            </div>
+
+            <!-- Solution 1 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 A：限定站点的权威搜索</h2>
+                <p class="text-gray-600 mb-4">不要在大海里捞针，直接去"专家"家里找。利用 <code>site:</code> 指令锁定权威机构（如 ICAO, FAA, CAAC）。</p>
+
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <p class="text-sm text-gray-500 mb-2">🔍 查找 ICAO (国际民航组织) 对该词的定义：</p>
+                        <div class="cmd-box">
+                            site:icao.int "flight level" definition glossary
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <p class="text-sm text-gray-500 mb-2">🔍 查找 FAA (美国联邦航空局) 的官方文档：</p>
+                        <div class="cmd-box">
+                            site:faa.gov "flight level" conversion filetype:pdf
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <p class="text-sm text-gray-500 mb-2">🔍 查找 CAAC (中国民航局) 的规章：</p>
+                        <div class="cmd-box">
+                            site:caac.gov.cn 飞行高度层 规定
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Solution 2 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 B：平行文本挖掘 (The "Linguee" Method)</h2>
+                <p class="text-gray-600 mb-4">如果权威定义太晦涩，想看看别人怎么翻译的？寻找中英对照的 PDF。</p>
+
+                <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                    <p class="text-sm text-gray-500 mb-2">🔍 寻找包含中文和英文术语的 PDF 文件（通常是规章、手册）：</p>
+                    <div class="cmd-box">
+                        "flight level" "飞行高度层" filetype:pdf
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">
+                        *这将帮你找到已经翻译好的双语文档，你可以参考其中的上下文。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Solution 3 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 C：图像验证法</h2>
+                <p class="text-gray-600 mb-4">
+                    有些概念（如 "SID/STAR", "ILS", "VOR"）文字描述很抽象。不要只看字，要看图。
+                    <br>去 Google Images 搜索英文术语，确认其物理形态或示意图。
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-100 h-32 rounded flex items-center justify-center text-gray-400 text-sm">
+                        [搜索 "SID STAR chart" 图片]
+                    </div>
+                    <div class="bg-gray-100 h-32 rounded flex items-center justify-center text-gray-400 text-sm">
+                        [搜索 "ILS approach diagram" 图片]
+                    </div>
+                </div>
+                <p class="text-sm text-center text-gray-500 mt-2">一图胜千言：SID 是标准仪表离场程序，STAR 是标准终端进场程序。</p>
+            </section>
+
+            <!-- Strategy D: Google Search Logic -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 D：Google 搜索逻辑深度应用</h2>
+                <p class="text-gray-600 mb-4">
+                    掌握 Google 的核心逻辑运算符，能让你的搜索效率提升 10 倍。以下是译员必须掌握的"核武器"。
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Operator: OR -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div
+                            class="bg-indigo-50 px-4 py-2 border-b border-indigo-100 flex justify-between items-center">
+                            <span class="font-bold text-indigo-800 text-sm">1. 逻辑"或" (OR / |)</span>
+                            <span
+                                class="text-xs text-indigo-600 bg-white px-2 py-1 rounded border border-indigo-200">扩充范围</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-2">当你不知道某个术语的确切表达，或者想同时搜索多个同义词时使用。</p>
+                            <div class="cmd-box mb-2">
+                                "flight level" OR "cruising altitude" ICAO
+                            </div>
+                            <p class="text-xs text-gray-500">
+                                *同时搜索两种相关表达。注意：OR 必须大写。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Operator: Exclusion -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-red-50 px-4 py-2 border-b border-red-100 flex justify-between items-center">
+                            <span class="font-bold text-red-800 text-sm">2. 逻辑"非" (-)</span>
+                            <span
+                                class="text-xs text-red-600 bg-white px-2 py-1 rounded border border-red-200">排除干扰</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-2">排除不想看到的结果。例如，你想找 RVSM 的资料，但不想看维基百科。</p>
+                            <div class="cmd-box mb-2">
+                                RVSM "reduced vertical separation" -site:wikipedia.org
+                            </div>
+                            <p class="text-xs text-gray-500">
+                                *减号前面要有空格，后面紧跟要排除的词或指令。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Operator: Wildcard -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-green-50 px-4 py-2 border-b border-green-100 flex justify-between items-center">
+                            <span class="font-bold text-green-800 text-sm">3. 通配符 (*)</span>
+                            <span
+                                class="text-xs text-green-600 bg-white px-2 py-1 rounded border border-green-200">填补未知</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-2">当你只记得短语的一部分，或者想查找某个词的习惯搭配时。</p>
+                            <div class="cmd-box mb-2">
+                                "cleared * approach"
+                            </div>
+                            <p class="text-xs text-gray-500">
+                                *查找 "cleared for approach", "cleared ILS approach" 等搭配。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Operator: Numeric Range -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div
+                            class="bg-yellow-50 px-4 py-2 border-b border-yellow-100 flex justify-between items-center">
+                            <span class="font-bold text-yellow-800 text-sm">4. 数字范围 (..)</span>
+                            <span
+                                class="text-xs text-yellow-600 bg-white px-2 py-1 rounded border border-yellow-200">追溯历史</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-2">查找特定年份或数字范围内的数据。</p>
+                            <div class="cmd-box mb-2">
+                                CAAC regulations 2020..2024 filetype:pdf
+                            </div>
+                            <p class="text-xs text-gray-500">
+                                *快速查找 2020 年至 2024 年间民航局的规章。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Operator: Combine -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div
+                            class="bg-purple-50 px-4 py-2 border-b border-purple-100 flex justify-between items-center">
+                            <span class="font-bold text-purple-800 text-sm">5. 组合拳 (Combo)</span>
+                            <span
+                                class="text-xs text-purple-600 bg-white px-2 py-1 rounded border border-purple-200">终极技</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-2">结合多种指令，精准打击。</p>
+                            <div class="cmd-box mb-2">
+                                site:icao.int "crew resource management" OR "CRM" filetype:pdf 2020..2024
+                            </div>
+                            <p class="text-xs text-gray-500">
+                                *在 ICAO 官网查找 2020-2024 年间关于"机组资源管理"的 PDF 文档。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Connection to Previous Course -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">📚 与"网络查词"课程的衔接</h2>
+                <div class="bg-blue-50 border border-blue-100 rounded-lg p-6">
+                    <p class="text-gray-700 mb-4">
+                        你们之前学过的<strong>"网络查词"</strong>课程，已经介绍了如何使用在线词典和搜索引擎查找术语。
+                        本节课是该课程的<strong>进阶版</strong>：
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><strong>网络查词</strong>：知道去哪儿查（词典、搜索引擎）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><strong>搜商构建</strong>：知道<em>怎么查得更准、更快、更权威</em>（高级指令、平行文本）</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="bg-cyan-50 border border-cyan-100 rounded-lg p-6">
+                <h3 class="font-bold text-cyan-900">💡 讲师总结</h3>
+                <ul class="list-disc list-inside text-cyan-800 text-sm mt-2 space-y-1">
+                    <li><strong>普通译员：</strong> 遇到生词 -> 百度翻译 -> 选第一个词 -> 提交（风险高）。</li>
+                    <li><strong>数智化译员：</strong> 遇到生词 -> <code>site:</code>权威定义 -> <code>filetype:</code>平行文本验证 -> 图片确认
+                        -> 存入术语库（资产沉淀）。</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="mt-12 flex justify-between">
+                <a href="course.html" class="text-gray-500 hover:text-gray-700">← 返回课程大纲</a>
+                <a href="tutorial_ai.html" class="text-blue-600 hover:text-blue-800 font-medium">下一模块：AI 辅助翻译 →</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+        <p>&copy; 2025 Aldo. Designed for CAFUC MTI Training.</p>
+    </footer>
+</body>
+
+</html>

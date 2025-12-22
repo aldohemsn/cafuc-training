@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程详情 - 翻译技术实战课</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            首页
+                        </a>
+                        <a href="course.html"
+                            class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            课程详情
+                        </a>
+                        <a href="lecturer.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            讲师介绍
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Header -->
+            <div class="mb-12">
+                <span class="text-blue-600 font-semibold tracking-wide uppercase text-sm">CAFUC MTI Training</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">课程详情与大纲</h1>
+                <p class="mt-4 text-xl text-gray-600">针对 MTI 研究生定制的翻译技术实战培训方案。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-12">
+
+                <!-- Main Content -->
+                <div class="lg:col-span-2 space-y-12">
+
+                    <!-- Background -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                            <span
+                                class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                            学员背景与课程衔接
+                        </h2>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">学员概况</h4>
+                                    <p class="text-gray-600 text-sm mt-1">MTI 研究生一年级，已接触民航通识英语。有一定的翻译理论基础，技术方面接触较少。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-green-600">已修课程</h4>
+                                    <ul class="list-disc list-inside text-gray-600 text-sm mt-1 space-y-1">
+                                        <li>翻译概论、口笔译技巧、翻译理论与文化</li>
+                                        <li>译后编辑 (Post-editing)</li>
+                                        <li>网络查词技巧</li>
+                                        <li>翻译质量评估</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-blue-600">本次培训衔接</h4>
+                                    <ul class="list-disc list-inside text-gray-600 text-sm mt-1 space-y-1">
+                                        <li>网络查词 → <strong>搜商构建</strong>的进阶</li>
+                                        <li>译后编辑 → <strong>AI 辅助</strong>的底层逻辑</li>
+                                        <li>翻译质量评估 → <strong>智能质检</strong>的技术实现</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Session 1 -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                            <span
+                                class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">2</span>
+                            第一次课：从"搜商"到"AI思维"
+                        </h2>
+
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 space-y-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr class="bg-gray-50">
+                                            <th class="p-3 text-left font-medium text-gray-600">时间</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">模块</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">内容要点</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100">
+                                        <tr>
+                                            <td class="p-3 text-gray-500">0-15min</td>
+                                            <td class="p-3 font-medium">开场引入</td>
+                                            <td class="p-3 text-gray-600">讲师介绍、课程目标</td>
+                                        </tr>
+                                        <tr class="bg-cyan-50/50">
+                                            <td class="p-3 text-gray-500">15-45min</td>
+                                            <td class="p-3 font-medium text-cyan-700">术语挖掘与搜商构建</td>
+                                            <td class="p-3 text-gray-600">Google 高级指令、平行文本挖掘、图像验证法</td>
+                                        </tr>
+                                        <tr class="bg-purple-50/50">
+                                            <td class="p-3 text-gray-500">45-75min</td>
+                                            <td class="p-3 font-medium text-purple-700">AI 辅助长难句分析</td>
+                                            <td class="p-3 text-gray-600">Prompt Engineering、逻辑拆解、多版本生成</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 text-gray-500">75-90min</td>
+                                            <td class="p-3 font-medium">课堂练习 + Q&A</td>
+                                            <td class="p-3 text-gray-600">Prompt Lab 实操</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <a href="tutorial_search.html"
+                                    class="text-sm bg-cyan-100 text-cyan-700 px-4 py-2 rounded-lg hover:bg-cyan-200 transition">→
+                                    搜商构建教程</a>
+                                <a href="tutorial_ai.html"
+                                    class="text-sm bg-purple-100 text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-200 transition">→
+                                    AI 辅助教程</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Session 2 -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                            <span
+                                class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">3</span>
+                            第二次课：从"清洗"到"质检"
+                        </h2>
+
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 space-y-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr class="bg-gray-50">
+                                            <th class="p-3 text-left font-medium text-gray-600">时间</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">模块</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">内容要点</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100">
+                                        <tr>
+                                            <td class="p-3 text-gray-500">0-10min</td>
+                                            <td class="p-3 font-medium">回顾与衔接</td>
+                                            <td class="p-3 text-gray-600">第一次课回顾</td>
+                                        </tr>
+                                        <tr class="bg-green-50/50">
+                                            <td class="p-3 text-gray-500">10-40min</td>
+                                            <td class="p-3 font-medium text-green-700">文本清洗与正则入门</td>
+                                            <td class="p-3 text-gray-600">Regex 基础概念、常用模式演示</td>
+                                        </tr>
+                                        <tr class="bg-orange-50/50">
+                                            <td class="p-3 text-gray-500">40-60min</td>
+                                            <td class="p-3 font-medium text-orange-700">翻译质量检测</td>
+                                            <td class="p-3 text-gray-600">AI 质检思路、术语一致性</td>
+                                        </tr>
+                                        <tr class="bg-red-50/50">
+                                            <td class="p-3 text-gray-500">60-80min</td>
+                                            <td class="p-3 font-medium text-red-700">语料库建设实战</td>
+                                            <td class="p-3 text-gray-600">《纽约时报》双语库案例</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 text-gray-500">80-90min</td>
+                                            <td class="p-3 font-medium">Q&A</td>
+                                            <td class="p-3 text-gray-600">答疑互动</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="flex flex-wrap gap-3">
+                                <a href="tutorial_aviation.html"
+                                    class="text-sm bg-green-100 text-green-700 px-4 py-2 rounded-lg hover:bg-green-200 transition">→
+                                    正则入门教程</a>
+                                <a href="tutorial_qa.html"
+                                    class="text-sm bg-orange-100 text-orange-700 px-4 py-2 rounded-lg hover:bg-orange-200 transition">→
+                                    质检教程</a>
+                                <a href="tutorial_nyt.html"
+                                    class="text-sm bg-red-100 text-red-700 px-4 py-2 rounded-lg hover:bg-red-200 transition">→
+                                    语料库教程</a>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-24">
+                        <h3 class="font-bold text-gray-900 mb-4">课程信息</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start">
+                                <span class="text-gray-400 w-6">📍</span>
+                                <span class="text-gray-600">中国民用航空飞行学院</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-gray-400 w-6">👥</span>
+                                <span class="text-gray-600">MTI 研究生一年级</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-gray-400 w-6">⏱️</span>
+                                <span class="text-gray-600">2 次课 × 90 分钟</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-gray-400 w-6">🎓</span>
+                                <span class="text-gray-600">讲师：何晓鸿</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-100">
+                            <h4 class="font-bold text-gray-900 mb-2">学习目标</h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• 了解翻译技术的发展趋势</li>
+                                <li>• 理解 AI 辅助翻译的底层逻辑</li>
+                                <li>• 培养"数智化译员"思维</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Aldo. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

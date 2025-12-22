@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本清洗与正则入门 - 翻译技术实战课</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <!-- Prism -->
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <script src="assets/js/prism.js"></script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+                        <a href="course.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Breadcrumb -->
+            <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center"><a href="roadmap.html" class="hover:text-blue-600">实战演练场</a>
+                    </li>
+                    <li><span class="mx-2">/</span></li>
+                    <li aria-current="page"><span class="text-gray-800 font-semibold">Stage 2: 文本清洗</span></li>
+                </ol>
+            </nav>
+
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-6">航空制造与 ICAO 文件语料库实战</h1>
+            <p class="text-xl text-gray-600 mb-12 border-l-4 border-green-500 pl-4">
+                针对 PDF/Word 格式的行业标准文件（如 ICAO 附件、飞机维修手册 AMM），如何高效清洗并建立双语对照资产。
+            </p>
+
+            <!-- Step 1: Pre-processing -->
+            <section class="mb-16">
+                <div class="flex items-center mb-4">
+                    <div
+                        class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
+                        1</div>
+                    <h2 class="text-2xl font-bold text-gray-900">文本清洗 (Cleaning) - 解决痛点</h2>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <p class="mb-4">
+                        从 PDF 复制出来的文本通常包含大量换行符、页眉页脚和无关编号。这是大家提到的手动修改最耗时的环节。
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-red-500 mb-2">❌ 原始乱码文本</h4>
+                            <div class="bg-red-50 p-3 rounded text-xs font-mono border border-red-100 text-gray-600">
+                                4.1 The pilot-in-command<br>
+                                shall be responsible for<br>
+                                the safety of all crew<br>
+                                members.<br>
+                                Page 12 / ICAO Annex 6
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-500 mb-2">✅ 清洗后文本</h4>
+                            <div
+                                class="bg-green-50 p-3 rounded text-xs font-mono border border-green-100 text-gray-600">
+                                4.1 The pilot-in-command shall be responsible for the safety of all crew members.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <h4 class="font-bold text-gray-800 mb-2">🛠️ 解决方案：正则表达式 (Regex)</h4>
+                        <p class="text-sm text-gray-600 mb-3">使用简单的正则指令即可批量删除页码和合并断行。</p>
+                        <!-- Expanded Regex Cheat Sheet -->
+                        <div class="mb-8">
+                            <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                                <span class="bg-gray-800 text-white text-xs px-2 py-1 rounded mr-2">DOCS</span>
+                                核心正则指令集 (Regex Cheat Sheet)
+                            </h4>
+
+                            <div class="grid gap-4">
+                                <!-- Case 1: Broken Lines -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 bg-gray-50 hover:bg-white hover:shadow-md transition">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h5 class="font-bold text-sm text-gray-700">1. 修复断行 (Broken Lines)</h5>
+                                        <span class="text-xs font-mono bg-red-100 text-red-600 px-2 py-0.5 rounded">High
+                                            Frequency</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mb-3">PDF
+                                        复制时常导致句子被强制换行。此指令仅匹配“小写字母前的换行符”，避免误删段落间的空行。</p>
+                                    <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Find:</span>
+                                            <code class="text-blue-600">\n(?=[a-z])</code>
+                                        </div>
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Replace:</span>
+                                            <code class="text-green-600">[Space]</code>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Case 2: Page Numbers -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 bg-gray-50 hover:bg-white hover:shadow-md transition">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h5 class="font-bold text-sm text-gray-700">2. 清除页码 (Page Headers/Footers)</h5>
+                                        <span
+                                            class="text-xs font-mono bg-orange-100 text-orange-600 px-2 py-0.5 rounded">Cleaning</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mb-3">批量删除类似 "Page 12 of 45" 或 "12 / ICAO" 的页码行。</p>
+                                    <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Find:</span>
+                                            <code class="text-blue-600">^Page\s+\d+.*$</code>
+                                        </div>
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Replace:</span>
+                                            <code class="text-gray-400">[Empty]</code>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Case 3: Weird Spacing -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 bg-gray-50 hover:bg-white hover:shadow-md transition">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h5 class="font-bold text-sm text-gray-700">3. 压缩多余空格 (Variable Spaces)</h5>
+                                        <span
+                                            class="text-xs font-mono bg-blue-100 text-blue-600 px-2 py-0.5 rounded">Formatting</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mb-3">将排版产生的连续空格（或制表符）统一为一个空格。</p>
+                                    <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Find:</span>
+                                            <code class="text-blue-600">[ \t]+</code>
+                                        </div>
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Replace:</span>
+                                            <code class="text-green-600">[Space]</code>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Case 4: Part Numbers -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 bg-gray-50 hover:bg-white hover:shadow-md transition">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h5 class="font-bold text-sm text-gray-700">4. 提取件号 (Part Numbers)</h5>
+                                        <span
+                                            class="text-xs font-mono bg-purple-100 text-purple-600 px-2 py-0.5 rounded">Extraction</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mb-3">精准匹配如 "BAC-1234-56" 格式的航空件号，用于术语提取。</p>
+                                    <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Find:</span>
+                                            <code class="text-blue-600">\b[A-Z]{3}-\d{4}-\d{2}\b</code>
+                                        </div>
+                                        <div class="bg-white border p-2 rounded">
+                                            <span class="text-gray-400 block mb-1">Replace:</span>
+                                            <code class="text-gray-400">(N/A - Use 'Find All')</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Regex Lab -->
+                        <div
+                            class="mt-8 bg-slate-900 rounded-xl p-6 shadow-2xl overflow-hidden border border-slate-700">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-lg font-bold text-white flex items-center">
+                                    <span class="mr-2">🧪</span> Regex Lab: 实时演练
+                                </h3>
+                                <span class="text-xs text-slate-400 font-mono">JS Engine Active</span>
+                            </div>
+
+                            <div class="grid lg:grid-cols-2 gap-6">
+                                <!-- Left: Input -->
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Raw
+                                        Input (PDF Copy)</label>
+                                    <textarea id="rawInput"
+                                        class="w-full h-48 bg-slate-800 text-slate-300 font-mono text-sm p-4 rounded-lg border border-slate-700 focus:ring-2 focus:ring-green-500 focus:outline-none resize-none"
+                                        spellcheck="false">4.1 The pilot-in-command
+shall be responsible for
+the safety of all crew
+members.
+Page 12 / ICAO Annex 6
+The flight recorder shall
+be deactivated upon completion
+of the flight.</textarea>
+                                </div>
+
+                                <!-- Right: Output -->
+                                <div class="space-y-2">
+                                    <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Cleaned
+                                        Output</label>
+                                    <textarea id="cleanOutput"
+                                        class="w-full h-48 bg-slate-800 text-green-400 font-mono text-sm p-4 rounded-lg border border-slate-700 focus:outline-none resize-none"
+                                        readonly></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <div class="mt-6 bg-slate-800 p-4 rounded-lg border border-slate-700">
+                                <div class="grid md:grid-cols-12 gap-4 items-end">
+                                    <div class="md:col-span-5 space-y-1">
+                                        <label class="text-xs text-slate-400">Regex Pattern (Find)</label>
+                                        <input type="text" id="regexPattern" value="\n(?=[a-z])"
+                                            class="w-full bg-slate-900 text-cyan-400 font-mono text-sm px-3 py-2 rounded border border-slate-600 focus:border-cyan-500 focus:outline-none">
+                                    </div>
+                                    <div class="md:col-span-4 space-y-1">
+                                        <label class="text-xs text-slate-400">Replacement</label>
+                                        <input type="text" id="replaceString" value=" "
+                                            class="w-full bg-slate-900 text-yellow-400 font-mono text-sm px-3 py-2 rounded border border-slate-600 focus:border-yellow-500 focus:outline-none"
+                                            placeholder="(Space)">
+                                    </div>
+                                    <div class="md:col-span-3">
+                                        <button onclick="runRegex()"
+                                            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition shadow-lg flex items-center justify-center">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                                                </path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            Run Cleaning
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Presets -->
+                                <div class="mt-4 flex space-x-2 overflow-x-auto pb-2">
+                                    <button onclick="setPreset('mergeLines')"
+                                        class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1 rounded transition border border-slate-600">Preset:
+                                        Merge Lines</button>
+                                    <button onclick="setPreset('removePageNums')"
+                                        class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1 rounded transition border border-slate-600">Preset:
+                                        Remove Page Nums</button>
+                                </div>
+                            </div>
+
+                            <script>
+                                function runRegex() {
+                                    const input = document.getElementById('rawInput').value;
+                                    const pattern = document.getElementById('regexPattern').value;
+                                    const replacement = document.getElementById('replaceString').value;
+
+                                    try {
+                                        // Handle explicit escaped newlines entered by user
+                                        const cleanPattern = pattern.replace(/\\n/g, '\n');
+                                        const regex = new RegExp(cleanPattern, 'g');
+                                        const output = input.replace(regex, replacement);
+                                        document.getElementById('cleanOutput').value = output;
+                                    } catch (e) {
+                                        document.getElementById('cleanOutput').value = "Error: " + e.message;
+                                    }
+                                }
+
+                                function setPreset(type) {
+                                    if (type === 'mergeLines') {
+                                        document.getElementById('regexPattern').value = '\\n(?=[a-z])';
+                                        document.getElementById('replaceString').value = ' ';
+                                    } else if (type === 'removePageNums') {
+                                        document.getElementById('regexPattern').value = 'Page \\d+.*\\n?';
+                                        document.getElementById('replaceString').value = '';
+                                    }
+                                    runRegex(); // Auto run on preset click
+                                }
+
+                                // Initial run
+                                window.onload = runRegex;
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Alignment -->
+            <section class="mb-16">
+                <div class="flex items-center mb-4">
+                    <div
+                        class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
+                        2</div>
+                    <h2 class="text-2xl font-bold text-gray-900">对齐与术语提取 (Alignment & Extraction)</h2>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <p class="mb-4">
+                        清洗后的中英文纯文本，需通过对齐工具生成句对。
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm text-left text-gray-600">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3">Source (EN)</th>
+                                    <th class="px-6 py-3">Target (CN)</th>
+                                    <th class="px-6 py-3">Extracted Terms</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4">The operator shall ensure that the aircraft is airworthy.</td>
+                                    <td class="px-6 py-4">运营人应确保飞机适航。</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs mr-1">Operator:
+                                            运营人</span>
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Airworthy:
+                                            适航</span>
+                                    </td>
+                                </tr>
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4">Maintenance records shall be kept for a period of 90 days.
+                                    </td>
+                                    <td class="px-6 py-4">维修记录应保存 90 天。</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Maintenance
+                                            records: 维修记录</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: Output -->
+            <section class="mb-16">
+                <div class="flex items-center mb-4">
+                    <div
+                        class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
+                        3</div>
+                    <h2 class="text-2xl font-bold text-gray-900">成果转化 (TMX/TBX Export)</h2>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <p class="mb-4">
+                        最终将对齐好的内容导出为行业通用的交换格式。
+                    </p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <li class="flex items-start p-3 bg-purple-50 rounded border border-purple-100">
+                            <span class="text-2xl mr-3">📂</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">TMX (Translation Memory eXchange)</h4>
+                                <p class="text-xs text-gray-600">导入 Trados, MemoQ 等工具，供翻译记忆库使用。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start p-3 bg-indigo-50 rounded border border-indigo-100">
+                            <span class="text-2xl mr-3">📖</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">TBX (TermBase eXchange)</h4>
+                                <p class="text-xs text-gray-600">导入术语库，用于自动术语识别和一致性检查。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="mt-12 p-6 bg-green-50 rounded-lg border border-green-100">
+                <h3 class="font-bold text-green-900 mb-2">💡 讲师建议</h3>
+                <p class="text-green-800 text-sm">
+                    对于 COMAC 的“工艺规范类技术文件”，其格式固定、重复率高，是建立语料库的最佳原材料。一旦建立，新文件的翻译效率将提升 30%-50% 以上。
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Aldo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

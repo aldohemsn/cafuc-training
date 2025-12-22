@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 辅助与长难句攻克 - 翻译技术实战课</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .chat-bubble {
+            position: relative;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .chat-user {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            margin-left: 2rem;
+            border-bottom-right-radius: 0;
+        }
+
+        .chat-ai {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e3a8a;
+            margin-right: 2rem;
+            border-bottom-left-radius: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+                        <a href="course.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex items-center mb-8">
+                <div class="bg-purple-100 text-purple-700 font-bold px-3 py-1 rounded text-sm mr-4">SCENARIO #3</div>
+                <h1 class="text-3xl font-extrabold text-gray-900">长难句噩梦：逻辑拆解与风格润色</h1>
+            </div>
+
+            <!-- Context -->
+            <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6 mb-12">
+                <h3 class="font-bold text-gray-900 mb-2">😫 烧脑时刻</h3>
+                <p class="text-gray-600 mb-4">
+                    你正在翻译飞机维修手册 (AMM) 的前言，遇到这样一个句子：
+                </p>
+                <div class="bg-gray-100 p-4 rounded font-mono text-sm text-gray-700 italic">
+                    "The operator shall ensure that, where the aircraft is not operated in accordance with the
+                    provisions of the MEL, any defect is rectified at the earliest opportunity, but in any case not
+                    later than the expiration of the time limits specified in the MEL."
+                </div>
+                <p class="text-gray-600 mt-4">
+                    从句套从句，逻辑稍微一乱，意思就全反了。
+                </p>
+            </div>
+
+            <!-- Strategy 1: Logical Breakdown -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">第一步：AI 逻辑拆解</h2>
+                <p class="text-gray-600 mb-4">不要直接让 AI 翻译，先让它充当“语法分析师”。</p>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="chat-bubble chat-user">
+                        <strong>Prompt:</strong> 请分析这句话的逻辑结构，指出主句、条件状语和核心动作。不要翻译。
+                    </div>
+                    <div class="chat-bubble chat-ai">
+                        <strong>AI Analysis:</strong><br>
+                        1. <strong>主句：</strong> The operator shall ensure that... (运营人应确保...)<br>
+                        2. <strong>宾语从句内容：</strong> ...any defect is rectified... (任何缺陷都被纠正)<br>
+                        3. <strong>插入语（条件）：</strong> where the aircraft is not operated in accordance with... MEL
+                        (当飞机未按照 MEL 规定运行时)<br>
+                        4. <strong>时间状语 1：</strong> at the earliest opportunity (尽快)<br>
+                        5. <strong>时间状语 2 (限制)：</strong> but... not later than the expiration of... (但不得晚于 MEL
+                        规定的期限)<br>
+                        <br>
+                        <strong>核心逻辑：</strong> 只要没按 MEL 飞，就得修。修的时限有两个要求：尽早 + 不得超时。
+                    </div>
+                </div>
+            </section>
+
+            <!-- Strategy 2: Multi-version Translation -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">第二步：多风格生成与润色</h2>
+                <p class="text-gray-600 mb-4">要求 AI 提供不同风格的版本，供你选择最符合 COMAC 技术规范的表达。</p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-800 mb-2">直译版 (Literal)</h4>
+                        <p class="text-sm text-gray-600">
+                            运营人应确保，在飞机未按照最低设备清单 (MEL) 的规定运行时，任何缺陷都在最早的机会得到纠正，但在任何情况下不得晚于 MEL 中规定的时限届满。
+                        </p>
+                        <p class="text-xs text-red-400 mt-2">点评：翻译腔太重，"时限届满" 不够通顺。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 ring-2 ring-green-400">
+                        <h4 class="font-bold text-green-700 mb-2">技术规范版 (Technical)</h4>
+                        <p class="text-sm text-gray-800 font-medium">
+                            如果飞机未按照 MEL 规定运行，运营人应确保尽早修复任何缺陷，且修复时间不得晚于 MEL 规定的时限。
+                        </p>
+                        <p class="text-xs text-green-600 mt-2">点评：将插入语提前，逻辑更符合中文习惯，用词干练。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Supplementary Cases -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">更多实战案例库 (Supplementary Cases)</h2>
+                <div class="space-y-6">
+
+                    <!-- Case 1 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-blue-50 px-6 py-3 border-b border-blue-100 flex justify-between items-center">
+                            <span class="font-bold text-blue-800 text-sm">案例 #1：多重条件与例外 (AMM)</span>
+                            <span
+                                class="text-xs text-blue-600 bg-white px-2 py-1 rounded border border-blue-200">Conditionals</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="font-mono text-sm text-gray-700 bg-gray-50 p-3 rounded mb-4">
+                                "If the clearance between the inner race and the journal is not within the limits
+                                specified in Table 1, reject the part and replace it with a serviceable unit, unless the
+                                damage can be repaired in accordance with the Structural Repair Manual."
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <h5 class="font-bold text-gray-900 mb-1">🤖 AI 逻辑拆解</h5>
+                                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                        <li><strong>前置条件：</strong> If clearance... not within limits (间隙超标)</li>
+                                        <li><strong>主要指令：</strong> reject... and replace... (报废并更换)</li>
+                                        <li><strong>例外条件 (Unless)：</strong> damage can be repaired... (除非能修)</li>
+                                        <li><strong>依据：</strong> in accordance with SRM (依据 SRM)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-green-700 mb-1">✅ 推荐译文</h5>
+                                    <p class="text-gray-800">
+                                        如果内座圈与轴颈之间的间隙不在表 1 规定的限值范围内，则报废该部件并更换可用件，除非该损伤可依据《结构修理手册》(SRM) 进行修理。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div
+                            class="bg-purple-50 px-6 py-3 border-b border-purple-100 flex justify-between items-center">
+                            <span class="font-bold text-purple-800 text-sm">案例 #2：复杂定语从句 (System Description)</span>
+                            <span
+                                class="text-xs text-purple-600 bg-white px-2 py-1 rounded border border-purple-200">Relative
+                                Clauses</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="font-mono text-sm text-gray-700 bg-gray-50 p-3 rounded mb-4">
+                                "The fire detection system, which consists of two parallel loops of continuous wire
+                                sensing elements connected to a control unit, is designed to detect a fire or overheat
+                                condition in the engine nacelle and provide visual and aural warnings to the flight
+                                crew."
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <h5 class="font-bold text-gray-900 mb-1">🤖 AI 逻辑拆解</h5>
+                                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                        <li><strong>主语：</strong> The fire detection system (防火系统)</li>
+                                        <li><strong>插入语 (组成)：</strong> which consists of... (由...组成) - <em>译文可拆分或前置</em>
+                                        </li>
+                                        <li><strong>谓语/目的：</strong> is designed to detect... and provide...
+                                            (旨在探测...并提供...)</li>
+                                        <li><strong>动作对象：</strong> fire/overheat (火警/过热), visual/aural warnings (声光警告)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-green-700 mb-1">✅ 推荐译文</h5>
+                                    <p class="text-gray-800">
+                                        防火探测系统由连接至控制组件的两个连续感温线并联环路组成，旨在探测发动机短舱内的火警或过热状态，并向机组提供声光警告。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-red-50 px-6 py-3 border-b border-red-100 flex justify-between items-center">
+                            <span class="font-bold text-red-800 text-sm">案例 #3：否定与禁止指令 (Safety Warning)</span>
+                            <span class="text-xs text-red-600 bg-white px-2 py-1 rounded border border-red-200">Safety &
+                                Prohibitions</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="font-mono text-sm text-gray-700 bg-gray-50 p-3 rounded mb-4">
+                                "Do not apply power to the electrical system if the ground service bus is energized by
+                                external power, nor attempt to operate the hydraulic pumps until all personnel are clear
+                                of the control surfaces."
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <h5 class="font-bold text-gray-900 mb-1">🤖 AI 逻辑拆解</h5>
+                                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                        <li><strong>禁止指令 1：</strong> Do not apply power... (切勿通电)</li>
+                                        <li><strong>条件 1：</strong> if... energized by external power (如果...由外电源供电)</li>
+                                        <li><strong>禁止指令 2 (Nor)：</strong> nor attempt to operate... (也不要尝试操作...)</li>
+                                        <li><strong>条件 2 (Until)：</strong> until all personnel are clear...
+                                            (直到所有人员撤离...)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-green-700 mb-1">✅ 推荐译文</h5>
+                                    <p class="text-gray-800">
+                                        如果地面勤务汇流条由外电源供电，切勿向电气系统通电；在所有人员撤离操纵面区域之前，切勿尝试操作液压泵。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Interactive Prompt Lab -->
+            <section class="mb-16">
+                <div class="flex items-center mb-6">
+                    <span class="text-3xl mr-3">🧪</span>
+                    <h2 class="text-2xl font-bold text-gray-900">Prompt Laboratory: 定制你的 AI 助手</h2>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <div class="p-6 bg-slate-900 text-white">
+                        <p class="text-slate-300 text-sm">选择不同的参数，观察 Prompt 如何发生变化。好的 Prompt 包含：角色 (Role) + 任务 (Task) +
+                            约束 (Constraint)。</p>
+                    </div>
+
+                    <div class="p-6 grid lg:grid-cols-3 gap-8">
+                        <!-- Controls -->
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">1. 设定角色
+                                    (Persona)</label>
+                                <select id="roleSelect" onchange="generatePrompt()"
+                                    class="w-full border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-200 transition">
+                                    <option value="translator">General Translator (普通译员)</option>
+                                    <option value="tech_writer">Aviation Tech Writer (航空技术文档专家)</option>
+                                    <option value="legal_expert">Legal Contract Reviewer (法律合同专家)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">2. 目标受众
+                                    (Audience)</label>
+                                <select id="audienceSelect" onchange="generatePrompt()"
+                                    class="w-full border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-200 transition">
+                                    <option value="general">General Public (大众读者)</option>
+                                    <option value="engineer">Maintenance Engineers (维修工程师)</option>
+                                    <option value="official">Regulatory Authority (局方/审查员)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">3. 语言风格 (Tone &
+                                    Style)</label>
+                                <select id="styleSelect" onchange="generatePrompt()"
+                                    class="w-full border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-200 transition">
+                                    <option value="standard">Standard & Formal (标准正式)</option>
+                                    <option value="concise">Concise & Imperative (祈使句/简练)</option>
+                                    <option value="literal">Literal & Accurate (严谨直译)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Output -->
+                        <div class="lg:col-span-2">
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Generated System
+                                Prompt</label>
+                            <div class="relative">
+                                <textarea id="promptOutput" readonly
+                                    class="w-full h-64 bg-slate-50 text-slate-700 font-mono text-sm p-4 rounded-lg border border-slate-200 focus:outline-none resize-none"></textarea>
+                                <div class="absolute top-2 right-2">
+                                    <span class="text-xs text-slate-400 bg-slate-100 px-2 py-1 rounded">Read-only</span>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex justify-end">
+                                <button onclick="copyToClipboard()"
+                                    class="text-xs flex items-center text-purple-600 hover:text-purple-800 font-semibold">
+                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3">
+                                        </path>
+                                    </svg>
+                                    Copy to Clipboard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    const prompts = {
+                        roles: {
+                            translator: "You are a professional English-Chinese translator.",
+                            tech_writer: "You are an expert Aviation Technical Writer specializing in COMAC and Boeing manuals (AMM/SRM).",
+                            legal_expert: "You are a legal expert specializing in international aviation contracts and liability clauses."
+                        },
+                        audiences: {
+                            general: "Ensure the translation is easy to understand for a general audience, avoiding overly dense jargon.",
+                            engineer: "Target your output for frontline maintenance engineers. Use standard simplified Technical Chinese. Prioritize clarity and safety instructions.",
+                            official: "Target regulatory authorities (CAAC/FAA). Ensure extreme precision and adherence to formal legal/official terminology."
+                        },
+                        styles: {
+                            standard: "Maintain a formal, professional tone. Preserve the original sentence structure where appropriate.",
+                            concise: "Use the imperative mood (祈使语气) for procedures. Be concise. Avoid unnecessary particles like '进行', '一个'. Break long sentences into logical steps.",
+                            literal: "Translate literally to ensure every condition and modifier is preserved exactly as in the source, even if the resulting Chinese is slightly verbose."
+                        }
+                    };
+
+                    function generatePrompt() {
+                        const role = document.getElementById('roleSelect').value;
+                        const audience = document.getElementById('audienceSelect').value;
+                        const style = document.getElementById('styleSelect').value;
+
+                        const finalPrompt = `${prompts.roles[role]}\n\nOBJECTIVE:\nTranslate the following text into Simplified Chinese.\n\nAUDIENCE:\n${prompts.audiences[audience]}\n\nSTYLE GUIDELINES:\n${prompts.styles[style]}\n\nCONSTRAINT:\n- Do not output explanations, only the translation.\n- Maintain all part numbers and technical parameters in English.`;
+
+                        document.getElementById('promptOutput').value = finalPrompt;
+                    }
+
+                    function copyToClipboard() {
+                        const copyText = document.getElementById("promptOutput");
+                        copyText.select();
+                        navigator.clipboard.writeText(copyText.value);
+                        alert("Prompt copied to clipboard!");
+                    }
+
+                    // Initial run
+                    window.onload = generatePrompt;
+                </script>
+            </section>
+
+            <!-- Strategy 3: Terminology Consistency -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">第三步：术语一致性检查</h2>
+                <p class="text-gray-600 mb-4">把你整理好的术语表投喂给 AI，让它进行质检。</p>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="chat-bubble chat-user">
+                        <strong>Prompt:</strong> 请检查译文是否符合以下术语表：<br>
+                        - MEL -> 最低设备清单<br>
+                        - Operator -> 运营人 (不要翻成操作员)<br>
+                        - Rectify -> 排故/修复
+                    </div>
+                </div>
+            </section>
+
+            <div class="bg-purple-50 border border-purple-100 rounded-lg p-6">
+                <h3 class="font-bold text-purple-900">💡 讲师总结</h3>
+                <p class="text-purple-800 text-sm">
+                    AI 不是用来替代你的大脑，而是你的<strong>“外骨骼”</strong>。它帮你扛起沉重的语法分析和初稿生成，让你有精力去专注于最核心的——逻辑准确性与行业规范性。
+                </p>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

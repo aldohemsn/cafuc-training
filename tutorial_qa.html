@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻译质量检测 - 翻译技术实战课</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <!-- Prism for Syntax Highlighting -->
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <script src="assets/js/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-xl text-blue-900">Translation & AI</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="roadmap.html"
+                            class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">实战演练场</a>
+                        <a href="course.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程大纲</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Breadcrumb -->
+            <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center"><a href="roadmap.html" class="hover:text-blue-600">实战演练场</a>
+                    </li>
+                    <li><span class="mx-2">/</span></li>
+                    <li aria-current="page"><span class="text-gray-800 font-semibold">Stage 4: 智能质检</span></li>
+                </ol>
+            </nav>
+
+            <div class="flex items-center mb-8">
+                <div class="bg-orange-100 text-orange-700 font-bold px-3 py-1 rounded text-sm mr-4">SCENARIO #4</div>
+                <h1 class="text-3xl font-extrabold text-gray-900">火眼金睛：基于代码的智能质检</h1>
+            </div>
+
+            <!-- Context -->
+            <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6 mb-12">
+                <h3 class="font-bold text-gray-900 mb-2">🚨 审校痛点</h3>
+                <p class="text-gray-600 mb-4">
+                    外部供应商交付了 50 页技术文档。人工肉眼检查格式错误（如中英文间距、标点混用）不仅低效，而且极易漏网。
+                    <br>作为数智化译员，我们拒绝使用笨重的办公软件，而是用<strong>代码和规则</strong>来从底层“清洗”和“质检”文本。
+                </p>
+            </div>
+
+            <!-- Strategy 1: Regex & Sublime/Bash -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 A：正则排雷 (Regex in Sublime Text / Bash)</h2>
+                <p class="text-gray-600 mb-4">
+                    利用正则表达式 (Regular Expressions) 进行高精度的“模式匹配”，瞬间发现排版硬伤。这些操作可以在 Sublime Text 中完成，也可以直接在 Linux 终端用
+                    <code>grep</code> 扫描。
+                </p>
+
+                <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-700 mb-6">
+                    <div class="flex items-center px-4 py-2 bg-gray-800 border-b border-gray-700">
+                        <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+                        <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
+                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                        <span class="ml-4 text-xs text-gray-400 font-mono">bash — grep check</span>
+                    </div>
+                    <div class="p-6 overflow-x-auto">
+                        <pre><code class="language-bash"># 1. 查找所有“中文字符”与“英文字母/数字”直接相连（缺少空格）的地方
+grep -n -P "[\u4e00-\u9fa5][a-zA-Z0-9]|[a-zA-Z0-9][\u4e00-\u9fa5]" translation.txt
+
+# 2. 查找中文里误用的英文标点（如中文句子里的英文逗号）
+grep -n -P "[\u4e00-\u9fa5],|[\u4e00-\u9fa5]\." translation.txt
+
+# 3. 查找数字后面没有单位，或者单位格式错误的行
+# (示例：匹配数字后紧跟非空格字符的情况)
+grep -n -P "\d+(?![\s\.\,])" translation.txt</code></pre>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 italic">注：以上正则通式同样适用于 Python 脚本或 Sublime Text 的查找栏（Ctrl+F > 开启 Regex
+                    模式）。</p>
+            </section>
+
+            <!-- Strategy 2: Python Scripting -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 B：Python 自动化术语哨兵</h2>
+                <p class="text-gray-600 mb-4">编写一个轻量级的 Python 脚本，加载我们在 Stage 5 构建的 JSON 术语库，自动扫描供应商译文是否遵守了术语规范。</p>
+
+                <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-700">
+                    <div class="flex items-center px-4 py-2 bg-gray-800 border-b border-gray-700">
+                        <span class="ml-2 text-xs text-gray-400 font-mono">validator.py</span>
+                    </div>
+                    <div class="p-6 overflow-x-auto">
+                        <pre><code class="language-python">import re
+import json
+
+# 1. 加载术语库 (JSON 格式)
+terms = {
+    "Autoclave": "热压罐",  # 规范译法
+    "Fuselage": "机身",
+    "Rudder": "方向舵"
+}
+
+# 2. 模拟读取供应商译文
+text = "The Autoclave (高压釜) was used for the Fuselage."
+
+# 3. 自动化检查逻辑
+print("--- 术语一致性检查报告 ---")
+for eng, chn in terms.items():
+    # 如果原文出现了英文术语，但译文里没出现规范中文
+    if eng in text and chn not in text:
+        print(f"[警告] 术语不匹配: 原文 '{eng}' -> 规范 '{chn}'")
+        # 进一步：可以提取出实际用了什么词（如“高压釜”）
+        
+# Output: [警告] 术语不匹配: 原文 'Autoclave' -> 规范 '热压罐'</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Strategy 3: AI Linguistic Forensics -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 C：Gemini 模型语义取证</h2>
+                <p class="text-gray-600 mb-4">代码检查格式，AI 检查灵魂。利用大模型识别“机翻痕迹”（Translationese）和逻辑漏洞。</p>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-800 mb-3">Prompt Engineering (指令工程)</h3>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <p class="text-sm font-mono text-blue-900">
+                            "你是一名资深的航空技术文档审校。请阅读下面的中文译文，分析其是否具有'机翻痕迹'。不要关注语法错误，重点关注：<br>
+                            1. 名词堆砌（过度使用'的'）<br>
+                            2. 被动语态滥用（xx被xx）<br>
+                            3. 不符合中文工程表述习惯的直译。<br>
+                            如果有，请指出并提供修正建议。"
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                        将此 Prompt 集成到 Python 脚本中调用 Gemini API，即可实现对长文档的批量语义质检。
+                    </p>
+                </div>
+            </section>
+
+            <div class="bg-orange-50 border border-orange-100 rounded-lg p-6">
+                <h3 class="font-bold text-orange-900">💡 讲师总结</h3>
+                <p class="text-orange-800 text-sm">
+                    真正的技术流译员，不依赖黑盒子的商业软件。我们用 <strong>Regex</strong> 解决 80% 的格式问题，用 <strong>Python</strong> 解决 100%
+                    的术语一致性问题，最后用 <strong>AI</strong> 解决最难的语义风格问题。这就是数智化时代的“全栈审校”。
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Aldo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

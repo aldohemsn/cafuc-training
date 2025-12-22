@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语料库建设实战 - 翻译技术实战课</title>
+    <script src="assets/js/tailwindcss.js"></script>
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/js/prism-json.min.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .concept-card {
+            transition: all 0.2s;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-2px);
+        }
+
+        code:not([class*="language-"]) {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-bold text-xl text-slate-900 font-mono">&lt;Trans_AI /&gt;</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+                        <a href="framework.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">概念框架</a>
+                        <a href="teaching.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">教学工具</a>
+                        <a href="tutorial_nyt.html"
+                            class="border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">双语库实战</a>
+                        <a href="lecturer.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">讲师介绍</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Header -->
+            <div class="mb-12">
+                <h1 class="text-4xl font-extrabold text-gray-900 mb-4">《纽约时报》双语数据库实战</h1>
+                <p class="text-xl text-gray-500">
+                    本模块以真实的双语新闻语料为例，介绍语料库建设的核心流程。<br>
+                    同时，我们将"借题发挥"，在实战中穿插讲解几个对翻译工作越来越重要的技术基础概念。
+                </p>
+            </div>
+
+            <!-- Tech Basics Section -->
+            <section class="bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl p-8 mb-12 border border-green-100">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">📚 技术基础速览</h2>
+                <p class="text-gray-600 mb-6">以下四个概念是现代数据处理的基石。无需精通编程，但理解它们能帮助您更好地与技术人员沟通、评估技术方案，甚至亲自动手处理简单数据。</p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Python -->
+                    <div class="concept-card bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-2">🐍</span>
+                            <h3 class="font-bold text-lg text-gray-900">Python 编程语言</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">AI 时代最流行的编程语言。语法简洁，库丰富，特别适合数据处理。</p>
+                        <a href="#python-detail" class="text-green-600 text-sm font-medium hover:underline">详细了解 →</a>
+                    </div>
+                    <!-- JSON -->
+                    <div class="concept-card bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-2">📦</span>
+                            <h3 class="font-bold text-lg text-gray-900">JSON 数据格式</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">一种通用的"结构化数据"表示方法。可以理解为"有层次的电子表格"。</p>
+                        <a href="#json-detail" class="text-green-600 text-sm font-medium hover:underline">详细了解 →</a>
+                    </div>
+                    <!-- Regex -->
+                    <div class="concept-card bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-2">🔍</span>
+                            <h3 class="font-bold text-lg text-gray-900">正则表达式 (Regex)</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">一种强大的"文本查找与替换"工具。可以用"模式"匹配复杂文本。</p>
+                        <a href="#regex-detail" class="text-green-600 text-sm font-medium hover:underline">详细了解 →</a>
+                    </div>
+                    <!-- HTML -->
+                    <div class="concept-card bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-2">🌐</span>
+                            <h3 class="font-bold text-lg text-gray-900">HTML 网页结构</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">所有网页的"骨架"语言。理解它能帮助你从网页中精准提取信息。</p>
+                        <a href="#html-detail" class="text-green-600 text-sm font-medium hover:underline">详细了解 →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Workflow -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">🔄 语料库建设核心流程</h2>
+
+                <!-- Step 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3 text-sm">
+                            1</div>
+                        <h3 class="text-xl font-bold text-gray-900">数据获取 (Data Acquisition)</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        <strong>目标：</strong>从《纽约时报》中文网获取"双语对照"版本的新闻文章。<br>
+                        <strong>方法：</strong>利用其 URL 结构（如 <code>cn.nytimes.com/.../dual/</code>）批量下载 HTML 页面。
+                    </p>
+                    <div class="bg-gray-50 p-4 rounded-lg text-sm">
+                        <p class="text-gray-600"><strong>技术要点：</strong>网页本质上是一个 HTML 文件。通过编程脚本（如
+                            Python）可以自动下载数千个网页，远比手工复制粘贴高效。</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3 text-sm">
+                            2</div>
+                        <h3 class="text-xl font-bold text-gray-900">数据清洗 (Data Cleaning)</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        <strong>目标：</strong>从 HTML 中剥离"纯净"的中英文对照段落，去除广告、导航、页脚等干扰信息。<br>
+                        <strong>方法：</strong>使用"DOM 解析"技术定位特定的 HTML 标签（如 <code>&lt;p class="paragraph"&gt;</code>）。
+                    </p>
+                    <div class="bg-gray-50 p-4 rounded-lg text-sm">
+                        <p class="text-gray-600"><strong>技术要点：</strong>这里会用到 <strong>正则表达式 (Regex)</strong>
+                            来处理特殊情况，如去除行首的页码 <code>[1]</code>、多余的换行符等。</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3 text-sm">
+                            3</div>
+                        <h3 class="text-xl font-bold text-gray-900">数据结构化 (Structuring)</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        <strong>目标：</strong>将清洗后的文本转化为标准化的 <strong>JSON 格式</strong>，便于后续存储、检索和分析。
+                    </p>
+                    <p class="text-gray-700 mb-2">我们将得到类似下面的结构化数据：</p>
+                    <pre><code class="language-json">{
+    "metadata": {
+        "url": "https://cn.nytimes.com/climate/20230728/.../dual/",
+        "title_english": "This Looks Like Earth's Warmest Month...",
+        "title_chinese": "这看起来是地球有记录以来最热的一个月",
+        "date": "2023-07-28",
+        "category": "climate"
+    },
+    "content": [
+        {
+            "sentence_english": "This month will likely go down as the hottest month...",
+            "sentence_chinese": "这个月可能将成为有记录以来最热的月份..."
+        }
+        // ...更多句对
+    ]
+}</code></pre>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3 text-sm">
+                            4</div>
+                        <h3 class="text-xl font-bold text-gray-900">入库与应用 (Storage &amp; Application)</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        <strong>目标：</strong>将结构化的 JSON 数据导入专业的"全文检索引擎"，实现毫秒级的双语检索。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg text-sm">
+                            <p class="font-medium text-gray-800 mb-1">后端：Elasticsearch / Solr</p>
+                            <p class="text-gray-600">对 <code>sentence_english</code> 和 <code>sentence_chinese</code>
+                                字段建立索引，支持关键词高亮、模糊匹配。</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-sm">
+                            <p class="font-medium text-gray-800 mb-1">前端：Web 检索界面</p>
+                            <p class="text-gray-600">开发一个简单的网页，输入关键词后显示中英对照结果，相当于"私有版 Google Translate 记忆库"。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Basics Detail Sections -->
+            <section class="space-y-12">
+
+                <!-- Python Detail -->
+                <div id="python-detail" class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🐍</span>
+                        <h2 class="text-2xl font-bold text-gray-900">Python 编程语言详解</h2>
+                    </div>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">一、Python 是什么？</h3>
+                            <p>Python 是一种<strong>通用编程语言</strong>。你可以用它来告诉计算机"做什么事情"、"按什么顺序做"、"在什么条件下做"。</p>
+                            <p class="mt-2">它诞生于 1991 年，最初是为了让代码更容易阅读和编写。如今，它已成为 <strong>AI
+                                    时代最流行的编程语言</strong>，被广泛用于数据科学、机器学习、网络爬虫、自动化办公等领域。</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">二、为什么是 Python？它有什么特点？</h3>
+                            <div class="grid md:grid-cols-2 gap-4 mt-3">
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="font-medium text-green-800 mb-1">1. 语法简洁，接近自然语言</p>
+                                    <p class="text-sm text-gray-600">相比其他语言（如 Java、C++），Python 代码更短、更易读。例如，打印一句话只需要写
+                                        <code>print("Hello")</code>。
+                                    </p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="font-medium text-green-800 mb-1">2. 丰富的"库"生态</p>
+                                    <p class="text-sm text-gray-600">"库"就像预制的工具箱。Python 有海量的库，别人已经写好了复杂功能，你只需"拿来用"。比如用
+                                        <code>requests</code> 库下载网页，用 <code>BeautifulSoup</code> 库解析 HTML。
+                                    </p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="font-medium text-green-800 mb-1">3. 跨平台运行</p>
+                                    <p class="text-sm text-gray-600">同样的 Python 代码可以在 Windows、Mac、Linux 上运行，不需要修改。</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="font-medium text-green-800 mb-1">4. 社区活跃，资源丰富</p>
+                                    <p class="text-sm text-gray-600">遇到问题时，搜索引擎几乎总能找到答案。AI 助手（如 ChatGPT）也能很好地帮助你编写和解释
+                                        Python 代码。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">三、Python 在语料库建设中的作用</h3>
+                            <p class="mb-3">在本例的《纽约时报》双语数据库项目中，Python 扮演了"总指挥"的角色，贯穿整个流程：</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="p-3 border border-gray-200 text-left">阶段</th>
+                                            <th class="p-3 border border-gray-200 text-left">Python 的作用</th>
+                                            <th class="p-3 border border-gray-200 text-left">常用的库</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-medium">1. 数据获取</td>
+                                            <td class="p-3 border border-gray-200">自动访问数千个网页 URL，下载 HTML 文件。</td>
+                                            <td class="p-3 border border-gray-200"><code>requests</code></td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 border border-gray-200 font-medium">2. 数据清洗</td>
+                                            <td class="p-3 border border-gray-200">解析 HTML 结构，提取中英文段落；用正则表达式去除噪音。</td>
+                                            <td class="p-3 border border-gray-200"><code>BeautifulSoup</code>,
+                                                <code>re</code> (正则)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-medium">3. 数据结构化</td>
+                                            <td class="p-3 border border-gray-200">将文本组织成 JSON 格式并保存为文件。</td>
+                                            <td class="p-3 border border-gray-200"><code>json</code> (Python 内置)</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 border border-gray-200 font-medium">4. 入库</td>
+                                            <td class="p-3 border border-gray-200">将 JSON 数据批量导入搜索引擎。</td>
+                                            <td class="p-3 border border-gray-200"><code>elasticsearch-py</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">四、完整的 Python 爬虫实例</h3>
+                            <p class="mb-2">以下是爬取《纽约时报》双语文章并转化为 JSON 语料文件的<strong>完整、可运行</strong>代码：</p>
+                            <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4 text-sm">
+                                <p class="text-amber-800"><strong>🔧
+                                        运行前准备：</strong>需要安装依赖库，在终端运行：<code>pip install beautifulsoup4 requests</code>
+                                </p>
+                            </div>
+                            <pre><code class="language-python">#!/usr/bin/env python3
+"""
+《纽约时报》中文网双语文章爬取脚本
+适用于 /dual/ 格式的双语对照页面
+"""
+
+import requests
+from bs4 import BeautifulSoup
+import json
+import re
+from datetime import datetime
+
+def fetch_nyt_bilingual(url: str) -> dict:
+    """从纽约时报中文网的双语页面提取内容"""
+    
+    # 1. 下载网页
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0'
+    }
+    response = requests.get(url, headers=headers, timeout=30)
+    response.encoding = 'utf-8'
+    
+    # 2. 解析 HTML
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # 3. 提取元数据
+    # 中文标题: h1 (不带 .en-title 类)
+    title_cn = ''
+    cn_title_elem = soup.select_one('header h1:not(.en-title)')
+    if cn_title_elem:
+        title_cn = cn_title_elem.get_text().strip()
+    
+    # 英文标题: h1.en-title
+    title_en = ''
+    en_title_elem = soup.select_one('header h1.en-title')
+    if en_title_elem:
+        title_en = en_title_elem.get_text().strip()
+    
+    # 作者: .byline address
+    author = ''
+    author_elem = soup.select_one('.byline address')
+    if author_elem:
+        author = author_elem.get_text().strip()
+    
+    # 日期: 从 URL 提取 (格式: /YYYYMMDD/)
+    date_match = re.search(r'/(\d{8})/', url)
+    date_str = f"{date_match.group(1)[:4]}-{date_match.group(1)[4:6]}-{date_match.group(1)[6:8]}" if date_match else ''
+    
+    # 4. 提取正文 (双语段落交替出现: 英, 中, 英, 中...)
+    paragraphs = soup.select('div.article-paragraph')
+    pairs = []
+    
+    for i in range(0, len(paragraphs) - 1, 2):
+        en_text = paragraphs[i].get_text().strip()
+        cn_text = paragraphs[i + 1].get_text().strip()
+        if en_text and cn_text:
+            pairs.append({
+                'sentence_english': en_text,
+                'sentence_chinese': cn_text
+            })
+    
+    # 5. 返回结构化数据
+    return {
+        'metadata': {
+            'url': url,
+            'title_english': title_en,
+            'title_chinese': title_cn,
+            'author': author,
+            'date': date_str
+        },
+        'content': pairs
+    }
+
+# ===== 主程序 =====
+if __name__ == '__main__':
+    url = "https://cn.nytimes.com/usa/20251218/trump-immigration-citizenship-denaturalization/dual/"
+    
+    data = fetch_nyt_bilingual(url)
+    
+    # 打印预览
+    print(f"标题: {data['metadata']['title_chinese']}")
+    print(f"句对数量: {len(data['content'])}")
+    
+    # 保存为 JSON 文件
+    filename = f"{data['metadata']['date']}_{data['metadata']['title_chinese'][:20]}.json"
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    
+    print(f"已保存: {filename}")</code></pre>
+                            <p class="mt-3 text-sm text-gray-600">
+                                <strong>代码解读：</strong>
+                            </p>
+                            <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                                <li><code>requests.get(url)</code>：向指定网址发送 HTTP 请求，下载网页内容。</li>
+                                <li><code>BeautifulSoup(response.text, 'html.parser')</code>：将 HTML 代码解析成可操作的"树形结构"。
+                                </li>
+                                <li><code>soup.select_one('header h1.en-title')</code>：使用 CSS 选择器定位特定元素。</li>
+                                <li><code>for i in range(0, len(paragraphs) - 1, 2)</code>：以步长 2 遍历，因为英中段落是交替出现的。</li>
+                                <li><code>json.dump(..., ensure_ascii=False)</code>：保存 JSON 时保留中文字符（不转成 \uXXXX）。</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">五、对翻译教师的意义</h3>
+                            <p class="mb-3">您可能会问："我又不是程序员，为什么要了解 Python？"</p>
+                            <div class="space-y-3">
+                                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+                                    <p class="font-medium text-yellow-800 mb-1">1. 提升与技术人员的沟通效率</p>
+                                    <p class="text-sm text-gray-600">当您需要与技术团队合作开发语料库或翻译工具时，了解基本原理能帮助您更清晰地表达需求，避免误解。</p>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+                                    <p class="font-medium text-yellow-800 mb-1">2. 评估技术方案的可行性</p>
+                                    <p class="text-sm text-gray-600">面对技术人员提出的方案，您能判断其是否合理、工作量是否匹配，而不是完全被动接受。</p>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+                                    <p class="font-medium text-yellow-800 mb-1">3. 利用 AI 自己动手</p>
+                                    <p class="text-sm text-gray-600">如今，您可以直接向 ChatGPT 或 Gemini 描述您的需求，让它帮您生成 Python
+                                        代码。了解 Python 的基本逻辑，能让您更好地与 AI 协作，检验代码是否正确。</p>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+                                    <p class="font-medium text-yellow-800 mb-1">4. 培养"数据驱动"思维</p>
+                                    <p class="text-sm text-gray-600">了解数据如何被采集、清洗、结构化，有助于您在教学中引入更多数据素养和技术素养的内容，培养适应 AI
+                                        时代的翻译人才。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">六、我应该如何开始学习 Python？</h3>
+                            <ul class="list-disc list-inside space-y-2 text-sm">
+                                <li><strong>零基础入门：</strong>推荐"Codecademy"或"LeetCode"的 Python 入门课程（有中文版）。</li>
+                                <li><strong>AI 辅助学习：</strong>直接向 ChatGPT 提问，例如"我想用 Python 批量重命名文件夹里的所有文件，请写一段代码并解释"。
+                                </li>
+                                <li><strong>实践驱动：</strong>从一个具体的小目标开始（如"自动整理 Excel 表格"），边做边学。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JSON Detail -->
+                <div id="json-detail" class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">📦</span>
+                        <h2 class="text-2xl font-bold text-gray-900">JSON 数据格式详解</h2>
+                    </div>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">什么是 JSON？</h3>
+                            <p>JSON（JavaScript Object Notation）是一种<strong>轻量级的数据交换格式</strong>。它最初是为 JavaScript
+                                设计的，但由于其简洁和通用，现在已被所有主流编程语言支持。</p>
+                            <p class="mt-2">你可以把 JSON 理解为"<strong>带层次结构的电子表格</strong>"。与 Excel 表格只能表示"行×列"的二维数据不同，JSON
+                                可以表示任意层级的嵌套关系。</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">JSON 的基本语法</h3>
+                            <ul class="list-disc list-inside space-y-2 text-sm">
+                                <li><strong>键值对 (Key-Value Pair)：</strong>数据以 <code>"键": "值"</code>
+                                    的形式组织。例如：<code>"name": "张三"</code>。</li>
+                                <li><strong>对象 (Object)：</strong>用花括号 <code>{}</code>
+                                    包裹的一组键值对。例如：<code>{"name": "张三", "age": 30}</code>。</li>
+                                <li><strong>数组 (Array)：</strong>用方括号 <code>[]</code>
+                                    包裹的有序列表。例如：<code>["苹果", "香蕉", "橙子"]</code>。</li>
+                                <li><strong>嵌套：</strong>对象和数组可以相互嵌套。例如，一个对象的值可以是另一个对象或数组。</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">实例解析：《纽约时报》双语数据</h3>
+                            <p class="mb-2">以下是一条来自真实语料的 JSON 记录（已简化）：</p>
+                            <pre><code class="language-json">{
+    "metadata": {
+        "title_english": "This Looks Like Earth's Warmest Month.",
+        "title_chinese": "这看起来是地球有记录以来最热的一个月",
+        "date": "2023-07-28"
+    },
+    "content": [
+        {
+            "sentence_english": "Researchers said this week that the temperatures would have been 'virtually impossible' without human-driven climate change.",
+            "sentence_chinese": "研究人员本周表示，如果没有人为造成的气候变化影响，这些地区在这么多天内观察到的气温'几乎是不可能的'。"
+        }
+    ]
+}</code></pre>
+                            <p class="mt-3 text-sm text-gray-600">
+                                <strong>解读：</strong>最外层是一个对象 <code>{}</code>，包含 <code>metadata</code> 和
+                                <code>content</code> 两个键。<code>metadata</code> 的值又是一个对象（包含标题、日期）；<code>content</code>
+                                的值是一个数组 <code>[]</code>，内含多个"句对"对象。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regex Detail -->
+                <div id="regex-detail" class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🔍</span>
+                        <h2 class="text-2xl font-bold text-gray-900">正则表达式 (Regex) 详解</h2>
+                    </div>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">什么是正则表达式？</h3>
+                            <p>正则表达式（Regular Expression，简称
+                                Regex）是一种用于<strong>描述文本模式</strong>的语法。它可以让你用一行简洁的"公式"来匹配、查找或替换符合特定规则的文本。</p>
+                            <p class="mt-2">想象一下：你有一份 1000 页的文档，需要找出所有的电话号码。手动搜索太慢了。如果你知道电话号码的"模式"（如 11 位数字，以 1
+                                开头），就可以用正则表达式一次性找出全部。</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">常用的正则符号</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="p-2 border border-gray-200 text-left">符号</th>
+                                            <th class="p-2 border border-gray-200 text-left">含义</th>
+                                            <th class="p-2 border border-gray-200 text-left">示例</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 font-mono">.</td>
+                                            <td class="p-2 border border-gray-200">匹配任意单个字符</td>
+                                            <td class="p-2 border border-gray-200"><code>a.c</code> 匹配 "abc", "aXc"</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-2 border border-gray-200 font-mono">*</td>
+                                            <td class="p-2 border border-gray-200">前一个字符出现 0 次或多次</td>
+                                            <td class="p-2 border border-gray-200"><code>ab*c</code> 匹配 "ac", "abc",
+                                                "abbc"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 font-mono">+</td>
+                                            <td class="p-2 border border-gray-200">前一个字符出现 1 次或多次</td>
+                                            <td class="p-2 border border-gray-200"><code>ab+c</code> 匹配 "abc", "abbc"
+                                                (不匹配 "ac")</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-2 border border-gray-200 font-mono">\d</td>
+                                            <td class="p-2 border border-gray-200">匹配任意数字 (0-9)</td>
+                                            <td class="p-2 border border-gray-200"><code>\d{11}</code> 匹配 11 位数字</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 font-mono">\s</td>
+                                            <td class="p-2 border border-gray-200">匹配空白字符（空格、Tab、换行）</td>
+                                            <td class="p-2 border border-gray-200"><code>Hello\sWorld</code> 匹配 "Hello
+                                                World"</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-2 border border-gray-200 font-mono">[abc]</td>
+                                            <td class="p-2 border border-gray-200">匹配方括号内的任意一个字符</td>
+                                            <td class="p-2 border border-gray-200"><code>[aeiou]</code> 匹配任意元音字母</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 font-mono">^</td>
+                                            <td class="p-2 border border-gray-200">匹配行首</td>
+                                            <td class="p-2 border border-gray-200"><code>^Hello</code> 匹配以 "Hello" 开头的行
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-2 border border-gray-200 font-mono">$</td>
+                                            <td class="p-2 border border-gray-200">匹配行尾</td>
+                                            <td class="p-2 border border-gray-200"><code>end$</code> 匹配以 "end" 结尾的行</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">实战应用：数据清洗</h3>
+                            <p class="mb-2">在构建语料库时，从网页提取的文本往往包含"噪音"。正则表达式是处理这些问题的利器：</p>
+                            <ul class="list-disc list-inside space-y-2 text-sm">
+                                <li><strong>去除页码：</strong>网页中可能有 <code>[1]</code>, <code>[2]</code> 这样的分页标记。可以用
+                                    <code>\[\d+\]</code> 匹配并删除它们。
+                                </li>
+                                <li><strong>合并换行：</strong>一个段落可能被错误地分成了多行。可以用 <code>\n+</code> 匹配连续的换行符，替换为单个空格。</li>
+                                <li><strong>提取日期：</strong>从 URL <code>cn.nytimes.com/climate/20230728/...</code>
+                                    中提取日期，可以用 <code>\d{8}</code> 匹配 <code>20230728</code>。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HTML Detail -->
+                <div id="html-detail" class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">🌐</span>
+                        <h2 class="text-2xl font-bold text-gray-900">HTML 网页结构详解</h2>
+                    </div>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">什么是 HTML？</h3>
+                            <p>HTML（HyperText Markup
+                                Language，超文本标记语言）是<strong>所有网页的底层语言</strong>。当你打开任何网页时，你的浏览器实际上是在读取一个 HTML
+                                文件，并把它"画"成你看到的页面。</p>
+                            <p class="mt-2">HTML 使用"<strong>标签</strong>"（Tag）来定义页面的结构。标签成对出现，如
+                                <code>&lt;p&gt;这是一个段落&lt;/p&gt;</code>。
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">常见的 HTML 标签</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="p-2 border border-gray-200 text-left">标签</th>
+                                            <th class="p-2 border border-gray-200 text-left">用途</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 font-mono">&lt;h1&gt; - &lt;h6&gt;
+                                            </td>
+                                            <td class="p-2 border border-gray-200">标题（h1 最大，h6 最小）</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-2 border border-gray-200 font-mono">&lt;p&gt;</td>
+                                            <td class="p-2 border border-gray-200">段落 (Paragraph)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 font-mono">&lt;a href="..."&gt;</td>
+                                            <td class="p-2 border border-gray-200">超链接 (Anchor)</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-2 border border-gray-200 font-mono">&lt;div&gt;</td>
+                                            <td class="p-2 border border-gray-200">通用容器（用于分组内容）</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 font-mono">&lt;span&gt;</td>
+                                            <td class="p-2 border border-gray-200">行内容器（用于标记文本片段）</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-2 border border-gray-200 font-mono">&lt;ul&gt; / &lt;ol&gt; /
+                                                &lt;li&gt;</td>
+                                            <td class="p-2 border border-gray-200">无序/有序列表 及 列表项</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">属性 (Attributes)：标签的"附加信息"</h3>
+                            <p class="mb-2">标签可以有"属性"来提供额外信息。最常见的两个属性是：</p>
+                            <ul class="list-disc list-inside space-y-2 text-sm">
+                                <li><strong><code>class</code>：</strong>用于分类标签，方便用 CSS 设置样式或用 JavaScript 操作。例如
+                                    <code>&lt;p class="paragraph_en"&gt;</code> 表示这是一个英文段落。
+                                </li>
+                                <li><strong><code>id</code>：</strong>用于唯一标识某个标签。一个页面中，同一个 id 只能出现一次。</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">实战应用：从网页中提取数据</h3>
+                            <p class="mb-2">当我们要从《纽约时报》网页提取双语内容时，需要定位到包含文章内容的特定 HTML 标签。例如：</p>
+                            <pre class="text-sm bg-gray-50 p-4 rounded overflow-x-auto"><code>&lt;div class="article-body"&gt;
+    &lt;p class="paragraph_en"&gt;This month will likely go down as the hottest...&lt;/p&gt;
+    &lt;p class="paragraph_cn"&gt;这个月可能将成为有记录以来最热的月份...&lt;/p&gt;
+    ...
+&lt;/div&gt;</code></pre>
+                            <p class="mt-3 text-sm text-gray-600">
+                                <strong>提取逻辑：</strong>用编程工具（如 Python 的 BeautifulSoup 库）查找所有
+                                <code>class="paragraph_en"</code> 和 <code>class="paragraph_cn"</code> 的
+                                <code>&lt;p&gt;</code> 标签，分别提取其中的文本，然后配对保存。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Summary -->
+            <div class="mt-12 p-6 bg-green-50 rounded-xl border border-green-100">
+                <h3 class="font-bold text-green-900 mb-2">💡 本模块核心收获</h3>
+                <ul class="text-green-800 text-sm space-y-2">
+                    <li>✓ 理解双语语料库建设的四大步骤：<strong>获取 → 清洗 → 结构化 → 入库</strong>。</li>
+                    <li>✓ 理解 <strong>JSON</strong> 是一种"带层次的数据格式"，是现代语料库的标准存储形式。</li>
+                    <li>✓ 理解 <strong>正则表达式</strong> 是"模式化查找/替换"的利器，在数据清洗中不可或缺。</li>
+                    <li>✓ 理解 <strong>HTML 标签和属性</strong>，能帮助我们从网页中精准地"挖掘"出有价值的信息。</li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center mt-12">
+        <p>&copy; 2025 Aldo. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
