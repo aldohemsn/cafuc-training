@@ -33,13 +33,15 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="font-bold text-xl text-blue-900">Translation & AI</a>
+                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="roadmap.html"
-                            class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">实战演练场</a>
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
                         <a href="course.html"
-                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程大纲</a>
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                        <a href="framework.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">理论框架</a>
                     </div>
                 </div>
             </div>
@@ -107,35 +109,113 @@ grep -n -P "\d+(?![\s\.\,])" translation.txt</code></pre>
             <!-- Strategy 2: Python Scripting -->
             <section class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 B：Python 自动化术语哨兵</h2>
-                <p class="text-gray-600 mb-4">编写一个轻量级的 Python 脚本，加载我们在 Stage 5 构建的 JSON 术语库，自动扫描供应商译文是否遵守了术语规范。</p>
+                <p class="text-gray-600 mb-4">编写一个轻量级的 Python 脚本，加载民航术语库，自动扫描供应商译文是否遵守了术语规范。</p>
+
+                <!-- Aviation Terminology Table -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <span class="text-xl mr-2">✈️</span>
+                        民航高频术语规范对照表
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-2 text-left font-medium text-gray-600">英文术语</th>
+                                    <th class="px-4 py-2 text-left font-medium text-gray-600">规范译法</th>
+                                    <th class="px-4 py-2 text-left font-medium text-gray-600">常见错误</th>
+                                    <th class="px-4 py-2 text-left font-medium text-gray-600">来源</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-blue-600">Airworthiness</td>
+                                    <td class="px-4 py-3 text-green-600 font-semibold">适航性</td>
+                                    <td class="px-4 py-3 text-red-500 text-xs">飞行适航、航空值得</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400">CCAR-21</td>
+                                </tr>
+                                <tr class="bg-gray-50/50">
+                                    <td class="px-4 py-3 font-mono text-blue-600">Pilot-in-command</td>
+                                    <td class="px-4 py-3 text-green-600 font-semibold">机长</td>
+                                    <td class="px-4 py-3 text-red-500 text-xs">主驾驶员、指挥飞行员</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400">ICAO Annex 1</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-blue-600">Flight crew</td>
+                                    <td class="px-4 py-3 text-green-600 font-semibold">飞行机组</td>
+                                    <td class="px-4 py-3 text-red-500 text-xs">机组人员、驾驶组</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400">CCAR-121</td>
+                                </tr>
+                                <tr class="bg-gray-50/50">
+                                    <td class="px-4 py-3 font-mono text-blue-600">Type certificate</td>
+                                    <td class="px-4 py-3 text-green-600 font-semibold">型号合格证</td>
+                                    <td class="px-4 py-3 text-red-500 text-xs">类型证书、型式证书</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400">CCAR-21</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-blue-600">Controlled airspace</td>
+                                    <td class="px-4 py-3 text-green-600 font-semibold">管制空域</td>
+                                    <td class="px-4 py-3 text-red-500 text-xs">受控空域、控制空间</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400">ICAO Annex 2</td>
+                                </tr>
+                                <tr class="bg-gray-50/50">
+                                    <td class="px-4 py-3 font-mono text-blue-600">Approach procedure</td>
+                                    <td class="px-4 py-3 text-green-600 font-semibold">进近程序</td>
+                                    <td class="px-4 py-3 text-red-500 text-xs">逼近程序、接近程序</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400">ICAO Doc 8168</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 italic">
+                        💡 建议将此表扩展为 JSON 格式，用于自动化检查。
+                    </p>
+                </div>
 
                 <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-700">
                     <div class="flex items-center px-4 py-2 bg-gray-800 border-b border-gray-700">
-                        <span class="ml-2 text-xs text-gray-400 font-mono">validator.py</span>
+                        <span class="ml-2 text-xs text-gray-400 font-mono">aviation_term_validator.py</span>
                     </div>
                     <div class="p-6 overflow-x-auto">
                         <pre><code class="language-python">import re
 import json
 
-# 1. 加载术语库 (JSON 格式)
-terms = {
-    "Autoclave": "热压罐",  # 规范译法
-    "Fuselage": "机身",
-    "Rudder": "方向舵"
+# 1. 民航术语库 (JSON 格式) - 可从外部文件加载
+aviation_terms = {
+    "Airworthiness": "适航性",
+    "Pilot-in-command": "机长",
+    "Flight crew": "飞行机组",
+    "Type certificate": "型号合格证",
+    "Controlled airspace": "管制空域",
+    "Approach procedure": "进近程序",
+    "MEL": "最低设备清单",
+    "NOTAM": "航行通告"
 }
 
 # 2. 模拟读取供应商译文
-text = "The Autoclave (高压釜) was used for the Fuselage."
+source = "The Type certificate was issued after the airworthiness review."
+translation = "该型式证书在航空值得审查后颁发。"
 
 # 3. 自动化检查逻辑
-print("--- 术语一致性检查报告 ---")
-for eng, chn in terms.items():
-    # 如果原文出现了英文术语，但译文里没出现规范中文
-    if eng in text and chn not in text:
-        print(f"[警告] 术语不匹配: 原文 '{eng}' -> 规范 '{chn}'")
-        # 进一步：可以提取出实际用了什么词（如“高压釜”）
-        
-# Output: [警告] 术语不匹配: 原文 'Autoclave' -> 规范 '热压罐'</code></pre>
+print("--- 民航术语一致性检查报告 ---")
+errors = []
+for eng, correct_chn in aviation_terms.items():
+    if eng.lower() in source.lower():
+        if correct_chn not in translation:
+            errors.append({
+                "term": eng,
+                "expected": correct_chn,
+                "status": "❌ 未使用规范译法"
+            })
+        else:
+            print(f"✅ {eng} -> {correct_chn}")
+
+for err in errors:
+    print(f"❌ 术语错误: '{err['term']}' 应译为 '{err['expected']}'")
+
+# Output:
+# ❌ 术语错误: 'Type certificate' 应译为 '型号合格证'
+# ❌ 术语错误: 'Airworthiness' 应译为 '适航性'</code></pre>
                     </div>
                 </div>
             </section>

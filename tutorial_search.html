@@ -46,6 +46,8 @@
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
                         <a href="course.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                        <a href="framework.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">理论框架</a>
                     </div>
                 </div>
             </div>
@@ -231,6 +233,135 @@
                         </div>
                     </div>
 
+                </div>
+            </section>
+
+            <!-- Aviation Terminology Cases -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">✈️ 民航术语快查案例库</h2>
+                <p class="text-gray-600 mb-4">
+                    以下是民航翻译中常见的高频术语及其权威查证方法。作为 CAFUC 的 MTI 学生，掌握这些"快查路径"将大大提升你的专业查证效率。
+                </p>
+
+                <div class="space-y-4">
+                    <!-- Case 1: NOTAM -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-blue-50 px-4 py-3 border-b border-blue-100 flex justify-between items-center">
+                            <span class="font-bold text-blue-800">案例 1：NOTAM（航行通告）</span>
+                            <span class="text-xs text-blue-600 bg-white px-2 py-1 rounded border border-blue-200">ATC
+                                通信</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-3">
+                                <strong>场景：</strong>翻译中遇到 "NOTAM Class II" 这类术语，想确认其准确含义和规范译法。
+                            </p>
+                            <div class="cmd-box mb-2">
+                                site:icao.int NOTAM "class II" OR "category" definition
+                            </div>
+                            <div class="cmd-box">
+                                site:caac.gov.cn 航行通告 分类 规定
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">
+                                💡 NOTAM = Notice to Air Missions（原 Notice to Airmen）。ICAO 于 2021 年更新了术语以保持性别中立。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Case 2: MEL/MMEL -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-green-50 px-4 py-3 border-b border-green-100 flex justify-between items-center">
+                            <span class="font-bold text-green-800">案例 2：MEL/MMEL（最低设备清单）</span>
+                            <span
+                                class="text-xs text-green-600 bg-white px-2 py-1 rounded border border-green-200">适航管理</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-3">
+                                <strong>场景：</strong>区分 MEL 和 MMEL 的区别，确认中文标准译法。
+                            </p>
+                            <div class="cmd-box mb-2">
+                                "MMEL" "MEL" difference site:faa.gov OR site:easa.europa.eu
+                            </div>
+                            <div class="cmd-box">
+                                "最低设备清单" "主最低设备清单" site:caac.gov.cn filetype:pdf
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">
+                                💡 MMEL 是厂家制定的主清单，MEL 是运营人根据 MMEL 定制的清单。两者有层级关系。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Case 3: CCAR -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div
+                            class="bg-orange-50 px-4 py-3 border-b border-orange-100 flex justify-between items-center">
+                            <span class="font-bold text-orange-800">案例 3：CCAR（中国民用航空规章）</span>
+                            <span
+                                class="text-xs text-orange-600 bg-white px-2 py-1 rounded border border-orange-200">法规标准</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-3">
+                                <strong>场景：</strong>翻译涉及飞行人员资质的内容，需查阅 CCAR-61 的具体条款。
+                            </p>
+                            <div class="cmd-box mb-2">
+                                site:caac.gov.cn CCAR-61 飞行员执照 filetype:pdf
+                            </div>
+                            <div class="cmd-box">
+                                site:faa.gov "14 CFR Part 61" equivalent 对照
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">
+                                💡 CCAR 体系与美国 14 CFR（FAR）大体对应：CCAR-61 ≈ 14 CFR Part 61（飞行人员执照）；CCAR-121 ≈ 14 CFR Part
+                                121（大型航空器运行）。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Case 4: ATC Phraseology -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div
+                            class="bg-purple-50 px-4 py-3 border-b border-purple-100 flex justify-between items-center">
+                            <span class="font-bold text-purple-800">案例 4：ATC 陆空通话用语</span>
+                            <span
+                                class="text-xs text-purple-600 bg-white px-2 py-1 rounded border border-purple-200">无线电通信</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-3">
+                                <strong>场景：</strong>翻译模拟飞行教材，需确认 "Cleared for takeoff" 等标准通话用语的规范译法。
+                            </p>
+                            <div class="cmd-box mb-2">
+                                site:icao.int "phraseology" "radiotelephony" annex 10 filetype:pdf
+                            </div>
+                            <div class="cmd-box">
+                                "陆空通话" "标准用语" site:caac.gov.cn OR 民航规章
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">
+                                💡 ATC 用语有严格的标准化要求（见 ICAO Annex 10），翻译时应遵循 CAAC 的官方译法，切勿随意创译。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Case 5: Weather Terms -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-cyan-50 px-4 py-3 border-b border-cyan-100 flex justify-between items-center">
+                            <span class="font-bold text-cyan-800">案例 5：航空气象术语</span>
+                            <span
+                                class="text-xs text-cyan-600 bg-white px-2 py-1 rounded border border-cyan-200">气象服务</span>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-3">
+                                <strong>场景：</strong>翻译 METAR/TAF 报文解读材料，需确认 CAVOK、CB、TS 等缩写的含义。
+                            </p>
+                            <div class="cmd-box mb-2">
+                                site:icao.int METAR TAF decode abbreviation annex 3
+                            </div>
+                            <div class="cmd-box">
+                                "航空气象" "天气报告" METAR 解读 site:caac.gov.cn
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">
+                                💡 CAVOK = Ceiling And Visibility OK（云高及能见度良好）；CB = Cumulonimbus（积雨云）；TS =
+                                Thunderstorm（雷暴）。
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
 

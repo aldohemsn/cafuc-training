@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角色框架 - 翻译技术实战课</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <!-- Mermaid -->
+    <script src="assets/js/mermaid-b92f6f74.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'base' });
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .role-card {
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-box {
+            border-left: 4px solid #3b82f6;
+            background: linear-gradient(to right, #eff6ff, transparent);
+        }
+
+        .diagnosis-item {
+            transition: all 0.2s ease;
+        }
+
+        .diagnosis-item:hover {
+            background-color: #f0fdf4;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            首页
+                        </a>
+                        <a href="course.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            课程详情
+                        </a>
+                        <a href="framework.html"
+                            class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            理论框架
+                        </a>
+                        <a href="lecturer.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            讲师介绍
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Header -->
+            <div class="mb-12">
+                <span class="text-indigo-600 font-semibold tracking-wide uppercase text-sm">Theoretical Framework</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">三角色框架：AI时代的译员能力模型</h1>
+                <p class="mt-4 text-xl text-gray-600">
+                    理解翻译认知过程的三个核心角色，把握人机协作时代的能力转型方向。
+                </p>
+            </div>
+
+            <!-- Paradigm Shift Section -->
+            <section class="mb-16">
+                <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="text-3xl mr-3">🔄</span>
+                        工作流的范式转变
+                    </h2>
+                    <p class="text-gray-700 mb-6">
+                        AI 正在从根本上改变翻译的"认知经济学"。从传统的 <strong>机器后编辑 (PEMT)</strong> 模式，
+                        转向以 <strong>提示工程 (Prompt Engineering)</strong> 为核心的新工作流。
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Old Paradigm -->
+                        <div class="bg-white rounded-xl p-6 border border-gray-200">
+                            <div class="flex items-center mb-4">
+                                <span
+                                    class="bg-gray-200 text-gray-600 text-xs font-bold px-2 py-1 rounded mr-2">传统模式</span>
+                                <h3 class="font-bold text-gray-800">PEMT (译后编辑)</h3>
+                            </div>
+                            <div class="text-sm text-gray-600 space-y-2">
+                                <div class="flex items-center">
+                                    <span class="text-gray-400 mr-2">1.</span>
+                                    <span>机器翻译初步处理（前置）</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-gray-400 mr-2">2.</span>
+                                    <span>人类繁重纠错与审校（后置）</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-xs text-red-600 bg-red-50 p-2 rounded">
+                                ⚠️ 高摩擦、高损耗，认知资源消耗在低价值的"错误搜寻"上
+                            </div>
+                        </div>
+
+                        <!-- New Paradigm -->
+                        <div class="bg-white rounded-xl p-6 border-2 border-indigo-300 shadow-md">
+                            <div class="flex items-center mb-4">
+                                <span
+                                    class="bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded mr-2">新范式</span>
+                                <h3 class="font-bold text-gray-800">Prompt Engineering</h3>
+                            </div>
+                            <div class="text-sm text-gray-600 space-y-2">
+                                <div class="flex items-center">
+                                    <span class="text-indigo-500 mr-2">1.</span>
+                                    <span><strong>人类战略性思维前置</strong>（设计完美提示词）</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-indigo-500 mr-2">2.</span>
+                                    <span>AI 高质量执行 + 少量人类精修</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-xs text-green-600 bg-green-50 p-2 rounded">
+                                ✅ 认知资源重新分配到高价值的"战略指导"上
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quote-box mt-6 p-4 rounded-r-lg">
+                        <p class="text-gray-700 italic text-sm">
+                            "这不仅是流程的优化，更是对人类智慧在翻译流程中杠杆作用的根本性提升，
+                            有力地反驳了 AI 导致译员'技能退化'(deskilling) 的悲观论调。"
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Three Roles Section -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                    <span class="text-3xl mr-3">👤</span>
+                    三角色详解
+                </h2>
+
+                <div class="space-y-8">
+                    <!-- Role 1: Analyst -->
+                    <div class="role-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-cyan-600 text-white px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-3xl mr-4">🔍</span>
+                                <div>
+                                    <h3 class="text-xl font-bold">分析师 (The Analyst)</h3>
+                                    <p class="text-cyan-100 text-sm">从知识应用者到知识赋能者</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <h4 class="font-bold text-gray-500 text-sm mb-2">传统模式</h4>
+                                    <p class="text-gray-600 text-sm">
+                                        核心任务是实现对源语文本完整、细致的理解，成果主要服务于译员自身，是一种<strong>内化</strong>的认知活动。
+                                    </p>
+                                </div>
+                                <div class="bg-cyan-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-cyan-700 text-sm mb-2">AI 时代</h4>
+                                    <p class="text-gray-700 text-sm">
+                                        深度理解必须被<strong>"外化"和"编码"</strong>，转化为机器可理解的精确指令（高质量的 Prompt）。
+                                        译员从知识的应用者，成为 AI 的"导演"。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                                    <span class="text-cyan-500 mr-2">📌</span> 民航实战案例：适航指令 (AD)
+                                </h4>
+                                <div class="text-sm">
+                                    <p class="text-gray-600 mb-2">
+                                        原文：<code
+                                            class="bg-white px-2 py-1 rounded border">Compliance is mandatory unless <strong>alternative means of compliance (AMOC)</strong> are approved.</code>
+                                    </p>
+                                    <p class="text-red-600 mb-2">
+                                        ❌ 机器翻译："遵守是强制性的，除非替代的遵守方式被批准。"
+                                        <span class="text-xs text-gray-500">（字面直译，未识别 AMOC 术语，语序僵硬）</span>
+                                    </p>
+                                    <p class="text-green-600">
+                                        ✅ 分析师处理："除非获得<strong>替代符合性方法 (AMOC)</strong> 的批准，否则必须执行本指令。"
+                                        <br><span class="text-xs text-gray-500">（基于法规知识精准解码 "Compliance" 为"执行指令"，并正确使用
+                                            AMOC 术语）</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 text-sm text-gray-500">
+                                <strong>与课程关联：</strong>
+                                <a href="tutorial_search.html" class="text-cyan-600 hover:underline">术语挖掘与搜商构建</a>
+                                模块正是培养分析师能力的第一步。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Role 2: Architect -->
+                    <div class="role-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-amber-600 text-white px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-3xl mr-4">🏗️</span>
+                                <div>
+                                    <h3 class="text-xl font-bold">建构师 (The Architect)</h3>
+                                    <p class="text-amber-100 text-sm">常规任务自动化 + 高端领域策略化</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">
+                                "建构师"负责将源语的意义"脱壳"，并在目标语的句法框架内进行符合逻辑和习惯的重构。
+                                AI 的冲击对这一角色影响最直接，呈现<strong>两极分化</strong>的趋势。
+                            </p>
+
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-600 text-sm mb-2 flex items-center">
+                                        <span class="text-gray-400 mr-2">⚙️</span> 常规任务
+                                    </h4>
+                                    <p class="text-gray-500 text-sm">
+                                        句子层面的结构转换被 AI 大规模自动化。译员从"建造者"转变为"监理"，
+                                        主要职责是审核 AI 生成的结构是否符合逻辑。
+                                    </p>
+                                </div>
+                                <div class="border-2 border-amber-300 rounded-lg p-4 bg-amber-50">
+                                    <h4 class="font-bold text-amber-700 text-sm mb-2 flex items-center">
+                                        <span class="text-amber-500 mr-2">⭐</span> 高端技能
+                                    </h4>
+                                    <p class="text-gray-700 text-sm">
+                                        在高风险、高附加值领域（法律、营销、文学），句法结构的选择是<strong>策略性决策</strong>，
+                                        关乎法律效力、商业成败和艺术表达。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                                    <span class="text-amber-500 mr-2">📌</span> 民航实战案例：排故程序 (AMM)
+                                </h4>
+                                <div class="text-sm">
+                                    <p class="text-gray-600 mb-2">
+                                        原文："If the light does not illuminate when the test switch is pressed, verify
+                                        that the circuit breaker is closed and, if it is closed, replace the bulb."
+                                    </p>
+                                    <p class="text-red-600 mb-2">
+                                        ❌ 机器翻译："如果灯不亮当测试开关被按下，验证断路器是闭合的，并且如果它是闭合的，更换灯泡。"
+                                        <span class="text-xs text-gray-500">（逻辑嵌套混乱，不符合中文维修工单习惯）</span>
+                                    </p>
+                                    <div class="text-green-600">
+                                        ✅ 建构师处理：<br>
+                                        "按压测试开关，如果指示灯不亮：<br>
+                                        1. 检查断路器是否闭合；<br>
+                                        2. 若已闭合，则更换灯泡。"
+                                        <br><span class="text-xs text-gray-500">（重构为符合逻辑的步骤列表，符合工程文档规范）</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 text-sm text-gray-500">
+                                <strong>与课程关联：</strong>
+                                <a href="tutorial_ai.html" class="text-amber-600 hover:underline">AI 辅助长难句分析</a>
+                                模块帮助你理解如何与 AI 协作完成结构转换。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Role 3: Stylist -->
+                    <div class="role-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="bg-purple-600 text-white px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-3xl mr-4">🎨</span>
+                                <div>
+                                    <h3 class="text-xl font-bold">风格师 (The Stylist)</h3>
+                                    <p class="text-purple-100 text-sm">从语言润色到最终价值的创造者</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">
+                                在人机协作的新模式下，"风格师"的地位被空前放大，成为最终产品质量的把关人和人类附加值的核心贡献者。
+                            </p>
+
+                            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                                    <div class="text-2xl mb-2">🎯</div>
+                                    <h4 class="font-bold text-purple-700 text-sm mb-1">策划与甄选</h4>
+                                    <p class="text-xs text-gray-600">从多个 AI 备选方案中挑选最符合目的与风格的译法</p>
+                                </div>
+                                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                                    <div class="text-2xl mb-2">✨</div>
+                                    <h4 class="font-bold text-purple-700 text-sm mb-1">精修与升华</h4>
+                                    <p class="text-xs text-gray-600">从"改错"转为"求精"，将"正确"提升至"卓越"</p>
+                                </div>
+                                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                                    <div class="text-2xl mb-2">🛡️</div>
+                                    <h4 class="font-bold text-purple-700 text-sm mb-1">文化守门人</h4>
+                                    <p class="text-xs text-gray-600">抵御 AI 偏见和文化冒犯的最后防线</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-lg p-4 mt-6">
+                                <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                                    <span class="text-purple-500 mr-2">📌</span> 民航实战案例：机上广播 (PA)
+                                </h4>
+                                <div class="text-sm">
+                                    <p class="text-gray-600 mb-2">
+                                        原文："We hope you enjoy your flight."
+                                    </p>
+                                    <p class="text-red-600 mb-2">
+                                        ❌ 机器翻译："我们希望你享受你的飞行。"
+                                        <span class="text-xs text-gray-500">（典型的 Translationese，生硬、缺乏温度）</span>
+                                    </p>
+                                    <p class="text-green-600">
+                                        ✅ 风格师处理："愿您度过一段愉快的空中旅程。"
+                                        <br><span class="text-xs text-gray-500">（符合服务场景的礼貌语体，更有亲和力）</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="quote-box p-4 rounded-r-lg mt-4">
+                                <p class="text-gray-700 italic text-sm">
+                                    "风格师"是"人在回路"(human-in-the-loop) 中最终实现和捍卫"人工翻译"品质标签的关键角色。
+                                </p>
+                            </div>
+
+                            <div class="mt-4 text-sm text-gray-500">
+                                <strong>与课程关联：</strong>
+                                <a href="tutorial_qa.html" class="text-purple-600 hover:underline">翻译质量检测</a>
+                                模块培养你的风格师审核能力。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Polarization Section -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">📊</span>
+                    技能价值的"两极化"现象
+                </h2>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                    <p class="text-gray-600 mb-6">
+                        AI 正在重塑翻译行业的价值链：翻译流程的"中间地带"正在被挤压，价值正在向两极汇聚。
+                    </p>
+
+                    <div class="flex justify-center mb-8">
+                        <div class="mermaid">
+                            flowchart LR
+                            subgraph HIGH["高价值区"]
+                            A["🔍 分析师<br />专业知识<br />领域理解"]
+                            S["🎨 风格师<br />创造性表达<br />文化适应"]
+                            end
+
+                            subgraph LOW["被挤压区"]
+                            B["🏗️ 建构师<br />常规结构转换"]
+                            end
+
+                            A --> B --> S
+
+                            style A fill:#06b6d4,stroke:#0891b2,color:#fff
+                            style S fill:#9333ea,stroke:#7c3aed,color:#fff
+                            style B fill:#f59e0b,stroke:#d97706,color:#fff
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="border-l-4 border-cyan-500 pl-4">
+                            <h4 class="font-bold text-cyan-700 mb-2">价值一极：分析师</h4>
+                            <p class="text-sm text-gray-600">
+                                位于流程前端，代表对源语文本和特定领域的深度理解能力。
+                                在"输入决定输出"的机制下，人类专家的分析与判断能力成为无可替代的核心竞争力。
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <h4 class="font-bold text-purple-700 mb-2">价值二极：风格师</h4>
+                            <p class="text-sm text-gray-600">
+                                位于流程末端，代表对目标语卓越的驾驭能力。
+                                这是 AI 难以复制的"最后一公里"，客户愿意为真正地道、优雅且富有感染力的表达支付溢价。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-amber-50 border border-amber-200 rounded-lg p-4">
+                        <p class="text-sm text-amber-800">
+                            <strong>💡 关键洞察：</strong>
+                            译员在 AI 时代的转型之路，并非与机器的零和博弈，而是沿着认知价值链向上攀登，
+                            从<strong>执行者</strong>转变为<strong>策略家和创造者</strong>的过程。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Self-Diagnosis Section -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">🔬</span>
+                    自我诊断清单
+                </h2>
+
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-100">
+                    <p class="text-gray-600 mb-6">
+                        三角色框架不仅是分析工具，更是一份自我诊断和发展的路线图。借助以下问题进行自我评估：
+                    </p>
+
+                    <div class="space-y-4">
+                        <!-- Analyst Diagnosis -->
+                        <div class="diagnosis-item bg-white rounded-xl p-5 border border-gray-100">
+                            <div class="flex items-start">
+                                <span
+                                    class="bg-cyan-100 text-cyan-600 w-8 h-8 rounded-full flex items-center justify-center text-lg mr-4 flex-shrink-0">🔍</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">审视"分析师"能力</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 我仅仅是一个优秀的读者，还是一个能够将领域知识清晰地表达为 AI 指令的专家？</li>
+                                        <li>• 我应如何在我的专业领域内进行更深层次的知识积累？</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Architect Diagnosis -->
+                        <div class="diagnosis-item bg-white rounded-xl p-5 border border-gray-100">
+                            <div class="flex items-start">
+                                <span
+                                    class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center text-lg mr-4 flex-shrink-0">🏗️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">评估"建构师"能力</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 我的核心竞争力是否仍停留在常规的句法转换上？</li>
+                                        <li>• 我是否正在有意识地培养自己在高附加值领域（如法律、营销、文学）进行策略性结构选择的能力？</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stylist Diagnosis -->
+                        <div class="diagnosis-item bg-white rounded-xl p-5 border border-gray-100">
+                            <div class="flex items-start">
+                                <span
+                                    class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-lg mr-4 flex-shrink-0">🎨</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">打磨"风格师"能力</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 我的目标语水平是仅仅"正确无误"，还是达到了"卓越不凡"？</li>
+                                        <li>• 我是否在目标语环境中进行大量、高质量的阅读？</li>
+                                        <li>• 我是否在主动地磨练一种更优雅、更具说服力、更富创造性的写作风格？</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Connection Section -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">🔗</span>
+                    与本课程模块的关联
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="tutorial_search.html"
+                        class="bg-white rounded-xl p-5 border border-gray-100 hover:shadow-md transition block">
+                        <div class="flex items-center mb-2">
+                            <span class="text-2xl mr-2">🔍</span>
+                            <span class="text-cyan-600 text-xs font-bold">分析师能力</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1">术语挖掘与搜商</h4>
+                        <p class="text-xs text-gray-500">培养深度理解源语和领域知识的能力</p>
+                    </a>
+
+                    <a href="tutorial_ai.html"
+                        class="bg-white rounded-xl p-5 border border-gray-100 hover:shadow-md transition block">
+                        <div class="flex items-center mb-2">
+                            <span class="text-2xl mr-2">🏗️</span>
+                            <span class="text-amber-600 text-xs font-bold">建构师实践</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1">AI 辅助长难句</h4>
+                        <p class="text-xs text-gray-500">学习与 AI 协作完成结构转换</p>
+                    </a>
+
+                    <a href="tutorial_qa.html"
+                        class="bg-white rounded-xl p-5 border border-gray-100 hover:shadow-md transition block">
+                        <div class="flex items-center mb-2">
+                            <span class="text-2xl mr-2">🎨</span>
+                            <span class="text-purple-600 text-xs font-bold">风格师技能</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1">翻译质量检测</h4>
+                        <p class="text-xs text-gray-500">提升审校和质量把控能力</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Reference -->
+            <div class="text-center text-sm text-gray-400 border-t border-gray-200 pt-8">
+                <p>
+                    本框架基于：何晓鸿《人工智能时代译员的转变之路——基于三角色框架的分析》
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Aldo. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
