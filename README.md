@@ -16,10 +16,13 @@
 
 ### 2. 民航特色深度植入 (Aviation-Specific)
 全站案例均取材于真实民航场景，包括：
-- **适航管理**：<a href="glossary.html#ad" class="text-blue-600 hover:underline">AD</a>指令、<a href="glossary.html#amoc" class="text-blue-600 hover:underline">AMOC</a>、CAD
-- **飞行运行**：<a href="glossary.html#notam" class="text-blue-600 hover:underline">NOTAM</a>、<a href="glossary.html#atc" class="text-blue-600 hover:underline">ATC</a> 通话、<a href="glossary.html#metar" class="text-blue-600 hover:underline">METAR</a>/<a href="glossary.html#taf" class="text-blue-600 hover:underline">TAF</a>
-- **机务维修**：<a href="glossary.html#amm" class="text-blue-600 hover:underline">AMM</a> 手册排故逻辑
-- **服务营销**：机上广播 (<a href="glossary.html#pa" class="text-blue-600 hover:underline">PA</a>)、品牌宣传
+- **适航管理**：AD 指令、AMOC、CAD
+- **飞行运行**：NOTAM、ATC 通话、METAR/TAF
+- **机务维修**：AMM 手册排故逻辑
+- **服务营销**：机上广播 (PA)、品牌宣传
+
+### 3. 完全离线可用 (Offline Ready)
+所有资源（样式、脚本、字体）均已本地化，无需网络连接即可正常使用。
 
 ## 📚 课程结构
 
@@ -37,37 +40,60 @@
 
 ## 🛠️ 技术栈
 
-- **Frontend**: HTML5, Tailwind CSS
+- **Frontend**: HTML5, Tailwind CSS (本地)
 - **Scripting**: Vanilla JavaScript, Python (Snippets)
 - **Visualization**: Prism.js (代码高亮), Mermaid (流程图)
+- **Offline**: 所有依赖均已本地化，无需 CDN
 
 ## 🚀 快速开始
 
 ```bash
 # 本地服务器
-python3 -m http.server 8001
-# 访问 http://localhost:8001
+python3 -m http.server 3000
+# 访问 http://localhost:3000
 ```
 
 ## 📂 目录结构
 
 ```
 .
-├── framework.html          # [NEW] 三角色理论框架
+├── index.html              # 首页
+├── course.html             # 课程详情
+├── framework.html          # 三角色理论框架
+├── glossary.html           # ✨ 民航专业术语表 (45+ 术语)
+├── lecturer.html           # 讲师介绍
 ├── tutorial_search.html    # 搜索与术语挖掘 (含民航案例库)
 ├── tutorial_qa.html        # 智能质检 (含 Python 脚本)
 ├── tutorial_ai.html        # AI 辅助与长难句
-├── tutorial_aviation.html  # 民航文本清洗 (Regex)
-├── index.html              # 首页
-└── ...
+├── tutorial_aviation.html  # 民航文本清洗 (Regex Lab 7 实例)
+├── tutorial_nyt.html       # 纽约时报双语库实战
+└── assets/
+    ├── css/                # 样式文件
+    ├── js/                 # 脚本文件 (Tailwind, Prism, Mermaid)
+    └── img/                # 图片资源
 ```
+
+## 📖 术语表
+
+`glossary.html` 提供 **45+ 民航专业术语** 的完整定义，分为 7 个类别：
+
+| 类别 | 术语示例 |
+|------|---------|
+| 🏛️ 机构与法规 | ICAO, FAA, CAAC, EASA, CCAR, 14 CFR, ICAO Annex |
+| 📋 适航与文档 | Airworthiness, AD, AMOC, AMM, SRM, MEL, MMEL |
+| ✈️ 飞行运行 | NOTAM, ATC, Flight Level, RVSM, SID, STAR, ILS, VOR |
+| 📻 陆空通话 | Cleared for takeoff, Cleared for approach |
+| 🌤️ 航空气象 | METAR, TAF, CAVOK, CB, TS |
+| 💻 翻译技术 | PEMT, MTQE, TMX, TBX |
+
+每个术语包含：**英文全称 + 中文译名 + 标准定义 + 通俗解释**
 
 ## 🔮 下一步完善方向 (Roadmap)
 
-1.  **交互式实训平台**：开发基于 Web 的简易 CAT/Workbench，让学生能在网页上直接练习修改 Prompt 和译文。
-2.  **多语种支持**：增加民航英语之外的法语/西班牙语案例（针对 CAFUC 泛语种需求）。
-3.  **真实语料库集成**：接入公开的 ICAO/EASA/FAA 语料库 API，实现实时术语查询功能。
-4.  **学生作品集**：增加学生作业展示和互评模块。
+1.  **交互式实训平台**：开发基于 Web 的简易 CAT/Workbench
+2.  **多语种支持**：增加民航英语之外的法语/西班牙语案例
+3.  **真实语料库集成**：接入公开的 ICAO/EASA/FAA 语料库 API
+4.  **学生作品集**：增加学生作业展示和互评模块
 
 ## 👨‍🏫 讲师
 

@@ -266,17 +266,55 @@ of the flight.</textarea>
                                 </div>
 
                                 <!-- Presets -->
-                                <div class="mt-4 flex space-x-2 overflow-x-auto pb-2">
-                                    <button onclick="setPreset('mergeLines')"
-                                        class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1 rounded transition border border-slate-600">Preset:
-                                        Merge Lines</button>
-                                    <button onclick="setPreset('removePageNums')"
-                                        class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1 rounded transition border border-slate-600">Preset:
-                                        Remove Page Nums</button>
+                                <div class="mt-4">
+                                    <p class="text-xs text-slate-400 mb-2">📌 点击预设快速切换不同场景：</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <button onclick="setPreset('mergeLines')"
+                                            class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1.5 rounded transition border border-slate-600"
+                                            title="\\n(?=[a-z]) → 空格 | 合并因换行断开的句子">① 合并断行</button>
+                                        <button onclick="setPreset('removePageNums')"
+                                            class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1.5 rounded transition border border-slate-600"
+                                            title="Page \\d+.* → 删除 | 清除页码行">② 删除页码</button>
+                                        <button onclick="setPreset('removeHeaders')"
+                                            class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1.5 rounded transition border border-slate-600"
+                                            title="^.*ICAO.*$ → 删除 | 删除包含特定文字的页眉/页脚">③ 删除页眉页脚</button>
+                                        <button onclick="setPreset('extractPartNums')"
+                                            class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1.5 rounded transition border border-slate-600"
+                                            title="[A-Z]{2,3}-\\d{3,} | 匹配航空零件编号格式">④ 提取零件号</button>
+                                        <button onclick="setPreset('cleanSpaces')"
+                                            class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1.5 rounded transition border border-slate-600"
+                                            title="  + → 单空格 | 将多个连续空格合并为一个">⑤ 规范空格</button>
+                                        <button onclick="setPreset('removeBullets')"
+                                            class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1.5 rounded transition border border-slate-600"
+                                            title="^[•●○\\-\\*]\\s* | 删除列表项符号">⑥ 删除项目符号</button>
+                                        <button onclick="setPreset('extractSections')"
+                                            class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1.5 rounded transition border border-slate-600"
+                                            title="^\\d+\\.\\d+ | 匹配章节编号如 4.1, 12.3">⑦ 匹配章节号</button>
+                                    </div>
+                                </div>
+
+                                <!-- Regex Explanation Panel -->
+                                <div id="regexExplanation"
+                                    class="mt-4 bg-slate-700/50 p-3 rounded-lg border border-slate-600">
+                                    <p class="text-xs text-slate-300"><span
+                                            class="text-cyan-400 font-mono">\n(?=[a-z])</span> →
+                                        匹配「换行符后紧跟小写字母」。<code class="text-yellow-400">\n</code> 匹配换行符，<code
+                                            class="text-yellow-400">(?=...)</code> 是前瞻断言，只检查位置不消耗字符。
+                                    </p>
                                 </div>
                             </div>
 
                             <script>
+                                const explanations = {
+                                    mergeLines: '<span class="text-cyan-400 font-mono">\\n(?=[a-z])</span> → 匹配「换行符后紧跟小写字母」。<code class="text-yellow-400">\\n</code> 匹配换行符，<code class="text-yellow-400">(?=...)</code> 是前瞻断言，只检查位置不消耗字符。',
+                                    removePageNums: '<span class="text-cyan-400 font-mono">Page \\d+.*\\n?</span> → 匹配以 "Page" 开头的页码行。<code class="text-yellow-400">\\d+</code> 匹配一个或多个数字，<code class="text-yellow-400">.*</code> 匹配该行剩余内容，<code class="text-yellow-400">\\n?</code> 可选地匹配末尾换行符（避免留空行）。',
+                                    removeHeaders: '<span class="text-cyan-400 font-mono">^.*ICAO.*$\\n?</span> → 匹配包含 "ICAO" 的整行。<code class="text-yellow-400">^</code> 行首锚点，<code class="text-yellow-400">$</code> 行尾锚点，<code class="text-yellow-400">.*</code> 匹配任意字符，<code class="text-yellow-400">\\n?</code> 可选地匹配末尾换行符（<code class="text-yellow-400">?</code> 表示"零个或一个"，删除时连换行符一并移除，避免留空行）。需启用多行模式 (m)。',
+                                    extractPartNums: '<span class="text-cyan-400 font-mono">[A-Z]{2,3}-\\d{3,}</span> → 匹配航空零件编号格式。<code class="text-yellow-400">[A-Z]{2,3}</code> 匹配2-3个大写字母，<code class="text-yellow-400">-</code> 字面连字符，<code class="text-yellow-400">\\d{3,}</code> 匹配3位及以上数字。示例：AB-1234, XYZ-56789。',
+                                    cleanSpaces: '<span class="text-cyan-400 font-mono">&nbsp;&nbsp;+</span> → 匹配两个或更多连续空格。第一个空格是字面空格，<code class="text-yellow-400">&nbsp;+</code> 表示"再匹配一个或多个空格"，替换为单个空格可规范文本。',
+                                    removeBullets: '<span class="text-cyan-400 font-mono">^[•●○\\-\\*]\\s*</span> → 匹配行首的项目符号及后续空格。<code class="text-yellow-400">[...]</code> 是字符类，匹配其中任意一个符号，<code class="text-yellow-400">\\s*</code> 匹配零个或多个空白字符。',
+                                    extractSections: '<span class="text-cyan-400 font-mono">^\\d+\\.\\d+</span> → 匹配行首的章节编号。<code class="text-yellow-400">^</code> 锚定行首，<code class="text-yellow-400">\\d+</code> 匹配数字，<code class="text-yellow-400">\\.</code> 匹配字面点号（需转义，否则 <code class="text-yellow-400">.</code> 会匹配任意字符）。示例：4.1、12.3。'
+                                };
+
                                 function runRegex() {
                                     const input = document.getElementById('rawInput').value;
                                     const pattern = document.getElementById('regexPattern').value;
@@ -285,7 +323,7 @@ of the flight.</textarea>
                                     try {
                                         // Handle explicit escaped newlines entered by user
                                         const cleanPattern = pattern.replace(/\\n/g, '\n');
-                                        const regex = new RegExp(cleanPattern, 'g');
+                                        const regex = new RegExp(cleanPattern, 'gm');
                                         const output = input.replace(regex, replacement);
                                         document.getElementById('cleanOutput').value = output;
                                     } catch (e) {
@@ -294,14 +332,62 @@ of the flight.</textarea>
                                 }
 
                                 function setPreset(type) {
-                                    if (type === 'mergeLines') {
-                                        document.getElementById('regexPattern').value = '\\n(?=[a-z])';
-                                        document.getElementById('replaceString').value = ' ';
-                                    } else if (type === 'removePageNums') {
-                                        document.getElementById('regexPattern').value = 'Page \\d+.*\\n?';
-                                        document.getElementById('replaceString').value = '';
+                                    const presets = {
+                                        mergeLines: { pattern: '\\n(?=[a-z])', replace: ' ' },
+                                        removePageNums: { pattern: 'Page \\d+.*\\n?', replace: '' },
+                                        removeHeaders: { pattern: '^.*ICAO.*$\\n?', replace: '' },
+                                        extractPartNums: { pattern: '[A-Z]{2,3}-\\d{3,}', replace: '【$&】' },
+                                        cleanSpaces: { pattern: '  +', replace: ' ' },
+                                        removeBullets: { pattern: '^[•●○\\-\\*]\\s*', replace: '' },
+                                        extractSections: { pattern: '^\\d+\\.\\d+', replace: '【$&】' }
+                                    };
+
+                                    const sampleInputs = {
+                                        mergeLines: `4.1 The pilot-in-command
+shall be responsible for
+the safety of all crew
+members.
+
+The flight recorder shall
+be deactivated upon completion
+of the flight.`,
+                                        removePageNums: `4.1 General Requirements
+The operator shall ensure...
+Page 12 of 45
+...that all personnel are trained.
+Page 13 of 45
+5.1 Safety Procedures`,
+                                        removeHeaders: `ICAO Annex 6 - Operation of Aircraft
+4.1 The pilot-in-command shall...
+ICAO Doc 9376
+...be responsible for safety.
+Chapter 5 - Maintenance`,
+                                        extractPartNums: `Replace the actuator (PN: AB-1234) with
+a serviceable unit. Check valve XYZ-56789
+and gasket CD-999 for damage.
+Order part EF-12345 if needed.`,
+                                        cleanSpaces: `The  aircraft   shall be   inspected
+before   each   flight.
+Check  all   control   surfaces.`,
+                                        removeBullets: `• Check fuel quantity
+● Verify oil pressure
+○ Test emergency systems
+- Inspect landing gear
+* Review weather conditions`,
+                                        extractSections: `4.1 General Requirements
+4.2 Pilot Qualifications
+4.2.1 Training Standards
+12.3 Maintenance Procedures
+12.3.1 Scheduled Inspections`
+                                    };
+
+                                    if (presets[type]) {
+                                        document.getElementById('rawInput').value = sampleInputs[type];
+                                        document.getElementById('regexPattern').value = presets[type].pattern;
+                                        document.getElementById('replaceString').value = presets[type].replace;
+                                        document.getElementById('regexExplanation').innerHTML = '<p class="text-xs text-slate-300">' + explanations[type] + '</p>';
+                                        runRegex();
                                     }
-                                    runRegex(); // Auto run on preset click
                                 }
 
                                 // Initial run
