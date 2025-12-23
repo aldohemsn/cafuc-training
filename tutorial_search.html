@@ -48,6 +48,8 @@
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
                         <a href="framework.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">理论框架</a>
+                        <a href="glossary.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">术语表</a>
                     </div>
                 </div>
             </div>
@@ -74,7 +76,10 @@
             <!-- Solution 1 -->
             <section class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 A：限定站点的权威搜索</h2>
-                <p class="text-gray-600 mb-4">不要在大海里捞针，直接去"专家"家里找。利用 <code>site:</code> 指令锁定权威机构（如 ICAO, FAA, CAAC）。</p>
+                <p class="text-gray-600 mb-4">不要在大海里捞针，直接去"专家"家里找。利用 <code>site:</code> 指令锁定权威机构（如 <a
+                        href="glossary.html#icao" class="text-blue-600 hover:underline">ICAO</a>, <a
+                        href="glossary.html#faa" class="text-blue-600 hover:underline">FAA</a>, <a
+                        href="glossary.html#caac" class="text-blue-600 hover:underline">CAAC</a>）。</p>
 
                 <div class="space-y-4">
                     <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
@@ -167,7 +172,8 @@
                                 class="text-xs text-red-600 bg-white px-2 py-1 rounded border border-red-200">排除干扰</span>
                         </div>
                         <div class="p-4">
-                            <p class="text-sm text-gray-600 mb-2">排除不想看到的结果。例如，你想找 RVSM 的资料，但不想看维基百科。</p>
+                            <p class="text-sm text-gray-600 mb-2">排除不想看到的结果。例如，你想找 <a href="glossary.html#rvsm"
+                                    class="text-blue-600 hover:underline">RVSM</a> 的资料，但不想看维基百科。</p>
                             <div class="cmd-box mb-2">
                                 RVSM "reduced vertical separation" -site:wikipedia.org
                             </div>
@@ -247,8 +253,10 @@
                     <!-- Case 1: NOTAM -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                         <div class="bg-blue-50 px-4 py-3 border-b border-blue-100 flex justify-between items-center">
-                            <span class="font-bold text-blue-800">案例 1：NOTAM（航行通告）</span>
-                            <span class="text-xs text-blue-600 bg-white px-2 py-1 rounded border border-blue-200">ATC
+                            <span class="font-bold text-blue-800">案例 1：<a href="glossary.html#notam"
+                                    class="hover:underline">NOTAM</a>（航行通告）</span>
+                            <span class="text-xs text-blue-600 bg-white px-2 py-1 rounded border border-blue-200"><a
+                                    href="glossary.html#atc" class="hover:underline">ATC</a>
                                 通信</span>
                         </div>
                         <div class="p-4">
@@ -262,7 +270,9 @@
                                 site:caac.gov.cn 航行通告 分类 规定
                             </div>
                             <p class="text-xs text-gray-500 mt-2">
-                                💡 NOTAM = Notice to Air Missions（原 Notice to Airmen）。ICAO 于 2021 年更新了术语以保持性别中立。
+                                💡 <a href="glossary.html#notam" class="text-blue-600 hover:underline">NOTAM</a> =
+                                Notice to Air Missions（原 Notice to Airmen）。<a href="glossary.html#icao"
+                                    class="text-blue-600 hover:underline">ICAO</a> 于 2021 年更新了术语以保持性别中立。
                             </p>
                         </div>
                     </div>
@@ -270,13 +280,17 @@
                     <!-- Case 2: MEL/MMEL -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                         <div class="bg-green-50 px-4 py-3 border-b border-green-100 flex justify-between items-center">
-                            <span class="font-bold text-green-800">案例 2：MEL/MMEL（最低设备清单）</span>
+                            <span class="font-bold text-green-800">案例 2：<a href="glossary.html#mel"
+                                    class="hover:underline">MEL</a>/<a href="glossary.html#mmel"
+                                    class="hover:underline">MMEL</a>（最低设备清单）</span>
                             <span
                                 class="text-xs text-green-600 bg-white px-2 py-1 rounded border border-green-200">适航管理</span>
                         </div>
                         <div class="p-4">
                             <p class="text-sm text-gray-600 mb-3">
-                                <strong>场景：</strong>区分 MEL 和 MMEL 的区别，确认中文标准译法。
+                                <strong>场景：</strong>区分 <a href="glossary.html#mel"
+                                    class="text-blue-600 hover:underline">MEL</a> 和 <a href="glossary.html#mmel"
+                                    class="text-blue-600 hover:underline">MMEL</a> 的区别，确认中文标准译法。
                             </p>
                             <div class="cmd-box mb-2">
                                 "MMEL" "MEL" difference site:faa.gov OR site:easa.europa.eu
@@ -285,7 +299,9 @@
                                 "最低设备清单" "主最低设备清单" site:caac.gov.cn filetype:pdf
                             </div>
                             <p class="text-xs text-gray-500 mt-2">
-                                💡 MMEL 是厂家制定的主清单，MEL 是运营人根据 MMEL 定制的清单。两者有层级关系。
+                                💡 <a href="glossary.html#mmel" class="text-blue-600 hover:underline">MMEL</a>
+                                是厂家制定的主清单，<a href="glossary.html#mel" class="text-blue-600 hover:underline">MEL</a>
+                                是运营人根据 MMEL 定制的清单。两者有层级关系。
                             </p>
                         </div>
                     </div>
@@ -294,13 +310,15 @@
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                         <div
                             class="bg-orange-50 px-4 py-3 border-b border-orange-100 flex justify-between items-center">
-                            <span class="font-bold text-orange-800">案例 3：CCAR（中国民用航空规章）</span>
+                            <span class="font-bold text-orange-800">案例 3：<a href="glossary.html#ccar"
+                                    class="hover:underline">CCAR</a>（中国民用航空规章）</span>
                             <span
                                 class="text-xs text-orange-600 bg-white px-2 py-1 rounded border border-orange-200">法规标准</span>
                         </div>
                         <div class="p-4">
                             <p class="text-sm text-gray-600 mb-3">
-                                <strong>场景：</strong>翻译涉及飞行人员资质的内容，需查阅 CCAR-61 的具体条款。
+                                <strong>场景：</strong>翻译涉及飞行人员资质的内容，需查阅 <a href="glossary.html#ccar"
+                                    class="text-blue-600 hover:underline">CCAR</a>-61 的具体条款。
                             </p>
                             <div class="cmd-box mb-2">
                                 site:caac.gov.cn CCAR-61 飞行员执照 filetype:pdf
@@ -309,7 +327,9 @@
                                 site:faa.gov "14 CFR Part 61" equivalent 对照
                             </div>
                             <p class="text-xs text-gray-500 mt-2">
-                                💡 CCAR 体系与美国 14 CFR（FAR）大体对应：CCAR-61 ≈ 14 CFR Part 61（飞行人员执照）；CCAR-121 ≈ 14 CFR Part
+                                💡 <a href="glossary.html#ccar" class="text-blue-600 hover:underline">CCAR</a> 体系与美国 <a
+                                    href="glossary.html#cfr" class="text-blue-600 hover:underline">14
+                                    CFR</a>（FAR）大体对应：CCAR-61 ≈ 14 CFR Part 61（飞行人员执照）；CCAR-121 ≈ 14 CFR Part
                                 121（大型航空器运行）。
                             </p>
                         </div>
@@ -319,13 +339,15 @@
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                         <div
                             class="bg-purple-50 px-4 py-3 border-b border-purple-100 flex justify-between items-center">
-                            <span class="font-bold text-purple-800">案例 4：ATC 陆空通话用语</span>
+                            <span class="font-bold text-purple-800">案例 4：<a href="glossary.html#atc"
+                                    class="hover:underline">ATC</a> 陆空通话用语</span>
                             <span
                                 class="text-xs text-purple-600 bg-white px-2 py-1 rounded border border-purple-200">无线电通信</span>
                         </div>
                         <div class="p-4">
                             <p class="text-sm text-gray-600 mb-3">
-                                <strong>场景：</strong>翻译模拟飞行教材，需确认 "Cleared for takeoff" 等标准通话用语的规范译法。
+                                <strong>场景：</strong>翻译模拟飞行教材，需确认 "<a href="glossary.html#cleared-for-takeoff"
+                                    class="text-blue-600 hover:underline">Cleared for takeoff</a>" 等标准通话用语的规范译法。
                             </p>
                             <div class="cmd-box mb-2">
                                 site:icao.int "phraseology" "radiotelephony" annex 10 filetype:pdf
@@ -334,7 +356,11 @@
                                 "陆空通话" "标准用语" site:caac.gov.cn OR 民航规章
                             </div>
                             <p class="text-xs text-gray-500 mt-2">
-                                💡 ATC 用语有严格的标准化要求（见 ICAO Annex 10），翻译时应遵循 CAAC 的官方译法，切勿随意创译。
+                                💡 <a href="glossary.html#atc" class="text-blue-600 hover:underline">ATC</a>
+                                用语有严格的标准化要求（见 <a href="glossary.html#icao-annex"
+                                    class="text-blue-600 hover:underline">ICAO Annex</a> 10），翻译时应遵循 <a
+                                    href="glossary.html#caac" class="text-blue-600 hover:underline">CAAC</a>
+                                的官方译法，切勿随意创译。
                             </p>
                         </div>
                     </div>
@@ -348,7 +374,12 @@
                         </div>
                         <div class="p-4">
                             <p class="text-sm text-gray-600 mb-3">
-                                <strong>场景：</strong>翻译 METAR/TAF 报文解读材料，需确认 CAVOK、CB、TS 等缩写的含义。
+                                <strong>场景：</strong>翻译 <a href="glossary.html#metar"
+                                    class="text-blue-600 hover:underline">METAR</a>/<a href="glossary.html#taf"
+                                    class="text-blue-600 hover:underline">TAF</a> 报文解读材料，需确认 <a
+                                    href="glossary.html#cavok" class="text-blue-600 hover:underline">CAVOK</a>、<a
+                                    href="glossary.html#cb" class="text-blue-600 hover:underline">CB</a>、<a
+                                    href="glossary.html#ts" class="text-blue-600 hover:underline">TS</a> 等缩写的含义。
                             </p>
                             <div class="cmd-box mb-2">
                                 site:icao.int METAR TAF decode abbreviation annex 3
@@ -357,7 +388,10 @@
                                 "航空气象" "天气报告" METAR 解读 site:caac.gov.cn
                             </div>
                             <p class="text-xs text-gray-500 mt-2">
-                                💡 CAVOK = Ceiling And Visibility OK（云高及能见度良好）；CB = Cumulonimbus（积雨云）；TS =
+                                💡 <a href="glossary.html#cavok" class="text-blue-600 hover:underline">CAVOK</a> =
+                                Ceiling And Visibility OK（云高及能见度良好）；<a href="glossary.html#cb"
+                                    class="text-blue-600 hover:underline">CB</a> = Cumulonimbus（积雨云）；<a
+                                    href="glossary.html#ts" class="text-blue-600 hover:underline">TS</a> =
                                 Thunderstorm（雷暴）。
                             </p>
                         </div>

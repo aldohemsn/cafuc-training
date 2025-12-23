@@ -42,6 +42,8 @@
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
                         <a href="framework.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">理论框架</a>
+                        <a href="glossary.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">术语表</a>
                     </div>
                 </div>
             </div>
@@ -129,37 +131,48 @@ grep -n -P "\d+(?![\s\.\,])" translation.txt</code></pre>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
                                 <tr>
-                                    <td class="px-4 py-3 font-mono text-blue-600">Airworthiness</td>
+                                    <td class="px-4 py-3 font-mono text-blue-600"><a href="glossary.html#airworthiness"
+                                            class="hover:underline">Airworthiness</a></td>
                                     <td class="px-4 py-3 text-green-600 font-semibold">适航性</td>
                                     <td class="px-4 py-3 text-red-500 text-xs">飞行适航、航空值得</td>
                                     <td class="px-4 py-3 text-xs text-gray-400">CCAR-21</td>
                                 </tr>
                                 <tr class="bg-gray-50/50">
-                                    <td class="px-4 py-3 font-mono text-blue-600">Pilot-in-command</td>
+                                    <td class="px-4 py-3 font-mono text-blue-600"><a href="glossary.html#pic"
+                                            class="hover:underline">Pilot-in-command</a></td>
                                     <td class="px-4 py-3 text-green-600 font-semibold">机长</td>
                                     <td class="px-4 py-3 text-red-500 text-xs">主驾驶员、指挥飞行员</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400">ICAO Annex 1</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400"><a href="glossary.html#icao-annex"
+                                            class="hover:underline">ICAO Annex</a> 1</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-3 font-mono text-blue-600">Flight crew</td>
+                                    <td class="px-4 py-3 font-mono text-blue-600"><a href="glossary.html#flight-crew"
+                                            class="hover:underline">Flight crew</a></td>
                                     <td class="px-4 py-3 text-green-600 font-semibold">飞行机组</td>
                                     <td class="px-4 py-3 text-red-500 text-xs">机组人员、驾驶组</td>
                                     <td class="px-4 py-3 text-xs text-gray-400">CCAR-121</td>
                                 </tr>
                                 <tr class="bg-gray-50/50">
-                                    <td class="px-4 py-3 font-mono text-blue-600">Type certificate</td>
+                                    <td class="px-4 py-3 font-mono text-blue-600"><a
+                                            href="glossary.html#type-certificate" class="hover:underline">Type
+                                            certificate</a></td>
                                     <td class="px-4 py-3 text-green-600 font-semibold">型号合格证</td>
                                     <td class="px-4 py-3 text-red-500 text-xs">类型证书、型式证书</td>
                                     <td class="px-4 py-3 text-xs text-gray-400">CCAR-21</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-3 font-mono text-blue-600">Controlled airspace</td>
+                                    <td class="px-4 py-3 font-mono text-blue-600"><a
+                                            href="glossary.html#controlled-airspace" class="hover:underline">Controlled
+                                            airspace</a></td>
                                     <td class="px-4 py-3 text-green-600 font-semibold">管制空域</td>
                                     <td class="px-4 py-3 text-red-500 text-xs">受控空域、控制空间</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400">ICAO Annex 2</td>
+                                    <td class="px-4 py-3 text-xs text-gray-400"><a href="glossary.html#icao-annex"
+                                            class="hover:underline">ICAO Annex</a> 2</td>
                                 </tr>
                                 <tr class="bg-gray-50/50">
-                                    <td class="px-4 py-3 font-mono text-blue-600">Approach procedure</td>
+                                    <td class="px-4 py-3 font-mono text-blue-600"><a
+                                            href="glossary.html#approach-procedure" class="hover:underline">Approach
+                                            procedure</a></td>
                                     <td class="px-4 py-3 text-green-600 font-semibold">进近程序</td>
                                     <td class="px-4 py-3 text-red-500 text-xs">逼近程序、接近程序</td>
                                     <td class="px-4 py-3 text-xs text-gray-400">ICAO Doc 8168</td>
@@ -188,8 +201,8 @@ aviation_terms = {
     "Type certificate": "型号合格证",
     "Controlled airspace": "管制空域",
     "Approach procedure": "进近程序",
-    "MEL": "最低设备清单",
-    "NOTAM": "航行通告"
+    "<a href="glossary.html#mel" class="text-blue-600 hover:underline">MEL</a>": "最低设备清单",
+    "<a href="glossary.html#notam" class="text-blue-600 hover:underline">NOTAM</a>": "航行通告"
 }
 
 # 2. 模拟读取供应商译文

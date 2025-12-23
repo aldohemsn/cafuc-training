@@ -58,6 +58,8 @@
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
                         <a href="framework.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">理论框架</a>
+                        <a href="glossary.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">术语表</a>
                     </div>
                 </div>
             </div>
@@ -123,12 +125,15 @@
             <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6 mb-12">
                 <h3 class="font-bold text-gray-900 mb-2">😫 烧脑时刻</h3>
                 <p class="text-gray-600 mb-4">
-                    你正在翻译飞机维修手册 (AMM) 的前言，遇到这样一个句子：
+                    你正在翻译飞机维修手册 (<a href="glossary.html#amm" class="text-blue-600 hover:underline">AMM</a>)
+                    的前言，遇到这样一个句子：
                 </p>
                 <div class="bg-gray-100 p-4 rounded font-mono text-sm text-gray-700 italic">
                     "The operator shall ensure that, where the aircraft is not operated in accordance with the
-                    provisions of the MEL, any defect is rectified at the earliest opportunity, but in any case not
-                    later than the expiration of the time limits specified in the MEL."
+                    provisions of the <a href="glossary.html#mel" class="text-blue-600 hover:underline">MEL</a>, any
+                    defect is rectified at the earliest opportunity, but in any case not
+                    later than the expiration of the time limits specified in the <a href="glossary.html#mel"
+                        class="text-blue-600 hover:underline">MEL</a>."
                 </div>
                 <p class="text-gray-600 mt-4">
                     从句套从句，逻辑稍微一乱，意思就全反了。
@@ -172,8 +177,8 @@
                         </p>
                         <p class="text-xs text-red-400 mt-2">点评：翻译腔太重，"时限届满" 不够通顺。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 ring-2 ring-green-400">
-                        <h4 class="font-bold text-green-700 mb-2">技术规范版 (Technical)</h4>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-2 border-indigo-300">
+                        <h4 class="font-bold text-indigo-700 mb-2">技术规范版 (Technical)</h4>
                         <p class="text-sm text-gray-800 font-medium">
                             如果飞机未按照 MEL 规定运行，运营人应确保尽早修复任何缺陷，且修复时间不得晚于 MEL 规定的时限。
                         </p>
@@ -241,10 +246,11 @@
                                     <h5 class="font-bold text-gray-900 mb-1">🤖 AI 逻辑拆解</h5>
                                     <ul class="list-disc list-inside text-gray-600 space-y-1">
                                         <li><strong>主语：</strong> The fire detection system (防火系统)</li>
-                                        <li><strong>插入语 (组成)：</strong> which consists of... (由...组成) - <em>译文可拆分或前置</em>
+                                        <li><strong>插入语 (组成)：</strong>which consists of... (由...组成) - <em>译文可拆分或前置</em>
                                         </li>
-                                        <li><strong>谓语/目的：</strong> is designed to detect... and provide...
-                                            (旨在探测...并提供...)</li>
+                                        <li><strong>谓语/目的：</strong>is designed to detect... and provide...
+                                            (旨在探测...并提供...)
+                                        </li>
                                         <li><strong>动作对象：</strong> fire/overheat (火警/过热), visual/aural warnings (声光警告)
                                         </li>
                                     </ul>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>民航术语表 - 翻译技术实战课</title>
+    <script src="assets/js/tailwindcss.js"></script>
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .term-card {
+            transition: all 0.2s ease;
+        }
+
+        .term-card:hover {
+            background-color: #f0fdf4;
+        }
+
+        .term-card:target {
+            background-color: #fef3c7;
+            animation: highlight 2s ease-out;
+        }
+
+        @keyframes highlight {
+            from {
+                background-color: #fde68a;
+            }
+
+            to {
+                background-color: #fef3c7;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+                        <a href="course.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                        <a href="framework.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">理论框架</a>
+                        <a href="glossary.html"
+                            class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">术语表</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <span class="text-green-600 font-semibold tracking-wide uppercase text-sm">Aviation Glossary</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">民航专业术语表</h1>
+                <p class="mt-4 text-xl text-gray-600">本课程涉及的全部民航术语，包含标准定义与通俗解释。</p>
+            </div>
+
+            <!-- 机构与法规类 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span
+                        class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">🏛️</span>
+                    机构与法规类
+                </h2>
+                <div class="space-y-4">
+                    <div id="icao" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-blue-700">ICAO</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">机构</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">International Civil Aviation Organization</p>
+                        <p class="text-gray-800 font-medium mb-2">国际民用航空组织</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>联合国专门机构，负责制定国际民用航空标准和建议措施。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>全球民航的"联合国"，制定各国航空业必须遵守的国际规则。</p>
+                    </div>
+
+                    <div id="faa" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-blue-700">FAA</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">机构</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Federal Aviation Administration</p>
+                        <p class="text-gray-800 font-medium mb-2">美国联邦航空管理局</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>美国交通部下属机构，负责美国民用航空安全监管。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>美国的"民航局"，是全球最具影响力的航空监管机构之一。</p>
+                    </div>
+
+                    <div id="caac" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-blue-700">CAAC</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">机构</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Civil Aviation Administration of China</p>
+                        <p class="text-gray-800 font-medium mb-2">中国民用航空局</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>中国国务院主管全国民航事务的行政机构。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>中国民航业的最高主管部门，负责航空安全、运输管理等。</p>
+                    </div>
+
+                    <div id="easa" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-blue-700">EASA</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">机构</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">European Union Aviation Safety Agency</p>
+                        <p class="text-gray-800 font-medium mb-2">欧盟航空安全局</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>欧盟负责民用航空安全的机构，制定欧洲航空安全法规。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>欧洲的"民航局"，与FAA并列为全球两大航空认证机构。</p>
+                    </div>
+
+                    <div id="ccar" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-blue-700">CCAR</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">法规</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">China Civil Aviation Regulations</p>
+                        <p class="text-gray-800 font-medium mb-2">中国民用航空规章</p>
+                        <p class="text-sm text-gray-600">
+                            <strong>标准定义：</strong>中国民航局发布的规范性文件体系，如CCAR-61（飞行人员执照）、CCAR-121（大型飞机运行）等。
+                        </p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>中国民航业的"法律法规"，类似于美国的14 CFR。</p>
+                    </div>
+
+                    <div id="cfr" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-blue-700">14 CFR / FAR</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">法规</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Title 14 Code of Federal Regulations</p>
+                        <p class="text-gray-800 font-medium mb-2">美国联邦航空规章</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>美国联邦法规第14编，涵盖航空航天的所有规章。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>美国民航业的"法律大全"，中国CCAR体系参照其结构制定。</p>
+                    </div>
+
+                    <div id="icao-annex" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-blue-700">ICAO Annex</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">法规</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Annex to the Convention on International Civil Aviation
+                        </p>
+                        <p class="text-gray-800 font-medium mb-2">《国际民用航空公约》附件</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>ICAO 发布的技术标准和建议措施，共 19
+                            个附件，涵盖人员执照、空中规则、航空气象、无线电通信等。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>全球民航的"技术规范大全"，如 Annex 1
+                            是飞行员执照、Annex 3 是航空气象、Annex 10 是通信程序。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 适航与文档类 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span
+                        class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">📋</span>
+                    适航与文档类
+                </h2>
+                <div class="space-y-4">
+                    <div id="airworthiness" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">Airworthiness</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">适航</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">适航性</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>航空器符合其批准的设计并处于安全运行状态的特性。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机是否"能飞、安全飞"的资质，不适航的飞机不能起飞。</p>
+                    </div>
+
+                    <div id="type-certificate"
+                        class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">Type certificate</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">适航</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">型号合格证</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>由适航当局颁发的证明航空器型号设计符合适航标准的文件。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>一款飞机型号的"出生证"，证明这款飞机的设计是安全可靠的。</p>
+                    </div>
+
+                    <div id="operator" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">Operator</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">运行</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">运营人</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>从事或提议从事航空器运行的个人、组织或企业。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>实际运营飞机的航空公司或机构，注意不要翻译成"操作员"。</p>
+                    </div>
+                    <div id="ad" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">AD</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">适航</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Airworthiness Directive</p>
+                        <p class="text-gray-800 font-medium mb-2">适航指令</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>由适航当局发布的强制性文件，要求运营人对飞机进行检查、修理或改装以消除不安全状态。
+                        </p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>民航局发现飞机有安全隐患后下达的"强制整改通知"，必须按时完成。
+                        </p>
+                    </div>
+
+                    <div id="amoc" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">AMOC</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">适航</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Alternative Means of Compliance</p>
+                        <p class="text-gray-800 font-medium mb-2">替代符合性方法</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>经适航当局批准的、可替代AD中规定措施的其他符合性方法。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>如果AD要求的整改方法不适用，可以申请用其他方法达到同样的安全效果。
+                        </p>
+                    </div>
+
+                    <div id="amm" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">AMM</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">手册</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Aircraft Maintenance Manual</p>
+                        <p class="text-gray-800 font-medium mb-2">飞机维护手册</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>由飞机制造商编写的详细维护程序手册，包含日常维护、检查和修理指南。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机的"使用说明书"，机务人员必须按照手册步骤进行维修。</p>
+                    </div>
+
+                    <div id="srm" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">SRM</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">手册</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Structural Repair Manual</p>
+                        <p class="text-gray-800 font-medium mb-2">结构修理手册</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>规定飞机结构损伤评估和修理方法的技术手册。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机机身、机翼等结构件损坏后的"修复指南"。</p>
+                    </div>
+
+                    <div id="mel" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">MEL</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">清单</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Minimum Equipment List</p>
+                        <p class="text-gray-800 font-medium mb-2">最低设备清单</p>
+                        <p class="text-sm text-gray-600">
+                            <strong>标准定义：</strong>由航空公司根据MMEL制定、经局方批准的文件，列出在特定条件下可以失效或缺失的设备。
+                        </p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>允许飞机带着某些小故障起飞的"豁免清单"，但必须在规定时间内修好。
+                        </p>
+                    </div>
+
+                    <div id="mmel" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-green-700">MMEL</h3>
+                            <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded">清单</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Master Minimum Equipment List</p>
+                        <p class="text-gray-800 font-medium mb-2">主最低设备清单</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>由飞机制造商编制、经适航当局批准的主清单，是各航空公司制定MEL的依据。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>MMEL是"总模板"，各航空公司的MEL不能比它更宽松。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 飞行运行类 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span
+                        class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">✈️</span>
+                    飞行运行类
+                </h2>
+                <div class="space-y-4">
+                    <div id="notam" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">NOTAM</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">通信</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Notice to Air Missions</p>
+                        <p class="text-gray-800 font-medium mb-2">航行通告</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>向飞行人员发布的关于航空设施、服务、程序或危害的通告。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞行员起飞前必看的"公告栏"，包含跑道关闭、禁飞区等临时信息。</p>
+                    </div>
+
+                    <div id="atc" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">ATC</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">管制</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Air Traffic Control</p>
+                        <p class="text-gray-800 font-medium mb-2">空中交通管制</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>通过地面管制员向飞行中的航空器发出指令，确保安全间隔的服务。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机的"交通警察"，指挥飞机起降、航线飞行，防止空中相撞。</p>
+                    </div>
+
+                    <div id="flight-crew" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">Flight crew</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">人员</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">飞行机组</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>由运营人指派在飞行执勤期间内执行航空器飞行操作相关任务的机组成员。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>负责开飞机的人，包括机长、副驾驶等。区别于"客舱机组"（乘务员）。
+                        </p>
+                    </div>
+
+                    <div id="controlled-airspace"
+                        class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">Controlled airspace</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">空域</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">管制空域</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>由空中交通管制机构提供管制服务的划定空域。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>需要和塔台"报备"才能进入的空域，飞机必须听从管制员指挥。</p>
+                    </div>
+
+                    <div id="approach-procedure"
+                        class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">Approach procedure</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">程序</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">进近程序</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>以仪表飞行规则进行的一系列预定机动飞行，引导航空器从进场起始点进入可目视着陆位置。
+                        </p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机降落前的标准"降落路线"，告诉飞行员怎么一步步接近跑道。</p>
+                    </div>
+
+                    <div id="flight-level" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">Flight Level</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">高度</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Flight Level</p>
+                        <p class="text-gray-800 font-medium mb-2">飞行高度层</p>
+                        <p class="text-sm text-gray-600">
+                            <strong>标准定义：</strong>以标准气压1013.25hPa为基准的等压面高度，以百英尺为单位（如FL350=35000英尺）。
+                        </p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>高空飞行时使用的统一"高度语言"，FL350≈10668米高空。
+                        </p>
+                    </div>
+
+                    <div id="rvsm" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">RVSM</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">间隔</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Reduced Vertical Separation Minimum</p>
+                        <p class="text-gray-800 font-medium mb-2">缩小垂直间隔</p>
+                        <p class="text-sm text-gray-600">
+                            <strong>标准定义：</strong>在FL290至FL410之间，将航空器垂直间隔从2000英尺缩小至1000英尺的运行标准。
+                        </p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>让高空多容纳一倍的航班，但飞机必须配备高精度高度设备。</p>
+                    </div>
+
+                    <div id="sid" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">SID</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">程序</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Standard Instrument Departure</p>
+                        <p class="text-gray-800 font-medium mb-2">标准仪表离场程序</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>经批准的仪表飞行规则离场程序，引导航空器从跑道飞往航路。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机起飞后按照预设"轨道"爬升进入航路的标准路线。</p>
+                    </div>
+
+                    <div id="star" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">STAR</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">程序</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Standard Terminal Arrival Route</p>
+                        <p class="text-gray-800 font-medium mb-2">标准终端进场航路</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>从航路上的某点到进近起始点的标准化飞行程序。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机从航路脱离、准备降落时遵循的标准下降路线。</p>
+                    </div>
+
+                    <div id="ils" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">ILS</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">导航</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Instrument Landing System</p>
+                        <p class="text-gray-800 font-medium mb-2">仪表着陆系统</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>提供航向道和下滑道引导的精密进近系统，帮助飞机在低能见度条件下着陆。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>大雾天帮飞机"盲降"的导航系统，给飞行员指示正确的下降路径。</p>
+                    </div>
+
+                    <div id="vor" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">VOR</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">导航</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">VHF Omnidirectional Range</p>
+                        <p class="text-gray-800 font-medium mb-2">甚高频全向信标</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>地面发射VHF信号的导航台，为飞机提供相对于信标的方位信息。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>航路上的"灯塔"，飞机通过它确定自己的位置和航向。</p>
+                    </div>
+
+                    <div id="crm" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">CRM</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">安全</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Crew Resource Management</p>
+                        <p class="text-gray-800 font-medium mb-2">机组资源管理</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>优化机组成员之间沟通、领导力和决策的培训理念和实践。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>教机组人员如何有效协作、沟通，避免因"人为因素"导致事故。</p>
+                    </div>
+
+                    <div id="pa" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">PA</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">服务</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Passenger Announcement / Public Address</p>
+                        <p class="text-gray-800 font-medium mb-2">机上广播 / 客舱广播</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>机组通过客舱广播系统向乘客发布的信息。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>"女士们先生们，欢迎乘坐..."这种机上广播就是PA。</p>
+                    </div>
+
+                    <div id="pic" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-purple-700">PIC</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded">人员</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Pilot-in-Command</p>
+                        <p class="text-gray-800 font-medium mb-2">机长</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>对航空器运行及安全负有最终责任和权力的飞行员。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机上"说了算"的人，对整架飞机和全体乘客负责。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ATC 陆空通话术语 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span
+                        class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">📻</span>
+                    陆空通话术语 (ATC Phraseology)
+                </h2>
+                <div class="space-y-4">
+                    <div id="cleared-for-takeoff"
+                        class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-indigo-700">Cleared for takeoff</h3>
+                            <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded">指令</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">可以起飞</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>管制员发出的允许航空器开始起飞滑跑的许可指令。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>塔台说"可以飞了"，飞机这时候才能加速起飞。这是最关键的起飞许可用语。
+                        </p>
+                    </div>
+
+                    <div id="cleared-for-approach"
+                        class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-indigo-700">Cleared for approach</h3>
+                            <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded">指令</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">可以进近</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>管制员允许航空器按照指定程序进入进近阶段的许可指令。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机快到目的地时，塔台说"可以准备降落了"，飞机开始下降准备着陆。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 气象类 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span
+                        class="bg-cyan-100 text-cyan-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">🌤️</span>
+                    航空气象类
+                </h2>
+                <div class="space-y-4">
+                    <div id="metar" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-cyan-700">METAR</h3>
+                            <span class="text-xs bg-cyan-50 text-cyan-600 px-2 py-1 rounded">天气</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Meteorological Aerodrome Report</p>
+                        <p class="text-gray-800 font-medium mb-2">航空例行天气报告</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>机场定时发布的标准化天气观测报告，包含风向风速、能见度、云况等。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>机场每半小时发布一次的"天气快报"，飞行员据此判断能否起降。</p>
+                    </div>
+
+                    <div id="taf" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-cyan-700">TAF</h3>
+                            <span class="text-xs bg-cyan-50 text-cyan-600 px-2 py-1 rounded">天气</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Terminal Aerodrome Forecast</p>
+                        <p class="text-gray-800 font-medium mb-2">机场天气预报</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>对机场未来24-30小时天气状况的预测报告。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>机场的"天气预报"，告诉航班几小时后天气会怎样变化。</p>
+                    </div>
+
+                    <div id="cavok" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-cyan-700">CAVOK</h3>
+                            <span class="text-xs bg-cyan-50 text-cyan-600 px-2 py-1 rounded">天气</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Ceiling And Visibility OK</p>
+                        <p class="text-gray-800 font-medium mb-2">云高及能见度良好</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>能见度≥10公里，无对飞行有影响的云层，无重要天气现象。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>天气报告里的"万里无云"，最理想的飞行天气。</p>
+                    </div>
+
+                    <div id="cb" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-cyan-700">CB</h3>
+                            <span class="text-xs bg-cyan-50 text-cyan-600 px-2 py-1 rounded">云况</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Cumulonimbus</p>
+                        <p class="text-gray-800 font-medium mb-2">积雨云</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>一种发展强烈的垂直云系，常伴有雷暴、冰雹、强风切变。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>飞机最怕的"雷雨云"，必须绕飞，否则可能遭遇强烈颠簸甚至冰雹。</p>
+                    </div>
+
+                    <div id="ts" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-cyan-700">TS</h3>
+                            <span class="text-xs bg-cyan-50 text-cyan-600 px-2 py-1 rounded">天气</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Thunderstorm</p>
+                        <p class="text-gray-800 font-medium mb-2">雷暴</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>伴有闪电、雷鸣的强对流天气现象。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>打雷闪电的恶劣天气，航班经常因此延误或绕飞。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 翻译技术类 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span
+                        class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">💻</span>
+                    翻译技术类
+                </h2>
+                <div class="space-y-4">
+                    <div id="pemt" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-amber-700">PEMT</h3>
+                            <span class="text-xs bg-amber-50 text-amber-600 px-2 py-1 rounded">翻译</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Post-Editing of Machine Translation</p>
+                        <p class="text-gray-800 font-medium mb-2">机器翻译译后编辑</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>对机器翻译输出进行人工修正以达到可接受质量的过程。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>先让机器翻译"打草稿"，人类再修改润色的工作模式。</p>
+                    </div>
+
+                    <div id="mtqe" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-amber-700">MTQE</h3>
+                            <span class="text-xs bg-amber-50 text-amber-600 px-2 py-1 rounded">翻译</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Machine Translation Quality Estimation</p>
+                        <p class="text-gray-800 font-medium mb-2">机器翻译质量评估</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>自动预测机器翻译输出质量的技术，无需参考译文。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>AI自动给机器翻译"打分"，帮助判断哪些句子需要重点人工修改。</p>
+                    </div>
+
+                    <div id="tmx" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-amber-700">TMX</h3>
+                            <span class="text-xs bg-amber-50 text-amber-600 px-2 py-1 rounded">格式</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Translation Memory eXchange</p>
+                        <p class="text-gray-800 font-medium mb-2">翻译记忆交换格式</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>基于XML的开放标准，用于不同CAT工具间交换翻译记忆数据。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>让不同翻译软件能互相"读取"翻译记忆库的通用格式。</p>
+                    </div>
+
+                    <div id="tbx" class="term-card bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold text-amber-700">TBX</h3>
+                            <span class="text-xs bg-amber-50 text-amber-600 px-2 py-1 rounded">格式</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">TermBase eXchange</p>
+                        <p class="text-gray-800 font-medium mb-2">术语库交换格式</p>
+                        <p class="text-sm text-gray-600"><strong>标准定义：</strong>基于XML的开放标准，用于交换术语数据。</p>
+                        <p class="text-sm text-green-700 mt-1"><strong>通俗解释：</strong>让不同术语管理工具能互相"读取"术语库的通用格式。</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="text-center text-sm text-gray-400 border-t border-gray-200 pt-8">
+                <p>本术语表参考 ICAO、FAA、CAAC 官方文档编制 | 最后更新：2025年12月</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Aldo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

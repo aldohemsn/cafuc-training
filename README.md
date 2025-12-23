@@ -16,10 +16,10 @@
 
 ### 2. 民航特色深度植入 (Aviation-Specific)
 全站案例均取材于真实民航场景，包括：
-- **适航管理**：AD指令、AMOC、CAD
-- **飞行运行**：NOTAM、ATC 通话、METAR/TAF
-- **机务维修**：AMM 手册排故逻辑
-- **服务营销**：机上广播 (PA)、品牌宣传
+- **适航管理**：<a href="glossary.html#ad" class="text-blue-600 hover:underline">AD</a>指令、<a href="glossary.html#amoc" class="text-blue-600 hover:underline">AMOC</a>、CAD
+- **飞行运行**：<a href="glossary.html#notam" class="text-blue-600 hover:underline">NOTAM</a>、<a href="glossary.html#atc" class="text-blue-600 hover:underline">ATC</a> 通话、<a href="glossary.html#metar" class="text-blue-600 hover:underline">METAR</a>/<a href="glossary.html#taf" class="text-blue-600 hover:underline">TAF</a>
+- **机务维修**：<a href="glossary.html#amm" class="text-blue-600 hover:underline">AMM</a> 手册排故逻辑
+- **服务营销**：机上广播 (<a href="glossary.html#pa" class="text-blue-600 hover:underline">PA</a>)、品牌宣传
 
 ## 📚 课程结构
 

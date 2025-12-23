@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>讲师介绍 - 数智化笔译能力构建</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="assets/js/tailwindcss.js"></script>
-    
+
     <!-- Fonts -->
     <link rel="stylesheet" href="assets/css/fonts.css">
 
@@ -17,6 +18,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
 
     <!-- Navbar -->
@@ -28,14 +30,21 @@
                         <a href="index.html" class="font-bold text-xl text-blue-900">Translation & AI</a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             首页
                         </a>
-                        <a href="lecturer.html" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="lecturer.html"
+                            class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             讲师介绍
                         </a>
-                        <a href="course.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="course.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             课程详情
+                        </a>
+                        <a href="glossary.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            术语表
                         </a>
                     </div>
                 </div>
@@ -45,14 +54,15 @@
 
     <main class="flex-grow py-12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <!-- Profile Header -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12">
                 <div class="h-32 bg-gradient-to-r from-blue-800 to-slate-900"></div>
                 <div class="px-8 pb-8 flex flex-col sm:flex-row items-start">
                     <div class="-mt-16 mb-4 sm:mb-0 sm:mr-6">
                         <div class="h-32 w-32 rounded-full bg-white p-1 shadow-lg">
-                            <div class="h-full w-full rounded-full bg-gray-200 flex items-center justify-center text-gray-400 text-4xl">
+                            <div
+                                class="h-full w-full rounded-full bg-gray-200 flex items-center justify-center text-gray-400 text-4xl">
                                 👨‍🏫
                             </div>
                             <!-- <img src="..." alt="Lecturer" class="rounded-full"> -->
@@ -60,9 +70,10 @@
                     </div>
                     <div class="pt-4">
                         <h1 class="text-3xl font-bold text-gray-900">何晓鸿 (Aldo)</h1>
-                        <p class="text-lg text-gray-600">语言桥公司高级审校专家 | 会写代码的翻译家 | Python / Regex / AI</p>
+                        <p class="text-lg text-gray-600">语言桥公司高级审校专家 | 会写代码的译者 | Python / Regex / AI</p>
                         <div class="mt-4 text-center">
-                            <img src="assets/img/IMG_9103.JPG" alt="专家微信公众号二维码" class="mx-auto h-32 w-32 rounded-lg shadow-md">
+                            <img src="assets/img/IMG_9103.JPG" alt="专家微信公众号二维码"
+                                class="mx-auto h-32 w-32 rounded-lg shadow-md">
                             <p class="text-sm text-gray-500 mt-2">扫码关注专家微信公众号</p>
                         </div>
                     </div>
@@ -71,7 +82,7 @@
 
             <!-- Experience / Projects -->
             <div class="space-y-12">
-                
+
                 <!-- Project 1 -->
                 <section>
                     <div class="flex items-center mb-6">
@@ -84,9 +95,11 @@
                                 针对《纽约时报》中文网的非结构化新闻数据，构建了一套全流程的自动化采集与检索系统。
                                 技术栈涵盖 <strong>Python 爬虫、JSON 结构化清洗、Solr 索引</strong> 以及 <strong>PHP/JS 前端检索</strong>。
                             </p>
-                            
-                            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200 font-mono text-sm overflow-x-auto">
-                                <h4 class="text-slate-500 mb-2 font-bold uppercase tracking-wider">Data Structure Preview</h4>
+
+                            <div
+                                class="bg-slate-50 rounded-lg p-6 border border-slate-200 font-mono text-sm overflow-x-auto">
+                                <h4 class="text-slate-500 mb-2 font-bold uppercase tracking-wider">Data Structure
+                                    Preview</h4>
                                 <pre class="text-slate-700 whitespace-pre-wrap">
 {
     "metadata": [
@@ -145,14 +158,24 @@
                             </ul>
                             <p>
                                 <strong>核心特性：</strong>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 mr-2">Single-View UI (单屏可视化)</span>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 mr-2">Cross-Highlighting (因果高亮)</span>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Privacy Focused (隐私安全)</span>
+                                <span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 mr-2">Single-View
+                                    UI (单屏可视化)</span>
+                                <span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 mr-2">Cross-Highlighting
+                                    (因果高亮)</span>
+                                <span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Privacy
+                                    Focused (隐私安全)</span>
                             </p>
                         </div>
-                        <a href="https://github.com/aldohemsn/persona-translation-analyzer" target="_blank" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            <svg class="mr-2 -ml-1 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        <a href="https://github.com/aldohemsn/persona-translation-analyzer" target="_blank"
+                            class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <svg class="mr-2 -ml-1 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                    clip-rule="evenodd" />
                             </svg>
                             View on GitHub
                         </a>
@@ -170,4 +193,5 @@
     </footer>
 
 </body>
+
 </html>
