@@ -375,21 +375,70 @@
                         AI 正在重塑翻译行业的价值链：翻译流程的"中间地带"正在被挤压，价值正在向两极汇聚。
                     </p>
 
-                    <div class="flex justify-center mb-8">
-                        <pre class="mermaid">
-flowchart LR
-    subgraph HIGH["高价值区"]
-        A["分析师<br/>专业知识<br/>领域理解"]
-        S["风格师<br/>创造性表达<br/>文化适应"]
-    end
-    subgraph LOW["被挤压区"]
-        B["建构师<br/>常规结构转换"]
-    end
-    A --> B --> S
-    style A fill:#06b6d4,stroke:#0891b2,color:#fff
-    style S fill:#9333ea,stroke:#7c3aed,color:#fff
-    style B fill:#f59e0b,stroke:#d97706,color:#fff
-                        </pre>
+                    <!-- SVG Diagram: Skill Polarization -->
+                    <div class="flex justify-center mb-10 overflow-x-auto">
+                        <svg viewBox="0 0 800 280" class="w-full max-w-3xl">
+                            <!-- Definitions for markers -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5"
+                                    orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af" />
+                                </marker>
+                            </defs>
+
+                            <!-- Group: Analyst (High Value) -->
+                            <g transform="translate(50, 60)">
+                                <rect x="0" y="0" width="180" height="120" rx="10" fill="#ecfeff" stroke="#06b6d4"
+                                    stroke-width="2" />
+                                <text x="90" y="30" text-anchor="middle" font-weight="bold" fill="#0e7490"
+                                    font-size="16">🔍 分析师</text>
+                                <line x1="20" y1="45" x2="160" y2="45" stroke="#06b6d4" stroke-width="1"
+                                    opacity="0.5" />
+                                <text x="90" y="70" text-anchor="middle" fill="#155e75" font-size="14">专业知识</text>
+                                <text x="90" y="95" text-anchor="middle" fill="#155e75" font-size="14">领域理解</text>
+                                <!-- Label -->
+                                <text x="90" y="-15" text-anchor="middle" font-weight="bold" fill="#06b6d4"
+                                    font-size="14">⚡ 高价值区</text>
+                            </g>
+
+                            <!-- Arrow 1 -->
+                            <line x1="230" y1="120" x2="290" y2="120" stroke="#9ca3af" stroke-width="2"
+                                marker-end="url(#arrowhead)" />
+
+                            <!-- Group: Architect (Squeezed) -->
+                            <g transform="translate(300, 60)">
+                                <rect x="0" y="0" width="180" height="120" rx="10" fill="#fffbeb" stroke="#f59e0b"
+                                    stroke-width="2" stroke-dasharray="5,5" />
+                                <text x="90" y="30" text-anchor="middle" font-weight="bold" fill="#b45309"
+                                    font-size="16">🏗️ 建构师</text>
+                                <line x1="20" y1="45" x2="160" y2="45" stroke="#f59e0b" stroke-width="1"
+                                    opacity="0.5" />
+                                <text x="90" y="70" text-anchor="middle" fill="#92400e" font-size="14">常规结构转换</text>
+                                <text x="90" y="95" text-anchor="middle" fill="#92400e" font-size="12">(自动化替代中)</text>
+                                <!-- Label -->
+                                <text x="90" y="-15" text-anchor="middle" font-weight="bold" fill="#f59e0b"
+                                    font-size="14">⚠️ 被挤压区</text>
+                            </g>
+
+                            <!-- Arrow 2 -->
+                            <line x1="480" y1="120" x2="540" y2="120" stroke="#9ca3af" stroke-width="2"
+                                marker-end="url(#arrowhead)" />
+
+                            <!-- Group: Stylist (High Value) -->
+                            <g transform="translate(550, 60)">
+                                <rect x="0" y="0" width="180" height="120" rx="10" fill="#faf5ff" stroke="#9333ea"
+                                    stroke-width="2" />
+                                <text x="90" y="30" text-anchor="middle" font-weight="bold" fill="#7e22ce"
+                                    font-size="16">🎨 风格师</text>
+                                <line x1="20" y1="45" x2="160" y2="45" stroke="#9333ea" stroke-width="1"
+                                    opacity="0.5" />
+                                <text x="90" y="70" text-anchor="middle" fill="#6b21a8" font-size="14">创造性表达</text>
+                                <text x="90" y="95" text-anchor="middle" fill="#6b21a8" font-size="14">文化适应</text>
+                                <!-- Label -->
+                                <text x="90" y="-15" text-anchor="middle" font-weight="bold" fill="#9333ea"
+                                    font-size="14">⚡ 高价值区</text>
+                            </g>
+                        </svg>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
