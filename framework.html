@@ -55,7 +55,8 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                        <a href="index.html" class="font-bold text-xl text-purple-900 font-mono">&lt;Trans_Tech
+                            /&gt;</a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <a href="index.html"
@@ -73,10 +74,6 @@
                         <a href="lecturer.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             讲师介绍
-                        </a>
-                        <a href="glossary.html"
-                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            术语表
                         </a>
                     </div>
                 </div>
@@ -201,22 +198,21 @@
 
                             <div class="bg-gray-50 rounded-lg p-4">
                                 <h4 class="font-bold text-gray-800 mb-3 flex items-center">
-                                    <span class="text-cyan-500 mr-2">📌</span> 民航实战案例：适航指令 (<a href="glossary.html#ad"
-                                        class="text-cyan-600 hover:underline">AD</a>)
+                                    <span class="text-cyan-500 mr-2">📌</span> 实战案例：国际公约条款
                                 </h4>
                                 <div class="text-sm">
                                     <p class="text-gray-600 mb-2">
                                         原文：<code
-                                            class="bg-white px-2 py-1 rounded border">Compliance is mandatory unless <strong>alternative means of compliance (<a href="glossary.html#amoc" class="text-cyan-600 hover:underline">AMOC</a>)</strong> are approved.</code>
+                                            class="bg-white px-2 py-1 rounded border">Each Party shall take measures to achieve <strong>carbon neutrality</strong> by 2050, unless <strong>common but differentiated responsibilities (CBDR)</strong> apply.</code>
                                     </p>
                                     <p class="text-red-600 mb-2">
-                                        ❌ 机器翻译："遵守是强制性的，除非替代的遵守方式被批准。"
-                                        <span class="text-xs text-gray-500">（字面直译，未识别 AMOC 术语，语序僵硬）</span>
+                                        ❌ 机器翻译："每一方应采取措施实现碳中和到2050年，除非共同但有区别的责任适用。"
+                                        <span class="text-xs text-gray-500">（字面直译，未识别 CBDR 这一气候政策核心术语，语序僵硬）</span>
                                     </p>
                                     <p class="text-green-600">
-                                        ✅ 分析师处理："除非获得<strong>替代符合性方法 (AMOC)</strong> 的批准，否则必须执行本指令。"
-                                        <br><span class="text-xs text-gray-500">（基于法规知识精准解码 "Compliance" 为"执行指令"，并正确使用
-                                            AMOC 术语）</span>
+                                        ✅
+                                        分析师处理："各缔约方应采取措施于2050年前实现<strong>碳中和</strong>，但适用<strong>共同但有区别的责任（CBDR）</strong>原则的情形除外。"
+                                        <br><span class="text-xs text-gray-500">（精确识别联合国气候公约核心术语，调整语序符合中文法律文书习惯）</span>
                                     </p>
                                 </div>
                             </div>
@@ -269,24 +265,23 @@
 
                             <div class="bg-gray-50 rounded-lg p-4">
                                 <h4 class="font-bold text-gray-800 mb-3 flex items-center">
-                                    <span class="text-amber-500 mr-2">📌</span> 民航实战案例：排故程序 (<a href="glossary.html#amm"
-                                        class="text-amber-600 hover:underline">AMM</a>)
+                                    <span class="text-amber-500 mr-2">📌</span> 实战案例：学术论文长难句
                                 </h4>
                                 <div class="text-sm">
                                     <p class="text-gray-600 mb-2">
-                                        原文："If the light does not illuminate when the test switch is pressed, verify
-                                        that the circuit breaker is closed and, if it is closed, replace the bulb."
+                                        原文："The study, which was conducted over a period of five years and involved
+                                        participants from 12 countries, found that, contrary to earlier assumptions, the
+                                        correlation between income and subjective well-being diminishes significantly
+                                        above a certain threshold."
                                     </p>
                                     <p class="text-red-600 mb-2">
-                                        ❌ 机器翻译："如果灯不亮当测试开关被按下，验证断路器是闭合的，并且如果它是闭合的，更换灯泡。"
-                                        <span class="text-xs text-gray-500">（逻辑嵌套混乱，不符合中文维修工单习惯）</span>
+                                        ❌ 机器翻译："这项研究，它是在五年期间进行的并涉及来自12个国家的参与者，发现，与早期假设相反，收入和主观幸福感之间的相关性在一定阈值以上显著减少。"
+                                        <span class="text-xs text-gray-500">（插入语处理拙劣，定语从句冗余，句子冗长难读）</span>
                                     </p>
                                     <div class="text-green-600">
                                         ✅ 建构师处理：<br>
-                                        "按压测试开关，如果指示灯不亮：<br>
-                                        1. 检查断路器是否闭合；<br>
-                                        2. 若已闭合，则更换灯泡。"
-                                        <br><span class="text-xs text-gray-500">（重构为符合逻辑的步骤列表，符合工程文档规范）</span>
+                                        "本研究历时五年，涵盖12个国家的参与者。研究发现：与早期假设相悖，收入与主观幸福感之间的相关性在超越特定阈值后会显著下降。"
+                                        <br><span class="text-xs text-gray-500">（拆分为两句，主从分明，符合中文学术论文简洁规范）</span>
                                     </div>
                                 </div>
                             </div>
@@ -335,20 +330,19 @@
 
                             <div class="bg-gray-50 rounded-lg p-4 mt-6">
                                 <h4 class="font-bold text-gray-800 mb-3 flex items-center">
-                                    <span class="text-purple-500 mr-2">📌</span> 民航实战案例：机上广播 (<a href="glossary.html#pa"
-                                        class="text-purple-600 hover:underline">PA</a>)
+                                    <span class="text-purple-500 mr-2">📌</span> 实战案例：品牌营销文案
                                 </h4>
                                 <div class="text-sm">
                                     <p class="text-gray-600 mb-2">
-                                        原文："We hope you enjoy your flight."
+                                        原文："Engineered for performance. Designed for life."
                                     </p>
                                     <p class="text-red-600 mb-2">
-                                        ❌ 机器翻译："我们希望你享受你的飞行。"
-                                        <span class="text-xs text-gray-500">（典型的 Translationese，生硬、缺乏温度）</span>
+                                        ❌ 机器翻译："为性能而设计。为生活而设计。"
+                                        <span class="text-xs text-gray-500">（典型的 Translationese，机械重复，毫无品牌感染力）</span>
                                     </p>
                                     <p class="text-green-600">
-                                        ✅ 风格师处理："愿您度过一段愉快的空中旅程。"
-                                        <br><span class="text-xs text-gray-500">（符合服务场景的礼貌语体，更有亲和力）</span>
+                                        ✅ 风格师处理："驾驭性能，品味人生。"
+                                        <br><span class="text-xs text-gray-500">（四字格对仗，富有韵律感，传达高端品牌调性）</span>
                                     </p>
                                 </div>
                             </div>
@@ -540,9 +534,9 @@
         </div>
     </main>
 
-    <footer class="bg-gray-50 border-t border-gray-200 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-            <p>&copy; 2025 Aldo. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2026 Aldo. Designed for BISU Advanced Translation Program.</p>
         </div>
     </footer>
 
