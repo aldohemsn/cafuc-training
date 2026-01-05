@@ -12,10 +12,10 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="assets/css/fonts.css">
 
-    <!-- Mermaid -->
-    <script src="assets/js/mermaid-b92f6f74.js"></script>
+    <!-- Mermaid from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
-        mermaid.initialize({ startOnLoad: true, theme: 'base' });
+        mermaid.initialize({ startOnLoad: true, theme: 'base', securityLevel: 'loose' });
     </script>
 
     <style>
@@ -376,23 +376,20 @@
                     </p>
 
                     <div class="flex justify-center mb-8">
-                        <div class="mermaid">
-                            flowchart LR
-                            subgraph HIGH["高价值区"]
-                            A["🔍 分析师<br />专业知识<br />领域理解"]
-                            S["🎨 风格师<br />创造性表达<br />文化适应"]
-                            end
-
-                            subgraph LOW["被挤压区"]
-                            B["🏗️ 建构师<br />常规结构转换"]
-                            end
-
-                            A --> B --> S
-
-                            style A fill:#06b6d4,stroke:#0891b2,color:#fff
-                            style S fill:#9333ea,stroke:#7c3aed,color:#fff
-                            style B fill:#f59e0b,stroke:#d97706,color:#fff
-                        </div>
+                        <pre class="mermaid">
+flowchart LR
+    subgraph HIGH["高价值区"]
+        A["分析师<br/>专业知识<br/>领域理解"]
+        S["风格师<br/>创造性表达<br/>文化适应"]
+    end
+    subgraph LOW["被挤压区"]
+        B["建构师<br/>常规结构转换"]
+    end
+    A --> B --> S
+    style A fill:#06b6d4,stroke:#0891b2,color:#fff
+    style S fill:#9333ea,stroke:#7c3aed,color:#fff
+    style B fill:#f59e0b,stroke:#d97706,color:#fff
+                        </pre>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
