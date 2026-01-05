@@ -3,19 +3,19 @@
 ## 已完成 ✅
 
 ### 1. 核心页面
-- `index_bisu.html` - 北二外专用首页
-- `course_bisu.html` - 课程详情页
+- `index.html` - 北二外专用首页
+- `course.html` - 课程详情页
 
 ### 2. 教程页面 (全量替换)
-- `tutorial_search_bisu.html` - 术语搜索教程
+- `tutorial_search.html` - 术语搜索教程
   - ✅ 民航案例 → 通用案例 (UN/WHO/ESG)
-- `tutorial_ai_bisu.html` - AI 辅助翻译
+- `tutorial_ai.html` - AI 辅助翻译
   - ✅ 航空法规 → 法律/学术长难句
   - ✅ 角色预设 → 法律专家/市场文案
-- `tutorial_regex_bisu.html` - 文本清洗
+- `tutorial_regex.html` - 文本清洗
   - ✅ 航空日志日期 → 通用日期格式
   - ✅ 尾号提取 → DOI/ISBN 提取
-- `tutorial_qa_bisu.html` - 智能质检
+- `tutorial_qa.html` - 智能质检
   - ✅ 航空术语库 → 联合国/可持续发展术语库
 
 ---
@@ -24,8 +24,8 @@
 
 | 页面 | 链接状态 | 内容状态 |
 |------|----------|----------|
-| **index_bisu.html** | ✅ 已更新指向 _bisu 页面 | ✅ 北二外主题 |
-| **course_bisu.html** | ✅ 已更新指向 _bisu 页面 | ✅ 北二外大纲 |
+| **index.html** | ✅ 已更新指向  页面 | ✅ 北二外主题 |
+| **course.html** | ✅ 已更新指向  页面 | ✅ 北二外大纲 |
 | **核心教程** | ✅ 内部导航互联 | ✅ 去除所有民航引用 |
 
 ---
@@ -59,7 +59,7 @@
 ## 注意事项
 
 - ✅ 保持CAFUC原始课件不变
-- ✅ 所有BISU文件使用 `_bisu` 后缀
+- ✅ 所有BISU文件使用 `` 后缀
 - ✅ 移除对 `glossary.html`（民航术语表）的所有引用
 - ✅ 更新footer为BISU项目信息
 - ✅ 导航链接指向BISU版本页面

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>翻译质量检测 - 翻译技术实战课</title>
+    <title>智能翻译质量检测 - 数智化笔译与语料库建设</title>
 
     <!-- Tailwind CSS -->
     <script src="assets/js/tailwindcss.js"></script>
@@ -12,11 +12,10 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="assets/css/fonts.css">
 
-    <!-- Prism for Syntax Highlighting -->
-    <link href="assets/css/prism.css" rel="stylesheet" />
-    <script src="assets/js/prism.js"></script>
-    <script src="assets/js/prism-python.min.js"></script>
-    <script src="assets/js/prism-bash.min.js"></script>
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
 
     <style>
         body {
@@ -33,17 +32,14 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="font-bold text-xl text-blue-900 font-mono">&lt;Trans_Tech /&gt;</a>
+                        <a href="index.html" class="font-bold text-xl text-purple-900 font-mono">&lt;Trans_Tech
+                            /&gt;</a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <a href="index.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
                         <a href="course.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
-                        <a href="framework.html"
-                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">理论框架</a>
-                        <a href="glossary.html"
-                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">术语表</a>
                     </div>
                 </div>
             </div>
@@ -53,224 +49,154 @@
     <main class="flex-grow py-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Breadcrumb -->
-            <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                    <li class="inline-flex items-center"><a href="roadmap.html" class="hover:text-blue-600">实战演练场</a>
-                    </li>
-                    <li><span class="mx-2">/</span></li>
-                    <li aria-current="page"><span class="text-gray-800 font-semibold">Stage 4: 智能质检</span></li>
-                </ol>
-            </nav>
-
             <div class="flex items-center mb-8">
-                <div class="bg-orange-100 text-orange-700 font-bold px-3 py-1 rounded text-sm mr-4">SCENARIO #4</div>
-                <h1 class="text-3xl font-extrabold text-gray-900">火眼金睛：基于代码的智能质检</h1>
+                <div class="bg-orange-100 text-orange-700 font-bold px-3 py-1 rounded text-sm mr-4">模块 #5</div>
+                <h1 class="text-3xl font-extrabold text-gray-900">智能质检：为译文加上"安全锁"</h1>
             </div>
 
-            <!-- Context -->
-            <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6 mb-12">
-                <h3 class="font-bold text-gray-900 mb-2">🚨 审校痛点</h3>
-                <p class="text-gray-600 mb-4">
-                    外部供应商交付了 50 页技术文档。人工肉眼检查格式错误（如中英文间距、标点混用）不仅低效，而且极易漏网。
-                    <br>作为数智化译员，我们拒绝使用笨重的办公软件，而是用<strong>代码和规则</strong>来从底层“清洗”和“质检”文本。
+            <!-- Intro -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-12 border border-gray-100">
+                <p class="text-gray-600">
+                    在大型翻译项目中，<strong>术语一致性 (Consistency)</strong> 是质量控制的核心。
+                    传统的肉眼检查容易疲劳且易出错。本模块将演示如何利用简单的 Python 脚本，打造一个不知疲倦的"术语哨兵"，
+                    确保所有的关键概念（如联合国术语、法律专有名词）在数万字的文稿中保持绝对统一。
                 </p>
             </div>
 
-            <!-- Strategy 1: Regex & Sublime/Bash -->
+            <!-- Terminology Table -->
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 A：正则排雷 (Regex in Sublime Text / Bash)</h2>
-                <p class="text-gray-600 mb-4">
-                    利用正则表达式 (Regular Expressions) 进行高精度的“模式匹配”，瞬间发现排版硬伤。这些操作可以在 Sublime Text 中完成，也可以直接在 Linux 终端用
-                    <code>grep</code> 扫描。
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">🎯 核心术语表 (示例)</h2>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    英文术语 (Source)</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    标准译文 (Target)</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    来源/依据</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sustainable
+                                    Development</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">可持续发展</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">UN / 联合国</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Due Diligence
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">尽职调查</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Legal / 法律</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Artificial
+                                    Intelligence</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">人工智能 (非"AI")</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Style Guide</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-gray-500 mt-2 text-center">
+                    *注：在某些正式公文中，要求将 Artificial Intelligence 完整译为"人工智能"，而不能简写为 AI。
                 </p>
-
-                <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-700 mb-6">
-                    <div class="flex items-center px-4 py-2 bg-gray-800 border-b border-gray-700">
-                        <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
-                        <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
-                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-                        <span class="ml-4 text-xs text-gray-400 font-mono">bash — grep check</span>
-                    </div>
-                    <div class="p-6 overflow-x-auto">
-                        <pre><code class="language-bash"># 1. 查找所有“中文字符”与“英文字母/数字”直接相连（缺少空格）的地方
-grep -n -P "[\u4e00-\u9fa5][a-zA-Z0-9]|[a-zA-Z0-9][\u4e00-\u9fa5]" translation.txt
-
-# 2. 查找中文里误用的英文标点（如中文句子里的英文逗号）
-grep -n -P "[\u4e00-\u9fa5],|[\u4e00-\u9fa5]\." translation.txt
-
-# 3. 查找数字后面没有单位，或者单位格式错误的行
-# (示例：匹配数字后紧跟非空格字符的情况)
-grep -n -P "\d+(?![\s\.\,])" translation.txt</code></pre>
-                    </div>
-                </div>
-                <p class="text-sm text-gray-500 italic">注：以上正则通式同样适用于 Python 脚本或 Sublime Text 的查找栏（Ctrl+F > 开启 Regex
-                    模式）。</p>
             </section>
 
-            <!-- Strategy 2: Python Scripting -->
+            <!-- Python Script Demo -->
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 B：Python 自动化术语哨兵</h2>
-                <p class="text-gray-600 mb-4">编写一个轻量级的 Python 脚本，加载民航术语库，自动扫描供应商译文是否遵守了术语规范。</p>
-
-                <!-- Aviation Terminology Table -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
-                        <span class="text-xl mr-2">✈️</span>
-                        民航高频术语规范对照表
-                    </h3>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-4 py-2 text-left font-medium text-gray-600">英文术语</th>
-                                    <th class="px-4 py-2 text-left font-medium text-gray-600">规范译法</th>
-                                    <th class="px-4 py-2 text-left font-medium text-gray-600">常见错误</th>
-                                    <th class="px-4 py-2 text-left font-medium text-gray-600">来源</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-100">
-                                <tr>
-                                    <td class="px-4 py-3 font-mono text-blue-600"><a href="glossary.html#airworthiness"
-                                            class="hover:underline">Airworthiness</a></td>
-                                    <td class="px-4 py-3 text-green-600 font-semibold">适航性</td>
-                                    <td class="px-4 py-3 text-red-500 text-xs">飞行适航、航空值得</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400">CCAR-21</td>
-                                </tr>
-                                <tr class="bg-gray-50/50">
-                                    <td class="px-4 py-3 font-mono text-blue-600"><a href="glossary.html#pic"
-                                            class="hover:underline">Pilot-in-command</a></td>
-                                    <td class="px-4 py-3 text-green-600 font-semibold">机长</td>
-                                    <td class="px-4 py-3 text-red-500 text-xs">主驾驶员、指挥飞行员</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400"><a href="glossary.html#icao-annex"
-                                            class="hover:underline">ICAO Annex</a> 1</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 font-mono text-blue-600"><a href="glossary.html#flight-crew"
-                                            class="hover:underline">Flight crew</a></td>
-                                    <td class="px-4 py-3 text-green-600 font-semibold">飞行机组</td>
-                                    <td class="px-4 py-3 text-red-500 text-xs">机组人员、驾驶组</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400">CCAR-121</td>
-                                </tr>
-                                <tr class="bg-gray-50/50">
-                                    <td class="px-4 py-3 font-mono text-blue-600"><a
-                                            href="glossary.html#type-certificate" class="hover:underline">Type
-                                            certificate</a></td>
-                                    <td class="px-4 py-3 text-green-600 font-semibold">型号合格证</td>
-                                    <td class="px-4 py-3 text-red-500 text-xs">类型证书、型式证书</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400">CCAR-21</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 font-mono text-blue-600"><a
-                                            href="glossary.html#controlled-airspace" class="hover:underline">Controlled
-                                            airspace</a></td>
-                                    <td class="px-4 py-3 text-green-600 font-semibold">管制空域</td>
-                                    <td class="px-4 py-3 text-red-500 text-xs">受控空域、控制空间</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400"><a href="glossary.html#icao-annex"
-                                            class="hover:underline">ICAO Annex</a> 2</td>
-                                </tr>
-                                <tr class="bg-gray-50/50">
-                                    <td class="px-4 py-3 font-mono text-blue-600"><a
-                                            href="glossary.html#approach-procedure" class="hover:underline">Approach
-                                            procedure</a></td>
-                                    <td class="px-4 py-3 text-green-600 font-semibold">进近程序</td>
-                                    <td class="px-4 py-3 text-red-500 text-xs">逼近程序、接近程序</td>
-                                    <td class="px-4 py-3 text-xs text-gray-400">ICAO Doc 8168</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-3 italic">
-                        💡 建议将此表扩展为 JSON 格式，用于自动化检查。
-                    </p>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900">💻 自动化脚本实战</h2>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded font-mono">term_validator.py</span>
                 </div>
 
-                <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-700">
-                    <div class="flex items-center px-4 py-2 bg-gray-800 border-b border-gray-700">
-                        <span class="ml-2 text-xs text-gray-400 font-mono">aviation_term_validator.py</span>
+                <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+                    <div class="flex border-b border-gray-700 bg-gray-800">
+                        <div class="px-4 py-2 border-r border-gray-700 text-gray-300 text-sm font-medium">Check Logic
+                        </div>
                     </div>
-                    <div class="p-6 overflow-x-auto">
-                        <pre><code class="language-python">import re
-import json
+                    <div class="p-0">
+                        <pre><code class="language-python"># 简单的术语自动检查脚本
+# 用途：检查译文中是否包含了强制使用的标准术语
 
-# 1. 民航术语库 (JSON 格式) - 可从外部文件加载
-aviation_terms = {
-    "Airworthiness": "适航性",
-    "Pilot-in-command": "机长",
-    "Flight crew": "飞行机组",
-    "Type certificate": "型号合格证",
-    "Controlled airspace": "管制空域",
-    "Approach procedure": "进近程序",
-    "<a href="glossary.html#mel" class="text-blue-600 hover:underline">MEL</a>": "最低设备清单",
-    "<a href="glossary.html#notam" class="text-blue-600 hover:underline">NOTAM</a>": "航行通告"
-}
+def check_terminology(source_text, target_text):
+    # 定义标准术语库 (Dictionary)
+    # Key: 英文原文关键词, Value: 必须出现的中文译法
+    term_base = {
+        "sustainable development": "可持续发展",
+        "due diligence": "尽职调查",
+        "artificial intelligence": "人工智能"
+    }
+    
+    issues = []
+    
+    # 遍历术语库进行检查
+    for eng, chn in term_base.items():
+        if eng in source_text.lower():
+            # 如果原文包含该术语，检查译文是否包含对应的标准译法
+            if chn not in target_text:
+                issues.append(f"❌ 错误: 原文包含 '{eng}'，但译文未找到标准译法 '{chn}'")
+    
+    return issues
 
-# 2. 模拟读取供应商译文
-source = "The Type certificate was issued after the airworthiness review."
-translation = "该型式证书在航空值得审查后颁发。"
+# --- 测试案例 ---
+src = "We must conduct due diligence on artificial intelligence projects."
+tgt = "我们必须对AI项目进行调查。"  # 故意制造两个错误：简写了AI，漏译了尽职
 
-# 3. 自动化检查逻辑
-print("--- 民航术语一致性检查报告 ---")
-errors = []
-for eng, correct_chn in aviation_terms.items():
-    if eng.lower() in source.lower():
-        if correct_chn not in translation:
-            errors.append({
-                "term": eng,
-                "expected": correct_chn,
-                "status": "❌ 未使用规范译法"
-            })
-        else:
-            print(f"✅ {eng} -> {correct_chn}")
+print(f"原文: {src}")
+print(f"译文: {tgt}\n")
 
-for err in errors:
-    print(f"❌ 术语错误: '{err['term']}' 应译为 '{err['expected']}'")
+errors = check_terminology(src, tgt)
 
-# Output:
-# ❌ 术语错误: 'Type certificate' 应译为 '型号合格证'
-# ❌ 术语错误: 'Airworthiness' 应译为 '适航性'</code></pre>
+if errors:
+    print("⚠️ 发现术语一致性问题：")
+    for err in errors:
+        print(err)
+else:
+    print("✅ 术语检查通过！")
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <!-- Heroicon name: solid/exclamation -->
+                            <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>思考题：</strong> 这个脚本目前只能进行简单的字符串匹配。如果译文是"关于人工智能的尽职调查"，它能识别吗？
+                                <br>(答：能，因为包含子字符串。但如果中间加了形容词或断句，可能需要更复杂的正则表达式。)
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Strategy 3: AI Linguistic Forensics -->
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">策略 C：Gemini 模型语义取证</h2>
-                <p class="text-gray-600 mb-4">代码检查格式，AI 检查灵魂。利用大模型识别“机翻痕迹”（Translationese）和逻辑漏洞。</p>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-800 mb-3">Prompt Engineering (指令工程)</h3>
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
-                        <p class="text-sm font-mono text-blue-900">
-                            "你是一名资深的航空技术文档审校。请阅读下面的中文译文，分析其是否具有'机翻痕迹'。不要关注语法错误，重点关注：<br>
-                            1. 名词堆砌（过度使用'的'）<br>
-                            2. 被动语态滥用（xx被xx）<br>
-                            3. 不符合中文工程表述习惯的直译。<br>
-                            如果有，请指出并提供修正建议。"
-                        </p>
-                    </div>
-                    <p class="text-sm text-gray-600">
-                        将此 Prompt 集成到 Python 脚本中调用 Gemini API，即可实现对长文档的批量语义质检。
-                    </p>
-                </div>
-            </section>
-
-            <div class="bg-orange-50 border border-orange-100 rounded-lg p-6">
-                <h3 class="font-bold text-orange-900">💡 讲师总结</h3>
-                <p class="text-orange-800 text-sm">
-                    真正的技术流译员，不依赖黑盒子的商业软件。我们用 <strong>Regex</strong> 解决 80% 的格式问题，用 <strong>Python</strong> 解决 100%
-                    的术语一致性问题，最后用 <strong>AI</strong> 解决最难的语义风格问题。这就是数智化时代的“全栈审校”。
-                </p>
+            <!-- Navigation -->
+            <div class="mt-12 flex justify-between">
+                <a href="tutorial_regex.html" class="text-gray-500 hover:text-gray-700">← 上一模块：文本清洗实战</a>
+                <a href="tutorial_nyt.html" class="text-purple-600 hover:text-purple-800 font-medium">下一模块：语料库建设方案 →</a>
             </div>
 
         </div>
     </main>
 
-    <footer class="bg-gray-50 border-t border-gray-200 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-            <p>&copy; 2025 Aldo. All rights reserved.</p>
-        </div>
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+        <p>&copy; 2026 Aldo. Designed for BISU Advanced Translation Program.</p>
     </footer>
+
 </body>
 
 </html>
