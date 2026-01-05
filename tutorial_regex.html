@@ -57,8 +57,7 @@
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <a href="index.html"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
-                        <a href="course.html"
-                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+
                     </div>
                 </div>
             </div>
@@ -82,97 +81,346 @@
                 </p>
             </div>
 
-            <!-- Regex Lab 1: Date Format -->
+            <!-- Interactive Regex Lab 1: Date Format -->
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 1：统一日前格式</h2>
-                <p class="text-gray-600 mb-4">场景：你从不同来源收集了一批新闻语料，但日期格式五花八门，需要统一为 <code>YYYY-MM-DD</code>。</p>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 1：统一日期格式 (Interactive)</h2>
+                <p class="text-gray-600 mb-4">场景：你从不同来源收集了一批新闻语料，但日期格式五花八门，需要统一为 <code>YYYY-MM-DD</code>。在下方尝试修改正则来匹配它们。
+                </p>
 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-                        <h3 class="font-bold text-red-600 mb-3">清洗前 (Dirty Data)</h3>
-                        <pre class="bg-gray-100 p-3 rounded text-sm text-gray-600">
-The event on 2024/01/15 was success.
-Deadline is 02-28-2024.
-Released on 2024.03.10.
-                        </pre>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-                        <h3 class="font-bold text-green-600 mb-3">清洗后 (Clean Data)</h3>
-                        <pre class="bg-green-50 p-3 rounded text-sm text-gray-800">
-The event on 2024-01-15 was success.
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-purple-100 ring-1 ring-purple-50">
+                    <div class="grid gap-6">
+                        <!-- Input Area -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">测试文本 (Test String)</label>
+                            <textarea id="lab1-input"
+                                class="w-full p-4 border border-gray-200 rounded-lg font-mono text-sm bg-gray-50 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
+                                rows="4">The event on 2024/01/15 was success.
 Deadline is 2024-02-28.
-Released on 2024-03-10.
-                        </pre>
+Released on 2024.03.10.
+Invalid date: 2024-13-45</textarea>
+                        </div>
+
+                        <!-- Regex Control -->
+                        <div class="bg-gray-800 rounded-lg p-4">
+                            <label class="block text-xs font-bold text-cyan-400 mb-2 uppercase tracking-wide">Regular
+                                Expression</label>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-gray-400 font-mono text-lg">/</span>
+                                <input type="text" id="lab1-regex" value="(\d{4})[-./](\d{2})[-./](\d{2})"
+                                    class="flex-1 bg-transparent text-white font-mono text-lg outline-none border-b-2 border-gray-600 focus:border-cyan-400 transition pb-1 placeholder-gray-600">
+                                <span class="text-gray-400 font-mono text-lg">/g</span>
+                            </div>
+                            <div id="lab1-error" class="text-red-400 text-xs mt-2 hidden"></div>
+                        </div>
+
+                        <!-- Output Area -->
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <label class="block text-sm font-medium text-gray-700">实时匹配结果 (Live Matches)</label>
+                                <span id="lab1-count"
+                                    class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-1 rounded-full">0
+                                    matches</span>
+                            </div>
+                            <div id="lab1-output"
+                                class="w-full p-4 border border-gray-200 rounded-lg font-mono text-sm bg-white min-h-[100px] whitespace-pre-wrap break-all">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mt-6 bg-gray-800 rounded-lg p-6">
-                    <h4 class="text-cyan-400 font-bold mb-2 font-mono">Regex Pattern</h4>
-                    <div class="text-white font-mono text-lg break-all">
-                        (\d{4})[-./](\d{2})[-./](\d{2})
+                <!-- Detailed Explanation -->
+                <div class="mt-6 bg-gradient-to-r from-slate-50 to-purple-50 rounded-xl p-6 border border-slate-200">
+                    <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <span class="bg-purple-600 text-white text-xs px-2 py-1 rounded mr-2">📖</span>
+                        正则表达式详解
+                    </h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-300">
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">组件</th>
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">含义</th>
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">示例匹配</th>
+                                </tr>
+                            </thead>
+                            <tbody class="font-mono">
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">\d{4}</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">连续4位数字（年份）</td>
+                                    <td class="py-2 px-3 text-green-700">2024, 1999, 2030</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">[-./]</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">字符集：匹配 <code>-</code> 或 <code>.</code>
+                                        或 <code>/</code></td>
+                                    <td class="py-2 px-3 text-green-700">-, ., /</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">\d{2}</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">连续2位数字（月/日）</td>
+                                    <td class="py-2 px-3 text-green-700">01, 12, 31</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">( )</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">捕获组：将匹配内容保存为 $1, $2, $3</td>
+                                    <td class="py-2 px-3 text-green-700">用于替换时引用</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 text-pink-600 font-bold">/g</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">全局标志：匹配所有结果而非仅第一个</td>
+                                    <td class="py-2 px-3 text-green-700">找到全部3个日期</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <p class="text-gray-400 text-sm mt-2">
-                        解释：<br>
-                        <code>\d{4}</code> 匹配4位数字（年）<br>
-                        <code>[-./]</code> 匹配分隔符（横杠、点或斜线）<br>
-                        <code>\d{2}</code> 匹配2位数字（月/日）
-                    </p>
+                    <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm">
+                        <span class="font-bold text-amber-700">⚠️ 注意：</span>
+                        <span class="text-amber-800">此正则只做格式匹配，不验证日期合法性。例如 <code>2024-13-45</code>
+                            也会被匹配（月份13、日期45不存在）。严格验证需要更复杂的逻辑。</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-sm text-gray-500">
+                    <span class="font-bold">💡 试一试：</span> 把正则改成 <code>\d{4}</code> 看看会发生什么？（只匹配年份）
                 </div>
             </section>
 
-            <!-- Regex Lab 2: ID Extraction -->
+            <!-- Interactive Regex Lab 2: ID Extraction -->
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 2：提取关键编号 (DOI/ISBN)</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 2：提取关键编号 (DOI)</h2>
                 <p class="text-gray-600 mb-4">场景：从参考文献列表里快速提取所有的 DOI 编号，用于建立元数据索引。</p>
 
-                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 mb-6">
-                    <p class="mb-2 text-sm text-gray-500">原文片段：</p>
-                    <div class="font-serif text-gray-800">
-                        ...as discussed in Smith (2023). <span
-                            class="match-highlight">10.1016/j.neucom.2023.01.005</span>.
-                        Similar results were found by Lee et al. (DOI: <span
-                            class="match-highlight">10.1109/CVPR.2024.00123</span>).
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-purple-100 ring-1 ring-purple-50">
+                    <div class="grid gap-6">
+                        <!-- Input -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">参考文献片段</label>
+                            <textarea id="lab2-input"
+                                class="w-full p-4 border border-gray-200 rounded-lg font-mono text-sm bg-gray-50 focus:ring-2 focus:ring-purple-500 outline-none transition"
+                                rows="3">...discussed in Smith (2023). 10.1016/j.neucom.2023.01.005.
+Also see: DOI: 10.1109/CVPR.2024.00123 for more details.
+Reference: https://doi.org/10.1038/nature12373</textarea>
+                        </div>
+
+                        <!-- Regex -->
+                        <div class="bg-gray-800 rounded-lg p-4">
+                            <label class="block text-xs font-bold text-cyan-400 mb-2 uppercase tracking-wide">Regular
+                                Expression</label>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-gray-400 font-mono text-lg">/</span>
+                                <input type="text" id="lab2-regex" value="10\.\d{4,9}/[\w.\-]+[\w]"
+                                    class="flex-1 bg-transparent text-white font-mono text-lg outline-none border-b-2 border-gray-600 focus:border-cyan-400 transition pb-1">
+                                <span class="text-gray-400 font-mono text-lg">/g</span>
+                            </div>
+                            <div id="lab2-error" class="text-red-400 text-xs mt-2 hidden"></div>
+                        </div>
+
+                        <!-- Output -->
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <label class="block text-sm font-medium text-gray-700">匹配高亮</label>
+                                <span id="lab2-count"
+                                    class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-1 rounded-full">0
+                                    matches</span>
+                            </div>
+                            <div id="lab2-output"
+                                class="w-full p-4 border border-gray-200 rounded-lg font-mono text-sm bg-white min-h-[80px] whitespace-pre-wrap break-all">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <h4 class="text-cyan-400 font-bold mb-2 font-mono">Regex Pattern</h4>
-                    <div class="text-white font-mono text-lg break-all">
-                        10\.\d{4,9}/[-._;()/:a-zA-Z0-9]+
+                <!-- Detailed Explanation -->
+                <div class="mt-6 bg-gradient-to-r from-slate-50 to-indigo-50 rounded-xl p-6 border border-slate-200">
+                    <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded mr-2">📖</span>
+                        正则表达式详解
+                    </h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-300">
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">组件</th>
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">含义</th>
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">说明</th>
+                                </tr>
+                            </thead>
+                            <tbody class="font-mono">
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">10\.</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">字面量 "10." （<code>\.</code> 转义点号）</td>
+                                    <td class="py-2 px-3 text-green-700">DOI 固定以 10. 开头</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">\d{4,9}</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">4到9位数字</td>
+                                    <td class="py-2 px-3 text-green-700">注册机构代码，如 1016, 1109</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">/</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">字面斜杠</td>
+                                    <td class="py-2 px-3 text-green-700">分隔前缀与后缀</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-pink-600 font-bold">[\w.\-]+</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">字符集：单词字符、点号、连字符，一次或更多</td>
+                                    <td class="py-2 px-3 text-green-700">匹配 DOI 后缀如 j.neucom.2023.01</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 text-pink-600 font-bold">[\w]</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">单词字符结尾（字母/数字/下划线）</td>
+                                    <td class="py-2 px-3 text-green-700">确保不以标点结束（排除句号）</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <p class="text-gray-400 text-sm mt-2">
-                        这是匹配 DOI 的标准正则。它寻找以 "10." 开头，后跟数字和后缀的字符串。
-                    </p>
+                    <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm">
+                        <span class="font-bold text-blue-700">💡 DOI 格式说明：</span>
+                        <span class="text-blue-800">DOI (Digital Object Identifier) 是学术文献的唯一标识符，格式为
+                            <code>10.前缀/后缀</code>。例如 <code>10.1016/j.neucom.2023.01.005</code> 表示 Elsevier 出版社的
+                            Neurocomputing 期刊文章。</span>
+                    </div>
                 </div>
             </section>
 
-            <!-- Regex Lab 3: Spacing -->
+            <!-- Interactive Regex Lab 3: Substitution -->
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 3：中英文混排空格优化</h2>
-                <p class="text-gray-600 mb-4">场景：中文翻译中夹杂英文单词或数字时，为了排版美观，通常需要在中英文之间增加"盘古之白"（空格）。</p>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 3：中英文混排空格优化 (Substitution)</h2>
+                <p class="text-gray-600 mb-4">
+                    场景：在"汉字"和"字母/数字"之间插入盘古之白（空格）。完整处理需要<strong>两步</strong>：先处理「汉字→英文」，再处理「英文→汉字」。</p>
 
-                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 mb-6">
-                    <div class="grid grid-cols-1 gap-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-red-500 text-sm w-16">Before:</span>
-                            <span class="bg-gray-100 px-2 py-1 rounded">使用了ChatGPT进行翻译。</span>
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-purple-100 ring-1 ring-purple-50">
+                    <div class="grid gap-6">
+                        <!-- Input -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">错乱的原文</label>
+                            <textarea id="lab3-input"
+                                class="w-full p-4 border border-gray-200 rounded-lg font-mono text-sm bg-gray-50 focus:ring-2 focus:ring-purple-500 outline-none transition"
+                                rows="3">使用了ChatGPT进行翻译。
+今天2024年，我们在Beijing开会。
+Python是一门流行的编程语言。</textarea>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-green-500 text-sm w-16">After:</span>
-                            <span class="bg-green-50 px-2 py-1 rounded">使用了 ChatGPT 进行翻译。</span>
+
+                        <!-- Two-Step Regex -->
+                        <div class="bg-gray-800 rounded-lg p-4 space-y-4">
+                            <!-- Step 1: Chinese → English -->
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-cyan-400 mb-1 uppercase tracking-wide">
+                                        Step 1: 汉字→英文 (查找)</label>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-gray-400 font-mono">/</span>
+                                        <input type="text" id="lab3-regex1" value="([\u4e00-\u9fa5])([a-zA-Z0-9])"
+                                            class="flex-1 bg-transparent text-white font-mono outline-none border-b-2 border-gray-600 focus:border-cyan-400 transition pb-1">
+                                        <span class="text-gray-400 font-mono">/g</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs font-bold text-green-400 mb-1 uppercase tracking-wide">替换为</label>
+                                    <input type="text" id="lab3-replace1" value="$1 $2"
+                                        class="w-full bg-transparent text-white font-mono outline-none border-b-2 border-gray-600 focus:border-green-400 transition pb-1">
+                                </div>
+                            </div>
+
+                            <!-- Step 2: English → Chinese -->
+                            <div class="grid md:grid-cols-2 gap-4 pt-3 border-t border-gray-700">
+                                <div>
+                                    <label class="block text-xs font-bold text-cyan-400 mb-1 uppercase tracking-wide">
+                                        Step 2: 英文→汉字 (查找)</label>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-gray-400 font-mono">/</span>
+                                        <input type="text" id="lab3-regex2" value="([a-zA-Z0-9])([\u4e00-\u9fa5])"
+                                            class="flex-1 bg-transparent text-white font-mono outline-none border-b-2 border-gray-600 focus:border-cyan-400 transition pb-1">
+                                        <span class="text-gray-400 font-mono">/g</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs font-bold text-green-400 mb-1 uppercase tracking-wide">替换为</label>
+                                    <input type="text" id="lab3-replace2" value="$1 $2"
+                                        class="w-full bg-transparent text-white font-mono outline-none border-b-2 border-gray-600 focus:border-green-400 transition pb-1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Result: 3 columns -->
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">原始</label>
+                                <div id="lab3-original-preview"
+                                    class="p-3 bg-red-50 text-gray-800 rounded border border-red-100 text-sm font-mono h-full whitespace-pre-wrap min-h-[80px]">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Step 1 后</label>
+                                <div id="lab3-step1-output"
+                                    class="p-3 bg-amber-50 text-gray-800 rounded border border-amber-200 text-sm font-mono h-full whitespace-pre-wrap min-h-[80px]">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">最终结果</label>
+                                <div id="lab3-output"
+                                    class="p-3 bg-green-50 text-gray-800 rounded border border-green-100 text-sm font-mono h-full whitespace-pre-wrap min-h-[80px]">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <h4 class="text-cyan-400 font-bold mb-2 font-mono">Regex Substitute</h4>
-                    <div class="text-gray-300 font-mono text-sm mb-1">查找：</div>
-                    <div class="text-white font-mono text-lg mb-4">([\u4e00-\u9fa5])([a-zA-Z0-9])</div>
-                    <div class="text-gray-300 font-mono text-sm mb-1">替换为：</div>
-                    <div class="text-white font-mono text-lg">$1 $2</div>
-                    <p class="text-gray-400 text-sm mt-2">
-                        解释：在"汉字"和"字母/数字"之间插入一个空格。
-                    </p>
+                <!-- Detailed Explanation -->
+                <div class="mt-6 bg-gradient-to-r from-slate-50 to-green-50 rounded-xl p-6 border border-slate-200">
+                    <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <span class="bg-green-600 text-white text-xs px-2 py-1 rounded mr-2">📖</span>
+                        正则表达式详解
+                    </h4>
+
+                    <!-- Why two steps -->
+                    <div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm">
+                        <span class="font-bold text-blue-700">💡 为何需要两步？</span>
+                        <span class="text-blue-800">完整的盘古之白需要处理<strong>两个方向</strong>：1) "使用了<u>C</u>hatGPT"
+                            中的「了C」(中→英)；2) "ChatGP<u>T</u>进行"
+                            中的「T进」(英→中)。由于两个正则的捕获组会冲突，最简洁的方式是<strong>分两步执行</strong>。</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-300">
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">步骤</th>
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">正则模式</th>
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">含义</th>
+                                    <th class="text-left py-2 px-3 font-bold text-gray-700">示例</th>
+                                </tr>
+                            </thead>
+                            <tbody class="font-mono">
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-gray-700 font-sans font-bold">Step 1</td>
+                                    <td class="py-2 px-3 text-pink-600 font-bold">([\u4e00-\u9fa5])([a-zA-Z0-9])</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">汉字后面紧跟字母/数字</td>
+                                    <td class="py-2 px-3 text-green-700">"了C" → "了 C"</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-3 text-gray-700 font-sans font-bold">Step 2</td>
+                                    <td class="py-2 px-3 text-pink-600 font-bold">([a-zA-Z0-9])([\u4e00-\u9fa5])</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">字母/数字后面紧跟汉字</td>
+                                    <td class="py-2 px-3 text-green-700">"T进" → "T 进"</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 text-gray-700 font-sans font-bold">替换</td>
+                                    <td class="py-2 px-3 text-pink-600 font-bold">$1 $2</td>
+                                    <td class="py-2 px-3 text-gray-600 font-sans">两个捕获组之间插入空格</td>
+                                    <td class="py-2 px-3 text-green-700">两步都用相同的替换模式</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm">
+                        <span class="font-bold text-amber-700">⚠️ 注意：</span>
+                        <span class="text-amber-800">完整的盘古之白规则还需要考虑标点符号、全角/半角转换等问题。实际项目中推荐使用 <a
+                                href="https://github.com/vinta/pangu.js" target="_blank"
+                                class="text-blue-600 underline">pangu.js</a> 等成熟库。</span>
+                    </div>
                 </div>
             </section>
 
@@ -210,6 +458,189 @@ Released on 2024-03-10.
         <p>&copy; 2026 Aldo. Designed for BISU Advanced Translation Program.</p>
     </footer>
 
+    <script>
+        // Lab 1 Logic (Match)
+        function updateLab1() {
+            const input = document.getElementById('lab1-input').value;
+            const regexStr = document.getElementById('lab1-regex').value;
+            const errorEl = document.getElementById('lab1-error');
+            const outputEl = document.getElementById('lab1-output');
+            const countEl = document.getElementById('lab1-count');
+
+            try {
+                const regex = new RegExp(regexStr, 'g');
+                errorEl.classList.add('hidden');
+
+                // Escape HTML to prevent injection while keeping highlighting possible
+                // We want to highlight the buffer, then escape non-highlighted parts? 
+                // Simpler: Replace regex matches with a unique token, escape everything else, then restore tokens as HTML.
+
+                // Let's use a robust approach for this demo:
+                // 1. Find all matches and their indices.
+                // 2. Build the new string by appending TextNodes (escaped) and SpanElements.
+                // Since we are setting innerHTML, we build an HTML string.
+
+                let html = "";
+                let lastIndex = 0;
+                let match;
+
+                // Reset regex lastIndex just in case
+                regex.lastIndex = 0;
+
+                // Note: String.matchAll is better but let's stick to exec for wide compatibility if needed, though modern browsers support matchAll.
+                // We use replace callback for simplicity in previous thought, but let's do the token approach to handle HTML escaping correctly.
+
+                // Actually, for a tutorial about regex, users might type specific chars.
+                // Let's stick to the direct replace for simplicity, but acknowledge the limitations.
+                // If the user regex consumes characters that look like HTML tags, it might break.
+                // But let's try to be slightly safe: escape the input first? 
+                // If we escape first, the regex must match escaped entities (e.g. &lt; instead of <).
+                // Example: regex for <br> becomes &lt;br&gt;
+                // This is confusing for users.
+
+                // Conclusion: Run regex on raw string. 
+                // Wrap matches in placeholders. 
+                // Escape the whole string (including placeholders).
+                // Unescape placeholders and convert to Spans.
+
+                // Placeholder: {{{MATCH_INDEX}}} - assuming user doesn't type this.
+
+                const placeholders = [];
+                const tempStr = input.replace(regex, (match) => {
+                    placeholders.push(match);
+                    return `___MATCH_${placeholders.length - 1}___`;
+                });
+
+                function escapeHtml(text) {
+                    return text
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;");
+                }
+
+                let safeHtml = escapeHtml(tempStr);
+
+                // Restore matches wrapped in spans
+                // We must also escape the content of the match itself for display!
+                safeHtml = safeHtml.replace(/___MATCH_(\d+)___/g, (m, index) => {
+                    return `<span class="bg-yellow-200 text-yellow-900 border border-yellow-300 rounded px-0.5 box-decoration-clone">${escapeHtml(placeholders[index])}</span>`;
+                });
+
+                outputEl.innerHTML = safeHtml.replace(/\n/g, '<br>');
+
+                // Count
+                // We need to re-run match or use placeholders length
+                // placeholders contains all matches.
+                const count = placeholders.length;
+                countEl.textContent = `${count} matches`;
+                countEl.className = count > 0 ? "text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded-full" : "text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-full";
+
+            } catch (e) {
+                // If regex is invalid
+                errorEl.textContent = "Regex Error: " + e.message;
+                errorEl.classList.remove('hidden');
+                outputEl.textContent = input;
+                countEl.textContent = "Error";
+                countEl.className = "text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded-full";
+            }
+        }
+
+        function updateLab2() {
+            const input = document.getElementById('lab2-input').value;
+            const regexStr = document.getElementById('lab2-regex').value;
+            const errorEl = document.getElementById('lab2-error');
+            const outputEl = document.getElementById('lab2-output');
+            const countEl = document.getElementById('lab2-count');
+
+            try {
+                const regex = new RegExp(regexStr, 'g');
+                errorEl.classList.add('hidden');
+
+                const placeholders = [];
+                const tempStr = input.replace(regex, (match) => {
+                    placeholders.push(match);
+                    return `___MATCH_${placeholders.length - 1}___`;
+                });
+
+                function escapeHtml(text) {
+                    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                }
+
+                let safeHtml = escapeHtml(tempStr);
+
+                safeHtml = safeHtml.replace(/___MATCH_(\d+)___/g, (m, index) => {
+                    return `<span class="bg-indigo-100 text-indigo-900 border border-indigo-200 rounded px-0.5">${escapeHtml(placeholders[index])}</span>`;
+                });
+
+                outputEl.innerHTML = safeHtml.replace(/\n/g, '<br>');
+
+                const count = placeholders.length;
+                countEl.textContent = `${count} matches`;
+                countEl.className = count > 0 ? "text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded-full" : "text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-full";
+
+            } catch (e) {
+                errorEl.textContent = e.message;
+                errorEl.classList.remove('hidden');
+                outputEl.textContent = input;
+            }
+        }
+
+        function updateLab3() {
+            const input = document.getElementById('lab3-input').value;
+            const regex1Str = document.getElementById('lab3-regex1').value;
+            const replace1Str = document.getElementById('lab3-replace1').value;
+            const regex2Str = document.getElementById('lab3-regex2').value;
+            const replace2Str = document.getElementById('lab3-replace2').value;
+
+            const originalPreview = document.getElementById('lab3-original-preview');
+            const step1Output = document.getElementById('lab3-step1-output');
+            const outputEl = document.getElementById('lab3-output');
+
+            originalPreview.textContent = input;
+
+            try {
+                // Step 1: Chinese → English
+                const regex1 = new RegExp(regex1Str, 'g');
+                const step1Result = input.replace(regex1, replace1Str);
+                step1Output.textContent = step1Result;
+                step1Output.className = "p-3 bg-amber-50 text-gray-800 rounded border border-amber-200 text-sm font-mono h-full whitespace-pre-wrap min-h-[80px]";
+
+                // Step 2: English → Chinese
+                const regex2 = new RegExp(regex2Str, 'g');
+                const finalResult = step1Result.replace(regex2, replace2Str);
+                outputEl.textContent = finalResult;
+                outputEl.className = "p-3 bg-green-50 text-gray-800 rounded border border-green-100 text-sm font-mono h-full whitespace-pre-wrap min-h-[80px]";
+            } catch (e) {
+                outputEl.textContent = "Error: " + e.message;
+                outputEl.className = "p-3 bg-red-50 text-red-800 rounded border border-red-100 text-sm font-mono h-full whitespace-pre-wrap min-h-[80px]";
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            ['input', 'regex'].forEach(id => {
+                const elInput = document.getElementById('lab1-' + id);
+                if (elInput) elInput.addEventListener('input', updateLab1);
+            });
+            updateLab1();
+
+            ['input', 'regex'].forEach(id => {
+                const elInput = document.getElementById('lab2-' + id);
+                if (elInput) elInput.addEventListener('input', updateLab2);
+            });
+            updateLab2();
+
+            // Lab 3 has 5 inputs now
+            ['lab3-input', 'lab3-regex1', 'lab3-replace1', 'lab3-regex2', 'lab3-replace2'].forEach(id => {
+                const elInput = document.getElementById(id);
+                if (elInput) elInput.addEventListener('input', updateLab3);
+            });
+            updateLab3();
+        });
+
+    </script>
 </body>
 
 </html>
