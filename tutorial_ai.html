@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="assets/css/fonts.css">
 
     <!-- Prism.js for code highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <script src="assets/js/prism.js"></script>
     <style>
         body {
             font-family: 'Noto Sans SC', sans-serif;
@@ -72,8 +71,14 @@
             <div class="bg-white rounded-xl shadow-sm p-6 mb-12 border border-gray-100">
                 <p class="text-gray-600 mb-4">
                     在高级笔译中，最大的挑战往往不是生词，而是<strong>复杂的句法结构</strong>和<strong>特定的语体风格</strong>。
-                    本模块将展示如何利用 LLM (To ChatGPT/Claude) 的逻辑分析能力，辅助人工进行长难句处理。
+                    本模块将展示如何利用 LLM (To ChatGPT/Claude) 的逻辑分析能力，辅助人工处理长难句。
                 </p>
+                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mb-8">
+                    <p class="text-indigo-700">
+                        本模块将展示如何利用 LLM (To ChatGPT/Claude) 的逻辑分析能力，辅助人工处理长难句。
+                        你将不再是"被动接收"译文，而是作为"建构师"指挥 AI 拆解结构。
+                    </p>
+                </div>
                 <div class="flex gap-4">
                     <div class="bg-purple-50 p-4 rounded-lg flex-1">
                         <h3 class="font-bold text-purple-900 mb-2">🚫 传统机翻痛点</h3>
@@ -115,7 +120,7 @@
                     <h3 class="font-bold text-gray-900 mb-4">🤖 Prompt 设计：角色 + 任务 + 输出格式</h3>
                     <div class="prompt-box rounded-lg shadow-sm">
                         角色：你是一位资深的国际法律翻译专家。
-                        任务：请对上面的英文长难句进行语法分析和逻辑拆解。
+                        任务：请分析上方英文长难句的语法和逻辑拆解。
                         要求：
                         1. 识别主句的主语、谓语和宾语。
                         2. 提取所有的条件状语和原因状语。
@@ -176,14 +181,14 @@
                             <span class="text-xs font-bold bg-purple-200 px-2 py-1 rounded text-purple-700">版本 B：学术/正式风
                                 (AI 优化)</span>
                             <p class="mt-2 text-sm text-gray-800 font-medium">
-                                本文旨在探讨神经机器翻译的复杂机制；研究指出，尽管其处理效率显著提升，但语义保真度仍是亟待解决的难题。
+                                本文将探讨神经机器翻译的复杂机制；研究指出，尽管其处理效率显著提升，但语义保真度仍是亟待解决的难题。
                             </p>
                         </div>
                     </div>
 
-                    <div class="mt-4 text-sm text-gray-500">
-                        <strong>优化点：</strong> "attempts to shed light on" -> "旨在探讨"；"remains a challenge" ->
-                        "仍是亟待解决的难题"。
+                    <div class="mt-4 bg-yellow-50 p-4 rounded text-sm text-yellow-800">
+                        <strong>优化点：</strong> "attempts to shed light on" -> "探讨/着眼于"；"remains a challenge" ->
+                        "是...难题"（避免"保持为一个挑战"这种翻译腔）。
                     </div>
                 </div>
             </section>

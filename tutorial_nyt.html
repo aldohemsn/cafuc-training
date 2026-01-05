@@ -135,7 +135,7 @@
                         <strong>方法：</strong>利用其 URL 结构（如 <code>cn.nytimes.com/.../dual/</code>）批量下载 HTML 页面。
                     </p>
                     <div class="bg-gray-50 p-4 rounded-lg text-sm">
-                        <p class="text-gray-600"><strong>技术要点：</strong>网页本质上是一个 HTML 文件。通过编程脚本（如
+                        <p class="text-gray-600"><strong>技术要点：</strong>网页本质上是一个 HTML 文件。利用编程脚本（如
                             Python）可以自动下载数千个网页，远比手工复制粘贴高效。</p>
                     </div>
                 </div>
@@ -659,6 +659,14 @@ if __name__ == '__main__':
                                 <code>class="paragraph_en"</code> 和 <code>class="paragraph_cn"</code> 的
                                 <code>&lt;p&gt;</code> 标签，分别提取其中的文本，然后配对保存。
                             </p>
+
+                            <div class="mt-6 border border-gray-200 rounded-lg overflow-hidden">
+                                <img src="assets/img/single_webpage_dom_struct_example.png" alt="DOM Structure Example"
+                                    class="w-full h-auto">
+                                <div class="bg-gray-50 p-2 text-xs text-center text-gray-500 border-t border-gray-100">
+                                    图示：Chrome 开发者工具中的网页 DOM 结构（左侧为页面，右侧为对应的 HTML 代码）
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
