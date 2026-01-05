@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能翻译质量检测 - 数智化笔译与语料库建设</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index_bisu.html" class="font-bold text-xl text-purple-900 font-mono">&lt;Trans_Tech
+                            /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index_bisu.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+                        <a href="course_bisu.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex items-center mb-8">
+                <div class="bg-orange-100 text-orange-700 font-bold px-3 py-1 rounded text-sm mr-4">模块 #5</div>
+                <h1 class="text-3xl font-extrabold text-gray-900">智能质检：为译文加上"安全锁"</h1>
+            </div>
+
+            <!-- Intro -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-12 border border-gray-100">
+                <p class="text-gray-600">
+                    在大型翻译项目中，<strong>术语一致性 (Consistency)</strong> 是质量控制的核心。
+                    传统的肉眼检查容易疲劳且易出错。本模块将演示如何利用简单的 Python 脚本，打造一个不知疲倦的"术语哨兵"，
+                    确保所有的关键概念（如联合国术语、法律专有名词）在数万字的文稿中保持绝对统一。
+                </p>
+            </div>
+
+            <!-- Terminology Table -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">🎯 核心术语表 (示例)</h2>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    英文术语 (Source)</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    标准译文 (Target)</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    来源/依据</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sustainable
+                                    Development</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">可持续发展</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">UN / 联合国</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Due Diligence
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">尽职调查</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Legal / 法律</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Artificial
+                                    Intelligence</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">人工智能 (非"AI")</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Style Guide</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-gray-500 mt-2 text-center">
+                    *注：在某些正式公文中，要求将 Artificial Intelligence 完整译为"人工智能"，而不能简写为 AI。
+                </p>
+            </section>
+
+            <!-- Python Script Demo -->
+            <section class="mb-12">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900">💻 自动化脚本实战</h2>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded font-mono">term_validator.py</span>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+                    <div class="flex border-b border-gray-700 bg-gray-800">
+                        <div class="px-4 py-2 border-r border-gray-700 text-gray-300 text-sm font-medium">Check Logic
+                        </div>
+                    </div>
+                    <div class="p-0">
+                        <pre><code class="language-python"># 简单的术语自动检查脚本
+# 用途：检查译文中是否包含了强制使用的标准术语
+
+def check_terminology(source_text, target_text):
+    # 定义标准术语库 (Dictionary)
+    # Key: 英文原文关键词, Value: 必须出现的中文译法
+    term_base = {
+        "sustainable development": "可持续发展",
+        "due diligence": "尽职调查",
+        "artificial intelligence": "人工智能"
+    }
+    
+    issues = []
+    
+    # 遍历术语库进行检查
+    for eng, chn in term_base.items():
+        if eng in source_text.lower():
+            # 如果原文包含该术语，检查译文是否包含对应的标准译法
+            if chn not in target_text:
+                issues.append(f"❌ 错误: 原文包含 '{eng}'，但译文未找到标准译法 '{chn}'")
+    
+    return issues
+
+# --- 测试案例 ---
+src = "We must conduct due diligence on artificial intelligence projects."
+tgt = "我们必须对AI项目进行调查。"  # 故意制造两个错误：简写了AI，漏译了尽职
+
+print(f"原文: {src}")
+print(f"译文: {tgt}\n")
+
+errors = check_terminology(src, tgt)
+
+if errors:
+    print("⚠️ 发现术语一致性问题：")
+    for err in errors:
+        print(err)
+else:
+    print("✅ 术语检查通过！")
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <!-- Heroicon name: solid/exclamation -->
+                            <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>思考题：</strong> 这个脚本目前只能进行简单的字符串匹配。如果译文是"关于人工智能的尽职调查"，它能识别吗？
+                                <br>(答：能，因为包含子字符串。但如果中间加了形容词或断句，可能需要更复杂的正则表达式。)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="mt-12 flex justify-between">
+                <a href="tutorial_regex_bisu.html" class="text-gray-500 hover:text-gray-700">← 上一模块：文本清洗实战</a>
+                <a href="tutorial_nyt.html" class="text-purple-600 hover:text-purple-800 font-medium">下一模块：语料库建设方案 →</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+        <p>&copy; 2026 Aldo. Designed for BISU Advanced Translation Program.</p>
+    </footer>
+
+</body>
+
+</html>

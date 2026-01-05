@@ -114,9 +114,18 @@
 - 强调互动设计和时间把控
 - 可通过 `http://localhost:3000/index_bisu.html` 访问
 
+### 6️⃣ 北二外专用核心教程（已完成通用化改造）
+**文件**: `tutorial_search_bisu.html`, `tutorial_ai_bisu.html`, `tutorial_regex_bisu.html`, `tutorial_qa_bisu.html`
+
+**更新要点 (Removal of Aviation Cases)**:
+- 🔍 **搜商构建**: 移除 Flight Level/NOTAM/ICAO，替换为 **碳中和/数字经济/UNFCCC**
+- 🤖 **AI 辅助**: 移除 航空法规长难句，替换为 **法律合同/学术摘要**
+- 🧹 **文本清洗**: 移除 机务维修手册/机号，替换为 **DOI/新闻日期**
+- ✅ **智能质检**: 移除 飞行机组术语，替换为 **可持续发展核心术语**
+
 ---
 
-### 6️⃣ 项目总览（README）
+### 7️⃣ 项目总览（README）
 **文件**: `README.md` (已更新)
 
 **更新内容**:

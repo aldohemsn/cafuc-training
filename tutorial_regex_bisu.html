@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本清洗与正则实战 - 数智化笔译与语料库建设</title>
+
+    <!-- Tailwind CSS -->
+    <script src="assets/js/tailwindcss.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .regex-highlight {
+            color: #f472b6;
+            /* pink-400 */
+            font-weight: bold;
+        }
+
+        .match-highlight {
+            background-color: #fef08a;
+            /* yellow-200 */
+            color: #854d0e;
+            /* yellow-900 */
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index_bisu.html" class="font-bold text-xl text-purple-900 font-mono">&lt;Trans_Tech
+                            /&gt;</a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index_bisu.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">首页</a>
+                        <a href="course_bisu.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">课程详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex items-center mb-8">
+                <div class="bg-cyan-100 text-cyan-700 font-bold px-3 py-1 rounded text-sm mr-4">模块 #4</div>
+                <h1 class="text-3xl font-extrabold text-gray-900">数据炼金术：文本清洗与正则表达式</h1>
+            </div>
+
+            <!-- Intro -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-12 border border-gray-100">
+                <p class="text-gray-600">
+                    在语料库建设和翻译项目管理中，我们经常遇到"脏数据"：格式混乱的日期、夹杂的 HTML 标签、不统一的标点符号。
+                    <strong>正则表达式 (Regular Expressions, Regex)</strong> 是处理这些问题的瑞士军刀。虽然它看起来像天书，但掌握最常用的 5 个模式就足以解决 90%
+                    的问题。
+                </p>
+            </div>
+
+            <!-- Regex Lab 1: Date Format -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 1：统一日前格式</h2>
+                <p class="text-gray-600 mb-4">场景：你从不同来源收集了一批新闻语料，但日期格式五花八门，需要统一为 <code>YYYY-MM-DD</code>。</p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                        <h3 class="font-bold text-red-600 mb-3">清洗前 (Dirty Data)</h3>
+                        <pre class="bg-gray-100 p-3 rounded text-sm text-gray-600">
+The event on 2024/01/15 was success.
+Deadline is 02-28-2024.
+Released on 2024.03.10.
+                        </pre>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                        <h3 class="font-bold text-green-600 mb-3">清洗后 (Clean Data)</h3>
+                        <pre class="bg-green-50 p-3 rounded text-sm text-gray-800">
+The event on 2024-01-15 was success.
+Deadline is 2024-02-28.
+Released on 2024-03-10.
+                        </pre>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-cyan-400 font-bold mb-2 font-mono">Regex Pattern</h4>
+                    <div class="text-white font-mono text-lg break-all">
+                        (\d{4})[-./](\d{2})[-./](\d{2})
+                    </div>
+                    <p class="text-gray-400 text-sm mt-2">
+                        解释：<br>
+                        <code>\d{4}</code> 匹配4位数字（年）<br>
+                        <code>[-./]</code> 匹配分隔符（横杠、点或斜线）<br>
+                        <code>\d{2}</code> 匹配2位数字（月/日）
+                    </p>
+                </div>
+            </section>
+
+            <!-- Regex Lab 2: ID Extraction -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 2：提取关键编号 (DOI/ISBN)</h2>
+                <p class="text-gray-600 mb-4">场景：从参考文献列表里快速提取所有的 DOI 编号，用于建立元数据索引。</p>
+
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 mb-6">
+                    <p class="mb-2 text-sm text-gray-500">原文片段：</p>
+                    <div class="font-serif text-gray-800">
+                        ...as discussed in Smith (2023). <span
+                            class="match-highlight">10.1016/j.neucom.2023.01.005</span>.
+                        Similar results were found by Lee et al. (DOI: <span
+                            class="match-highlight">10.1109/CVPR.2024.00123</span>).
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-cyan-400 font-bold mb-2 font-mono">Regex Pattern</h4>
+                    <div class="text-white font-mono text-lg break-all">
+                        10\.\d{4,9}/[-._;()/:a-zA-Z0-9]+
+                    </div>
+                    <p class="text-gray-400 text-sm mt-2">
+                        这是匹配 DOI 的标准正则。它寻找以 "10." 开头，后跟数字和后缀的字符串。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Regex Lab 3: Spacing -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">案例 3：中英文混排空格优化</h2>
+                <p class="text-gray-600 mb-4">场景：中文翻译中夹杂英文单词或数字时，为了排版美观，通常需要在中英文之间增加"盘古之白"（空格）。</p>
+
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 mb-6">
+                    <div class="grid grid-cols-1 gap-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-red-500 text-sm w-16">Before:</span>
+                            <span class="bg-gray-100 px-2 py-1 rounded">使用了ChatGPT进行翻译。</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-green-500 text-sm w-16">After:</span>
+                            <span class="bg-green-50 px-2 py-1 rounded">使用了 ChatGPT 进行翻译。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h4 class="text-cyan-400 font-bold mb-2 font-mono">Regex Substitute</h4>
+                    <div class="text-gray-300 font-mono text-sm mb-1">查找：</div>
+                    <div class="text-white font-mono text-lg mb-4">([\u4e00-\u9fa5])([a-zA-Z0-9])</div>
+                    <div class="text-gray-300 font-mono text-sm mb-1">替换为：</div>
+                    <div class="text-white font-mono text-lg">$1 $2</div>
+                    <p class="text-gray-400 text-sm mt-2">
+                        解释：在"汉字"和"字母/数字"之间插入一个空格。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Tools Recommendation -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">🛠️ 推荐工具</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <a href="https://regex101.com/" target="_blank"
+                        class="block bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition">
+                        <h3 class="font-bold text-blue-600 mb-2">Regex101</h3>
+                        <p class="text-sm text-gray-600">最强大的在线正则调试工具，带有实时解释和代码生成功能。</p>
+                    </a>
+                    <div class="bg-white border border-gray-200 rounded-xl p-6">
+                        <h3 class="font-bold text-gray-800 mb-2">VS Code</h3>
+                        <p class="text-sm text-gray-600">平时翻译写稿时，Ctrl+F 开启正则模式，即刻进行批量清洗。</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-6">
+                        <h3 class="font-bold text-gray-800 mb-2">ChatGPT</h3>
+                        <p class="text-sm text-gray-600">记不住正则也没关系，直接告诉 AI："写一个提取邮箱的正则"，它会直接给你代码。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="mt-12 flex justify-between">
+                <a href="tutorial_ai_bisu.html" class="text-gray-500 hover:text-gray-700">← 上一模块：AI 辅助翻译</a>
+                <a href="tutorial_qa_bisu.html" class="text-purple-600 hover:text-purple-800 font-medium">下一模块：智能质量检测
+                    →</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+        <p>&copy; 2026 Aldo. Designed for BISU Advanced Translation Program.</p>
+    </footer>
+
+</body>
+
+</html>

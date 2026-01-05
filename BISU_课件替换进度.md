@@ -6,44 +6,27 @@
 - `index_bisu.html` - 北二外专用首页
 - `course_bisu.html` - 课程详情页
 
-### 2. 搜索教程
-- `tutorial_search_bisu.html` - 术语搜索教程（已完成）
-  - ✅ 替换民航案例为通用案例
-  - ✅ Flight Level → carbon neutrality
-  - ✅ ICAO/FAA/CAAC → UN/WHO/政府网站
-  - ✅ 民航术语 → 气候变化、数字经济、国际法律、公共卫生、学术术语
+### 2. 教程页面 (全量替换)
+- `tutorial_search_bisu.html` - 术语搜索教程
+  - ✅ 民航案例 → 通用案例 (UN/WHO/ESG)
+- `tutorial_ai_bisu.html` - AI 辅助翻译
+  - ✅ 航空法规 → 法律/学术长难句
+  - ✅ 角色预设 → 法律专家/市场文案
+- `tutorial_regex_bisu.html` - 文本清洗
+  - ✅ 航空日志日期 → 通用日期格式
+  - ✅ 尾号提取 → DOI/ISBN 提取
+- `tutorial_qa_bisu.html` - 智能质检
+  - ✅ 航空术语库 → 联合国/可持续发展术语库
 
 ---
 
-## 待创建 🚧
+## 完整性检查
 
-### 3. AI 辅助教程
-- `tutorial_ai_bisu.html`
-  - **替换内容**:
-    - 航空安全法规长难句 → 学术论文/国际公约长难句
-    - COMAC/Boeing手册 → 学术写作/商务文书
-    - 航空法律专家 → 商务翻译专家/学术翻译专家
-    - 民航管理局 → 国际组织/政府部门
-
-### 4. 文本清洗教程  
-- `tutorial_regex_bisu.html`（原 tutorial_aviation.html）
-  - **替换内容**:
-    - 航空维修手册清洗 → 新闻稿/学术论文清洗
-    - NOTAM格式 → 新闻日期格式
-    - 机型编号 → ISBN/DOI提取
-    - 航空代码 → 通用标识符
-
-### 5. 质检教程
-- `tutorial_qa_bisu.html`
-  - **替换内容**:
-    - 航空术语库 → 通用术语库
-    - Flight crew/ICAO Annex → 可持续发展/联合国文件
-    - Python脚本案例更新
-
-### 6. 共享页面（无需修改）
-- `tutorial_nyt.html` - 纽约时报案例（已经是通用案例）
-- `framework.html` - 三角色框架（理论通用）
-- `lecturer.html` - 讲师介绍（讲师信息通用）
+| 页面 | 链接状态 | 内容状态 |
+|------|----------|----------|
+| **index_bisu.html** | ✅ 已更新指向 _bisu 页面 | ✅ 北二外主题 |
+| **course_bisu.html** | ✅ 已更新指向 _bisu 页面 | ✅ 北二外大纲 |
+| **核心教程** | ✅ 内部导航互联 | ✅ 去除所有民航引用 |
 
 ---
 
@@ -69,11 +52,7 @@
 
 ## 下一步计划
 
-1. **创建 tutorial_ai_bisu.html**（AI 辅助翻译）
-2. **创建 tutorial_regex_bisu.html**（文本清洗）
-3. **创建 tutorial_qa_bisu.html**（质检）
-4. **更新 index_bisu.html 和 course_bisu.html** 的所有链接
-5. **提交所有更改到 Git**
+所有开发任务已完成。准备提交代码库。
 
 ---
 
@@ -87,5 +66,5 @@
 
 ---
 
-**创建时间**: 2026-01-05  
-**状态**: 进行中
+**完成时间**: 2026-01-05
+**状态**: ✅ 已完成
